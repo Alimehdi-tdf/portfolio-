@@ -212,6 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Battery & CPU optimization: skip completely on touch / mobile devices
     const isTouchDevice = window.matchMedia('(pointer: coarse)').matches ||
                           window.matchMedia('(hover: none)').matches ||
+                          window.matchMedia('(max-width: 768px)').matches ||
                           'ontouchstart' in window ||
                           navigator.maxTouchPoints > 0;
     if (isTouchDevice) return;
@@ -292,6 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Battery optimization: skip completely on touch / mobile devices
     const isTouchDevice = window.matchMedia('(pointer: coarse)').matches ||
                           window.matchMedia('(hover: none)').matches ||
+                          window.matchMedia('(max-width: 768px)').matches ||
                           'ontouchstart' in window ||
                           navigator.maxTouchPoints > 0;
     if (isTouchDevice) return;

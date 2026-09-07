@@ -96,6 +96,9 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 body {
@@ -103,6 +106,8 @@ body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.65;
+    width: 100%;
+    max-width: 100vw;
     overflow-x: hidden;
     position: relative;
     transition: background-color 0.35s ease, color 0.35s ease;
@@ -119,8 +124,10 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    max-width: 100vw;
+    height: 100%;
+    height: 100dvh;
     pointer-events: none;
     overflow: hidden;
     z-index: 0;
@@ -2397,14 +2404,23 @@ ul {
 /* ==========================================================================
    RESPONSIVE DESIGN (Tablets & Mobile)
    ========================================================================== */
+
+/* 1. TABLET BREAKPOINT (max-width: 1024px) */
 @media (max-width: 1024px) {
+    .container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
     .hero-container {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
 
     .hero-profile-col {
-        max-width: 450px;
+        max-width: 440px;
         margin: 0 auto;
     }
 
@@ -2455,131 +2471,495 @@ ul {
     }
 }
 
+/* 2. MOBILE & TABLET PORTRAIT BREAKPOINT (max-width: 768px) */
 @media (max-width: 768px) {
+    /* Global Container Width & Zero Horizontal Scroll */
+    .container,
+    .hero-container,
+    .contact-container,
+    .experience-container,
+    .footer-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-left: 1.25rem !important;
+        padding-right: 1.25rem !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Section Typography Scaling */
+    .section-header {
+        margin-bottom: 2.2rem !important;
+    }
+
+    .section-title {
+        font-size: 1.8rem !important;
+        line-height: 1.25 !important;
+        letter-spacing: -0.3px !important;
+    }
+
+    .title-underline {
+        width: 50px !important;
+        height: 3px !important;
+        margin: 0.7rem auto 0 !important;
+    }
+
+    .section-desc {
+        font-size: 0.92rem !important;
+        line-height: 1.55 !important;
+        margin-top: 0.8rem !important;
+        padding: 0 0.5rem !important;
+    }
+
+    /* Header & Mobile Drawer */
     .site-header {
-        padding: 0.9rem 0;
+        padding: 0.85rem 0 !important;
     }
 
     .nav-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+    }
+
+    .brand-logo {
+        font-size: 1.45rem !important;
     }
 
     .nav-icon-links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        max-width: 320px;
-        height: 100vh;
-        background: var(--bg-primary);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-left: 1.5px solid var(--border-accent);
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 1.5rem;
-        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: -10px 0 35px rgba(0, 0, 0, 0.5);
-        z-index: 1050;
-        padding: 2.5rem;
-        border-radius: 0;
+        position: fixed !important;
+        top: 0 !important;
+        right: -100% !important;
+        width: 82% !important;
+        max-width: 320px !important;
+        height: 100vh !important;
+        background: var(--bg-primary) !important;
+        backdrop-filter: blur(22px) !important;
+        -webkit-backdrop-filter: blur(22px) !important;
+        border-left: 1.5px solid var(--border-accent) !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 1.5rem !important;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: -10px 0 35px rgba(0, 0, 0, 0.5) !important;
+        z-index: 1050 !important;
+        padding: 2.5rem !important;
+        border-radius: 0 !important;
     }
 
     .nav-icon-links.active {
-        right: 0;
+        right: 0 !important;
     }
 
     .nav-icon-link {
-        width: 48px;
-        height: 48px;
+        width: 48px !important;
+        height: 48px !important;
     }
 
     .nav-tooltip {
-        display: none; /* Tooltips disabled on mobile tap */
+        display: none !important;
     }
 
     .nav-cta-btn {
-        display: none;
+        display: none !important;
     }
 
     .hamburger-btn {
-        display: flex;
+        display: flex !important;
     }
 
-    .hero-title {
-        font-size: 2.3rem;
+    /* 2. Hero Section: Vertical Stacking & Center Alignment */
+    .hero-section {
+        min-height: auto !important;
+        padding: 2.5rem 0 3.2rem !important;
+    }
+
+    .hero-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 2.2rem !important;
+        width: 100% !important;
+    }
+
+    .hero-profile-col {
+        width: 100% !important;
+        max-width: 380px !important;
+        margin: 0 auto !important;
+    }
+
+    .executive-profile-card {
+        padding: 1.8rem 1.4rem !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .profile-photo-wrapper {
-        max-width: 320px;
-        aspect-ratio: 1 / 1;
-        height: auto;
-        margin-left: auto;
-        margin-right: auto;
+        width: 100% !important;
+        max-width: 250px !important;
+        aspect-ratio: 1 / 1 !important;
+        height: auto !important;
+        margin: 0 auto !important;
+    }
+
+    .signature-block {
+        text-align: center !important;
+        margin: 1rem auto !important;
+    }
+
+    .signature-name {
+        font-size: 1.7rem !important;
+    }
+
+    .profile-email {
+        font-size: 0.85rem !important;
+        word-break: break-all !important;
+    }
+
+    .social-links-row {
+        justify-content: center !important;
+        gap: 0.6rem !important;
+        flex-wrap: wrap !important;
+    }
+
+    .card-action-bottom {
+        width: 100% !important;
+    }
+
+    .btn-strategy-call {
+        width: 100% !important;
+        justify-content: center !important;
+        padding: 0.85rem 1.4rem !important;
+        font-size: 0.9rem !important;
+    }
+
+    .hero-text-col {
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
+    }
+
+    .hero-title {
+        font-size: 1.85rem !important;
+        line-height: 1.25 !important;
+        text-align: center !important;
+        margin-bottom: 0.8rem !important;
+    }
+
+    .hero-roles-sub {
+        display: block !important;
+        font-size: 0.95rem !important;
+        line-height: 1.45 !important;
+        margin-top: 0.6rem !important;
+    }
+
+    .tagline-quote-box {
+        margin: 1.2rem auto !important;
+        max-width: 520px !important;
+        text-align: center !important;
+        border-left: none !important;
+        border-top: 3px solid var(--accent-color) !important;
+        padding: 1rem 1.2rem !important;
+        border-radius: var(--radius-md) !important;
+    }
+
+    .hero-tagline-statement {
+        font-size: 0.95rem !important;
+        line-height: 1.5 !important;
+    }
+
+    .hero-intro {
+        text-align: center !important;
+        font-size: 0.92rem !important;
+        line-height: 1.6 !important;
+        margin: 0 auto 1.4rem !important;
+        max-width: 540px !important;
+    }
+
+    .hero-tags-pill-row {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 0.5rem !important;
+    }
+
+    .pill-chip {
+        font-size: 0.8rem !important;
+        padding: 0.45rem 0.85rem !important;
+    }
+
+    .hero-cta-group {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 0.75rem !important;
+        width: 100% !important;
+    }
+
+    .hero-cta-group .btn {
+        min-width: 140px !important;
+        padding: 0.75rem 1.6rem !important;
+        font-size: 0.9rem !important;
     }
 
     .capability-blocks-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 0.9rem !important;
+        width: 100% !important;
+        margin-top: 1.8rem !important;
     }
 
+    .capability-card {
+        width: 100% !important;
+        padding: 1.2rem 1.3rem !important;
+        box-sizing: border-box !important;
+    }
+
+    /* About Section Vertical Stack */
+    .about-content-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 2.2rem !important;
+        width: 100% !important;
+    }
+
+    .about-story-col,
+    .about-skills-col {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .about-highlights {
+        justify-content: center !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        width: 100% !important;
+    }
+
+    .highlight-item {
+        width: 100% !important;
+    }
+
+    .pillars-list {
+        text-align: left !important;
+    }
+
+    /* 3. Cards & Experience Layout: Strict 1-Column Grids */
     .pe-stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.2rem;
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1.2rem !important;
+        width: 100% !important;
+    }
+
+    .pe-stat-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 1.8rem 1.4rem !important;
+        box-sizing: border-box !important;
+        text-align: center !important;
     }
 
     .pe-stat-value {
-        font-size: 1.8rem;
+        font-size: 1.8rem !important;
     }
 
-    .service-grid {
-        grid-template-columns: 1fr;
+    .experience-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1.6rem !important;
+        width: 100% !important;
     }
 
+    .experience-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 1.8rem 1.3rem !important;
+        box-sizing: border-box !important;
+    }
+
+    .exp-card-header {
+        flex-wrap: wrap !important;
+        gap: 0.6rem !important;
+        align-items: center !important;
+    }
+
+    .exp-tags {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 0.45rem !important;
+    }
+
+    .exp-tags span {
+        font-size: 0.78rem !important;
+        padding: 0.3rem 0.65rem !important;
+    }
+
+    .btn-compact-link {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    /* Services & Trading 1-Column Grids */
+    .service-grid,
     .trading-grid {
-        grid-template-columns: 1fr;
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+        width: 100% !important;
     }
 
+    .service-card,
+    .trading-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 4. Contact Section: Stacked Layout (Contact Info on top, Form below) */
     .contact-grid-2col {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.8rem !important;
+        width: 100% !important;
+    }
+
+    .contact-info-col {
+        order: 1 !important; /* Contact Info on top */
+        width: 100% !important;
+    }
+
+    .contact-form-col {
+        order: 2 !important; /* Input form directly underneath */
+        width: 100% !important;
     }
 
     .contact-info-card,
     .contact-form-card {
-        padding: 2rem 1.6rem;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 1.8rem 1.3rem !important;
+        box-sizing: border-box !important;
     }
 
+    .contact-detail-item {
+        gap: 0.85rem !important;
+        align-items: flex-start !important;
+    }
+
+    .detail-value {
+        word-break: break-all !important;
+        font-size: 0.92rem !important;
+    }
+
+    .whatsapp-clickable-link {
+        flex-wrap: wrap !important;
+        gap: 0.4rem !important;
+    }
+
+    .chat-hint-tag {
+        font-size: 0.75rem !important;
+    }
+
+    .contact-social-icons {
+        flex-wrap: wrap !important;
+        gap: 0.6rem !important;
+    }
+
+    .form-input,
+    .form-textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        font-size: 0.95rem !important;
+    }
+
+    .btn-submit {
+        width: 100% !important;
+        justify-content: center !important;
+    }
+
+    /* WhatsApp Floating Button */
     .whatsapp-float {
-        width: 54px;
-        height: 54px;
-        bottom: 22px;
-        right: 22px;
+        width: 52px !important;
+        height: 52px !important;
+        bottom: 20px !important;
+        right: 20px !important;
     }
 
     .whatsapp-icon {
-        width: 28px;
-        height: 28px;
+        width: 26px !important;
+        height: 26px !important;
     }
 }
 
+/* 3. SMALL MOBILE BREAKPOINT (max-width: 480px) */
 @media (max-width: 480px) {
+    .container,
+    .hero-container,
+    .contact-container,
+    .experience-container,
+    .footer-container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .section-title {
+        font-size: 1.5rem !important;
+    }
+
+    .hero-title {
+        font-size: 1.55rem !important;
+    }
+
     .profile-photo-wrapper {
-        max-width: 290px;
-        aspect-ratio: 1 / 1;
-        height: auto;
+        max-width: 215px !important;
     }
 
-    .pe-stats-grid {
-        grid-template-columns: 1fr;
+    .signature-name {
+        font-size: 1.45rem !important;
     }
 
-    .pe-stat-card {
-        padding: 2rem 1.4rem;
+    .hero-cta-group {
+        flex-direction: column !important;
+        width: 100% !important;
+    }
+
+    .hero-cta-group .btn {
+        width: 100% !important;
+    }
+
+    .pe-stat-card,
+    .experience-card,
+    .contact-info-card,
+    .contact-form-card,
+    .executive-profile-card,
+    .service-card,
+    .trading-card {
+        padding: 1.5rem 1.1rem !important;
+    }
+
+    .pe-stat-value {
+        font-size: 1.6rem !important;
+    }
+
+    .theme-toggle-btn {
+        padding: 0.35rem 0.75rem !important;
+        font-size: 0.78rem !important;
+    }
+
+    .brand-logo {
+        font-size: 1.3rem !important;
+    }
+
+    .whatsapp-float {
+        width: 48px !important;
+        height: 48px !important;
+        bottom: 16px !important;
+        right: 16px !important;
     }
 }
 
@@ -2621,7 +3001,7 @@ ul {
 .cursor-trailing-aura.is-hovered {
     width: 58px;
     height: 58px;
-    background: rgba(132, 156, 89, 0.08); /* Becomes more transparent as requested */
+    background: rgba(132, 156, 89, 0.08);
     border-color: rgba(132, 156, 89, 0.5);
     box-shadow: 0 0 22px rgba(132, 156, 89, 0.3), inset 0 0 12px rgba(132, 156, 89, 0.1);
 }
@@ -2640,17 +3020,22 @@ ul {
 }
 
 /* Completely disabled on touch / mobile devices (battery & CPU optimization) */
-@media (pointer: coarse), (hover: none), (max-width: 768px) {
+@media (pointer: coarse), (hover: none), (max-width: 768px), (max-width: 480px) {
     .cursor-trailing-aura,
     .matrix-mouse-glow {
         display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
     }
 
     /* Lighten beam count on mobile */
     .beam-pos-2,
     .beam-pos-4,
+    .beam-pos-6,
     .beam-pos-7 {
         display: none !important;
     }
 }
+
 
