@@ -481,6 +481,11 @@ ul {
     transform: scale(1.1);
 }
 
+/* Desktop: Hide text label so desktop navbar remains minimalist icons with tooltips */
+.nav-text {
+    display: none;
+}
+
 /* Hover Floating Tooltip */
 .nav-tooltip {
     position: absolute;
@@ -2535,28 +2540,96 @@ ul {
         width: 82% !important;
         max-width: 320px !important;
         height: 100vh !important;
+        height: 100dvh !important;
         background: var(--bg-primary) !important;
         backdrop-filter: blur(22px) !important;
         -webkit-backdrop-filter: blur(22px) !important;
         border-left: 1.5px solid var(--border-accent) !important;
         flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 1.5rem !important;
+        justify-content: flex-start !important;
+        align-items: stretch !important;
+        gap: 0.65rem !important;
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
         box-shadow: -10px 0 35px rgba(0, 0, 0, 0.5) !important;
         z-index: 1050 !important;
-        padding: 2.5rem !important;
+        padding: 5rem 1.4rem 2.5rem !important;
         border-radius: 0 !important;
+        overflow-y: auto !important;
     }
 
     .nav-icon-links.active {
         right: 0 !important;
     }
 
+    .nav-icon-item {
+        width: 100% !important;
+    }
+
+    /* Flexbox Layout: Horizontal row, perfectly aligned icon + text */
     .nav-icon-link {
-        width: 48px !important;
-        height: 48px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 48px !important;
+        border-radius: var(--radius-md) !important;
+        padding: 0.75rem 1.2rem !important;
+        padding-left: 30px !important;
+        gap: 15px !important;
+        background: transparent !important;
+        border: 1px solid transparent !important;
+        text-align: left !important;
+        transition: var(--transition) !important;
+    }
+
+    .nav-svg {
+        width: 22px !important;
+        height: 22px !important;
+        min-width: 22px !important;
+        stroke: var(--text-secondary) !important;
+        transition: stroke 0.25s ease, transform 0.25s ease !important;
+    }
+
+    /* Typography & Colors: Soft off-white, approx 1.1rem (18px) */
+    .nav-text {
+        display: inline-block !important;
+        font-size: 1.1rem !important;
+        font-weight: 500 !important;
+        color: #d1d5db !important; /* Soft off-white */
+        letter-spacing: 0.2px !important;
+        transition: color 0.25s ease !important;
+    }
+
+    /* Active/Hover State: Icon & Text become Olive Green (#849c59) */
+    .nav-icon-link:hover,
+    .nav-icon-link.active {
+        background: rgba(132, 156, 89, 0.12) !important;
+        border-color: rgba(132, 156, 89, 0.4) !important;
+        transform: translateX(4px) !important;
+        box-shadow: none !important;
+    }
+
+    .nav-icon-link:hover .nav-svg,
+    .nav-icon-link.active .nav-svg {
+        stroke: var(--accent-color) !important; /* #849c59 Olive Green */
+        transform: scale(1.1) !important;
+    }
+
+    .nav-icon-link:hover .nav-text,
+    .nav-icon-link.active .nav-text {
+        color: var(--accent-color) !important; /* #849c59 Olive Green */
+        font-weight: 600 !important;
+    }
+
+    [data-theme="light"] .nav-text {
+        color: #374151 !important;
+    }
+
+    [data-theme="light"] .nav-icon-link:hover .nav-text,
+    [data-theme="light"] .nav-icon-link.active .nav-text {
+        color: var(--accent-color) !important;
     }
 
     .nav-tooltip {
@@ -2960,6 +3033,15 @@ ul {
         height: 48px !important;
         bottom: 16px !important;
         right: 16px !important;
+    }
+
+    .nav-icon-link {
+        padding-left: 22px !important;
+        gap: 12px !important;
+    }
+
+    .nav-text {
+        font-size: 1.02rem !important;
     }
 }
 
