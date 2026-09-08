@@ -418,11 +418,27 @@ ul {
     align-items: center;
 }
 
+.brand-logo-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    line-height: 0;
+}
+
 .brand-logo {
-    font-size: 1.65rem;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    color: var(--text-primary);
+    display: block;
+    height: auto;
+    max-height: 48px;
+    width: auto;
+    max-width: 160px;
+    object-fit: contain;
+    transition: transform var(--transition-fast, 0.25s ease), opacity var(--transition-fast, 0.25s ease);
+}
+
+.brand-logo-link:hover .brand-logo,
+.brand-logo:hover {
+    transform: scale(1.04);
 }
 
 .logo-accent {
@@ -2530,7 +2546,8 @@ ul {
     }
 
     .brand-logo {
-        font-size: 1.45rem !important;
+        max-height: 44px !important;
+        height: auto !important;
     }
 
     .nav-icon-links {
@@ -3025,7 +3042,8 @@ ul {
     }
 
     .brand-logo {
-        font-size: 1.3rem !important;
+        max-height: 40px !important;
+        height: auto !important;
     }
 
     .whatsapp-float {
