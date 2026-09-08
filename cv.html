@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
     <title>Syed Ali Mehdi | Professional Curriculum Vitae (CV)</title>
     <meta name="description" content="Official Curriculum Vitae of Syed Ali Mehdi - Digital Marketer, Client Hunter, Trader & Business Advisor based in Peshawar, Pakistan.">
     <meta name="author" content="Syed Ali Mehdi">
@@ -85,7 +87,41 @@
         .bar-left {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
+        }
+
+        .cv-nav-brand {
+            display: inline-flex;
+            align-items: center;
+            text-decoration: none;
+            padding-right: 12px;
+            border-right: 1px solid var(--border-subtle);
+        }
+
+        .cv-top-logo {
+            height: 36px;
+            max-height: 40px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.2s ease;
+        }
+
+        .cv-nav-brand:hover .cv-top-logo {
+            transform: scale(1.05);
+        }
+
+        .header-name-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .cv-inline-logo {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 8px rgba(132, 156, 89, 0.4));
         }
 
         .back-link {
@@ -449,9 +485,19 @@
         }
 
         .footer-brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             font-weight: 700;
             color: var(--accent-primary);
             letter-spacing: 0.5px;
+        }
+
+        .cv-footer-logo {
+            height: 26px;
+            width: auto;
+            object-fit: contain;
+            display: inline-block;
         }
 
         /* ==========================================================================
@@ -627,6 +673,19 @@
                 align-items: flex-start;
             }
 
+            .header-name-row {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .cv-inline-logo {
+                height: 30px;
+            }
+
+            .cv-top-logo {
+                height: 30px;
+            }
+
             .skills-grid {
                 grid-template-columns: 1fr;
             }
@@ -638,6 +697,9 @@
     <!-- Top Action Floating Bar (Screen only) -->
     <div class="cv-top-bar">
         <div class="bar-left">
+            <a href="index.html" class="cv-nav-brand" title="Return to Main Portfolio">
+                <img src="logo.png" alt="Ali Mehdi Logo" class="cv-top-logo">
+            </a>
             <a href="index.html" class="back-link" title="Return to Main Portfolio">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <line x1="19" y1="12" x2="5" y2="12"></line>
@@ -666,7 +728,10 @@
                     <img src="ChatGPT Image Sep 7, 2026, 11_21_55 AM_2.png" alt="Syed Ali Mehdi" class="cv-profile-img" loading="eager">
                 </div>
                 <div class="header-title-block">
-                    <h1>Syed Ali Mehdi</h1>
+                    <div class="header-name-row">
+                        <h1>Syed Ali Mehdi</h1>
+                        <img src="logo.png" alt="Official Logo" class="cv-inline-logo" title="Official Verified Brand Emblem">
+                    </div>
                     <div class="cv-roles">Digital Marketer • Client Hunter • Market Trader • Business Advisor</div>
                 </div>
             </div>
@@ -845,7 +910,10 @@
         <!-- Footer Stamp -->
         <footer class="cv-footer">
             <div>Verified Portfolio & Official CV</div>
-            <div class="footer-brand">&lt;I M MEHDI /&gt;</div>
+            <div class="footer-brand">
+                <img src="logo.png" alt="Ali Mehdi Logo" class="cv-footer-logo">
+                <span>&lt;I M MEHDI /&gt;</span>
+            </div>
         </footer>
 
     </main>
