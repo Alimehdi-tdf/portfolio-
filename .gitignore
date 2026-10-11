@@ -11,3 +11,4 @@ next.config.js
 *.log
 scratch/
 portfolio_backup.zip
+push_to_vercel.bat
