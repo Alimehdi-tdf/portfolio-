@@ -99,11 +99,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursorDot = document.getElementById('cursor-dot');
     const cursorRing = document.getElementById('cursor-ring');
 
-    if (cursorDot && cursorRing) {
+    if (!isTouchDevice && cursorDot && cursorRing) {
         let mouseX = -100, mouseY = -100;
         let ringX = -100, ringY = -100;
         const ringSpring = 0.18;
         let cursorInitialized = false;
+        let ringRaf = null;
+
+        function animateRing() {
+            if (cursorInitialized) {
+                const dx = mouseX - ringX;
+                const dy = mouseY - ringY;
+                ringX += dx * ringSpring;
+                ringY += dy * ringSpring;
+                cursorRing.style.transform = `translate3d(${ringX.toFixed(1)}px, ${ringY.toFixed(1)}px, 0) translate(-50%, -50%)`;
+                if (Math.abs(dx) > 0.15 || Math.abs(dy) > 0.15) {
+                    ringRaf = requestAnimationFrame(animateRing);
+                    return;
+                }
+            }
+            ringRaf = null;
+        }
 
         function updateCursorPositions(e) {
             mouseX = e.clientX;
@@ -115,24 +131,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 cursorDot.style.display = 'block';
                 cursorRing.style.display = 'block';
             }
-            cursorDot.style.left = mouseX + 'px';
-            cursorDot.style.top = mouseY + 'px';
+            cursorDot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
             cursorDot.style.opacity = '1';
             cursorRing.style.opacity = '1';
+            if (!ringRaf) {
+                ringRaf = requestAnimationFrame(animateRing);
+            }
         }
 
         window.addEventListener('mousemove', updateCursorPositions, { passive: true });
-
-        function animateRing() {
-            if (cursorInitialized) {
-                ringX += (mouseX - ringX) * ringSpring;
-                ringY += (mouseY - ringY) * ringSpring;
-                cursorRing.style.left = ringX + 'px';
-                cursorRing.style.top = ringY + 'px';
-            }
-            requestAnimationFrame(animateRing);
-        }
-        requestAnimationFrame(animateRing);
 
         // Click / Drag states
         window.addEventListener('mousedown', () => {
@@ -199,23 +206,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 heroGlow.style.opacity = '1';
                 glowVisible = true;
             }
+            if (!glowRaf) {
+                glowRaf = requestAnimationFrame(renderGlow);
+            }
         }, { passive: true });
 
         heroSection.addEventListener('mouseleave', () => {
             heroGlow.style.opacity = '0';
             glowVisible = false;
+            if (glowRaf) { cancelAnimationFrame(glowRaf); glowRaf = null; }
         });
 
+        let glowRaf = null;
         function renderGlow() {
-            if (glowVisible) {
-                glowX += (glowTargetX - glowX) * glowLerp;
-                glowY += (glowTargetY - glowY) * glowLerp;
-                heroGlow.style.left = glowX + 'px';
-                heroGlow.style.top = glowY + 'px';
+            if (!glowVisible) {
+                glowRaf = null;
+                return;
             }
-            requestAnimationFrame(renderGlow);
+            const dx = glowTargetX - glowX;
+            const dy = glowTargetY - glowY;
+            glowX += dx * glowLerp;
+            glowY += dy * glowLerp;
+            heroGlow.style.transform = `translate3d(${glowX.toFixed(1)}px, ${glowY.toFixed(1)}px, 0) translate(-50%, -50%)`;
+            if (Math.abs(dx) > 0.2 || Math.abs(dy) > 0.2) {
+                glowRaf = requestAnimationFrame(renderGlow);
+            } else {
+                glowRaf = null;
+            }
         }
-        requestAnimationFrame(renderGlow);
     }
 
 
@@ -290,24 +308,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ScrollSpy — Highlights active icon as user scrolls
+    // ScrollSpy — Highlights active icon as user scrolls (rAF throttled)
+    let scrollSpyScheduled = false;
     window.addEventListener('scroll', () => {
-        const scrollPos = window.pageYOffset + 240;
-
-        sections.forEach(section => {
-            const top = section.offsetTop;
-            const height = section.offsetHeight;
-            const id = section.getAttribute('id');
-
-            if (scrollPos >= top && scrollPos < top + height) {
-                floatNavBtns.forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.getAttribute('data-section') === id) {
-                        btn.classList.add('active');
+        if (!scrollSpyScheduled) {
+            scrollSpyScheduled = true;
+            requestAnimationFrame(() => {
+                scrollSpyScheduled = false;
+                const scrollPos = window.pageYOffset + 240;
+                sections.forEach(section => {
+                    const top = section.offsetTop;
+                    const height = section.offsetHeight;
+                    const id = section.getAttribute('id');
+                    if (scrollPos >= top && scrollPos < top + height) {
+                        floatNavBtns.forEach(btn => {
+                            btn.classList.remove('active');
+                            if (btn.getAttribute('data-section') === id) {
+                                btn.classList.add('active');
+                            }
+                        });
                     }
                 });
-            }
-        });
+            });
+        }
     }, { passive: true });
 
     // Floating Nav Random Wandering vs Hover/Drag Straight-Alignment Controller
@@ -828,16 +851,18 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Interactive cursor spotlight tracker on Work Experience Bento cards
-        expCards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                card.style.setProperty('--mouse-x', `${x}px`);
-                card.style.setProperty('--mouse-y', `${y}px`);
+        // Interactive cursor spotlight tracker on Work Experience Bento cards (desktop only)
+        if (!isTouchDevice) {
+            expCards.forEach(card => {
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                }, { passive: true });
             });
-        });
+        }
     }
     /* ==========================================================================
        15. PYTHON FULL-STACK CONTACT API INTEGRATION
@@ -971,17 +996,46 @@ document.addEventListener('DOMContentLoaded', () => {
             return Math.atan2(clientY - cy, clientX - cx) * (180 / Math.PI);
         }
 
-        function updateNodePositions() {
-            const rect = socialWrapper.getBoundingClientRect();
-            const radius = (rect.width / 2) - 34; // Dynamic radius
+        let cachedRadius = 150;
+        function updateRadius() {
+            if (socialWrapper) {
+                const rect = socialWrapper.getBoundingClientRect();
+                cachedRadius = Math.max(70, (rect.width / 2) - 34);
+            }
+        }
+        updateRadius();
 
+        function updateNodePositions() {
+            const radFactor = Math.PI / 180;
             socialNodes.forEach((node, i) => {
                 const baseAngle = (i * (360 / count));
-                const totalAngle = (baseAngle + rotationAngle) * (Math.PI / 180);
-                const x = radius * Math.cos(totalAngle);
-                const y = radius * Math.sin(totalAngle);
-                node.style.transform = `translate(-50%, -50%) translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
+                const totalAngle = (baseAngle + rotationAngle) * radFactor;
+                const x = cachedRadius * Math.cos(totalAngle);
+                const y = cachedRadius * Math.sin(totalAngle);
+                node.style.transform = `translate(-50%, -50%) translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
             });
+        }
+
+        let isOrbitVisible = false;
+        let orbitRafId = null;
+
+        function runOrbitLoop() {
+            if (!isOrbitVisible && !isDragging) {
+                orbitRafId = null;
+                return;
+            }
+            if (!isDragging) {
+                if (Math.abs(currentVelocity) > 0.32) {
+                    rotationAngle += currentVelocity;
+                    const friction = Math.abs(currentVelocity) > 12 ? 0.986 : 0.978;
+                    currentVelocity *= friction;
+                } else {
+                    const idleSpeed = isHovered ? 0.12 : 0.32;
+                    rotationAngle += (currentVelocity >= 0 ? idleSpeed : -idleSpeed);
+                }
+                updateNodePositions();
+            }
+            orbitRafId = requestAnimationFrame(runOrbitLoop);
         }
 
         // Pointer down: grab the wheel immediately and illuminate logos
@@ -993,6 +1047,9 @@ document.addEventListener('DOMContentLoaded', () => {
             velocitySamples = [];
             currentVelocity = 0;
             socialWrapper.style.cursor = 'grabbing';
+            if (!orbitRafId) {
+                orbitRafId = requestAnimationFrame(runOrbitLoop);
+            }
         }
 
         // Pointer move: track 1:1 angular rotation and store velocity samples
@@ -1045,6 +1102,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const lastDiff = velocitySamples.length > 0 ? velocitySamples[velocitySamples.length - 1].diff : 1;
                 currentVelocity = lastDiff >= 0 ? 0.32 : -0.32;
             }
+
+            if (!orbitRafId) {
+                orbitRafId = requestAnimationFrame(runOrbitLoop);
+            }
         }
 
         socialWrapper.addEventListener('mousedown', onPointerDown);
@@ -1077,26 +1138,36 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Wheel animation loop with progressive friction
-        function orbitAnimationLoop() {
-            if (!isDragging) {
-                if (Math.abs(currentVelocity) > 0.32) {
-                    rotationAngle += currentVelocity;
-                    // High speeds coast smoothly, gradually slowing down ("speed fast ho and phir slow hojai")
-                    const friction = Math.abs(currentVelocity) > 12 ? 0.986 : 0.978;
-                    currentVelocity *= friction;
-                } else {
-                    const idleSpeed = isHovered ? 0.12 : 0.32;
-                    rotationAngle += (currentVelocity >= 0 ? idleSpeed : -idleSpeed);
-                }
-                updateNodePositions();
-            }
-            requestAnimationFrame(orbitAnimationLoop);
+        // IntersectionObserver: ONLY run wheel rotation loop when #social is in viewport (0% CPU/GPU elsewhere)
+        if ('IntersectionObserver' in window && socialContainer) {
+            const orbitObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        isOrbitVisible = true;
+                        updateRadius();
+                        updateNodePositions();
+                        if (!orbitRafId) orbitRafId = requestAnimationFrame(runOrbitLoop);
+                    } else {
+                        isOrbitVisible = false;
+                        if (orbitRafId && !isDragging) {
+                            cancelAnimationFrame(orbitRafId);
+                            orbitRafId = null;
+                        }
+                    }
+                });
+            }, { threshold: 0.05 });
+            orbitObserver.observe(socialContainer);
+        } else {
+            isOrbitVisible = true;
+            updateRadius();
+            updateNodePositions();
+            orbitRafId = requestAnimationFrame(runOrbitLoop);
         }
 
-        updateNodePositions();
-        requestAnimationFrame(orbitAnimationLoop);
-        window.addEventListener('resize', updateNodePositions);
+        window.addEventListener('resize', () => {
+            updateRadius();
+            updateNodePositions();
+        }, { passive: true });
     }
 
     /* --- Part B: Atmospheric Dark Embers ("Black Black Chingariyan") Canvas Engine --- */
@@ -1240,10 +1311,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.addEventListener('resize', () => {
             resizeEmberCanvas();
-        });
+        }, { passive: true });
 
         initEmbers();
-        emberAnimationLoop();
     }
 
     
@@ -1296,6 +1366,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const customScrollTooltip = document.getElementById('custom-scroll-tooltip');
 
     if (customScrollTrack && customScrollLine && customScrollThumb) {
+        // Disable on touch devices or screens <= 768px to ensure native silky mobile scrolling
+        if (isTouchDevice || window.innerWidth <= 768) {
+            customScrollTrack.style.display = 'none';
+            return;
+        }
+
         let isDraggingTrack = false;
         let dragStartY = 0;
         let dragStartScrollTop = 0;
@@ -1735,6 +1811,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
+        // Skip completely on mobile / touch devices (< 768px) to eliminate CPU/GPU drain
+        const isMobileOrTouch = window.innerWidth < 768 || ('ontouchstart' in window && !window.matchMedia('(hover: hover)').matches);
+        if (isMobileOrTouch) {
+            canvas.style.display = 'none';
+            return;
+        }
+
         // Position firmly in background layer behind all cards
         canvas.style.position = 'fixed';
         canvas.style.top = '0';
@@ -2109,29 +2192,54 @@ document.addEventListener('DOMContentLoaded', () => {
         let mouseY = height / 2;
         let isDragging = false;
         let hasUserMoved = false;
+        let lastInteractionTime = performance.now();
+        let lizardRafId = null;
+
+        function wakeLizard() {
+            lastInteractionTime = performance.now();
+            if (!lizardRafId && !document.hidden) {
+                lizardRafId = requestAnimationFrame(animateLizard);
+            }
+        }
 
         window.addEventListener('mousemove', (e) => {
             mouseX = e.clientX;
             mouseY = e.clientY;
             hasUserMoved = true;
+            wakeLizard();
         }, { passive: true });
 
-        window.addEventListener('mousedown', () => { isDragging = true; });
-        window.addEventListener('mouseup', () => { isDragging = false; });
-        window.addEventListener('touchmove', (e) => {
-            if (e.touches && e.touches[0]) {
-                mouseX = e.touches[0].clientX;
-                mouseY = e.touches[0].clientY;
-                hasUserMoved = true;
+        window.addEventListener('mousedown', () => { isDragging = true; wakeLizard(); });
+        window.addEventListener('mouseup', () => { isDragging = false; wakeLizard(); });
+        window.addEventListener('scroll', () => { wakeLizard(); }, { passive: true });
+
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) {
+                wakeLizard();
+            } else if (lizardRafId) {
+                cancelAnimationFrame(lizardRafId);
+                lizardRafId = null;
             }
-        }, { passive: true });
+        });
 
-        // Buttery smooth animation loop (throttled when tab is hidden)
+        // Buttery smooth animation loop (throttled when tab is hidden or idle to save 100% CPU on laptops)
         let time = 0;
         function animateLizard() {
             if (document.hidden) {
-                setTimeout(() => requestAnimationFrame(animateLizard), 200);
+                lizardRafId = null;
                 return;
+            }
+
+            const now = performance.now();
+            const idleTime = now - lastInteractionTime;
+
+            // When idle for > 3.5s and critter is close to target, rest gracefully
+            if (hasUserMoved && idleTime > 3500) {
+                const distToMouse = Math.hypot(critter.x - mouseX, critter.y - mouseY);
+                if (distToMouse < 22) {
+                    lizardRafId = null;
+                    return; // 0% CPU at rest!
+                }
             }
 
             time += 0.038;
@@ -2175,9 +2283,9 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fillStyle = 'rgba(255, 255, 255, 0.85)';
             ctx.fill();
 
-            requestAnimationFrame(animateLizard);
+            lizardRafId = requestAnimationFrame(animateLizard);
         }
-        requestAnimationFrame(animateLizard);
+        lizardRafId = requestAnimationFrame(animateLizard);
     })();
 
 });

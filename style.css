@@ -197,28 +197,34 @@ ul { list-style: none; }
 /* ========== CUSTOM CURSOR (DOT & GLOWING RING) ========== */
 .cursor-dot {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 6px;
     height: 6px;
     background: #FFFFFF;
     border-radius: 50% !important;
     pointer-events: none;
     z-index: 100000;
-    transform: translate(-50%, -50%);
+    transform: translate3d(-100px, -100px, 0);
     box-shadow: 0 0 10px rgba(56, 189, 248, 0.95), 0 0 20px rgba(56, 189, 248, 0.5);
-    transition: width 0.2s ease, height 0.2s ease, background 0.2s ease, transform 0.15s ease;
+    transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
+    will-change: transform;
 }
 
 .cursor-ring {
     position: fixed;
+    top: 0;
+    left: 0;
     width: 36px;
     height: 36px;
     border: 1.5px solid rgba(56, 189, 248, 0.7);
     border-radius: 50% !important;
     pointer-events: none;
     z-index: 99999;
-    transform: translate(-50%, -50%);
+    transform: translate3d(-100px, -100px, 0);
     box-shadow: 0 0 14px rgba(56, 189, 248, 0.3);
-    transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, background 0.2s ease;
+    will-change: transform;
 }
 
 .cursor-dot.is-hovering {
@@ -924,6 +930,8 @@ ul { list-style: none; }
 
 .hero__mouse-glow {
     position: absolute;
+    top: 0;
+    left: 0;
     width: 450px;
     height: 450px;
     border-radius: 50%;
@@ -931,9 +939,10 @@ ul { list-style: none; }
     pointer-events: none;
     z-index: 0;
     opacity: 0;
-    transform: translate(-50%, -50%);
+    transform: translate3d(-500px, -500px, 0);
     transition: opacity 0.5s ease;
     filter: blur(60px);
+    will-change: transform;
 }
 
 .hero__grid-lines {
@@ -3985,12 +3994,7 @@ body { animation: fadeIn 0.5s ease; }
     opacity: 1;
 }
 
-@media (max-width: 640px) {
-    .custom-scroll-track {
-        right: 4px;
-        width: 18px;
-    }
-}
+/* custom-scroll-track hidden on mobile in master responsive section */
 
 
 /* Elevation: Keep all content, cards and forms comfortably above background creature */
@@ -4012,4 +4016,531 @@ body { animation: fadeIn 0.5s ease; }
 .footer__container {
     position: relative;
     z-index: 5;
+}
+
+
+/* ==========================================================================
+   MASTER RESPONSIVE STYLESHEET (MOBILE, TABLET, TOUCH OPTIMIZATIONS)
+   - Zero horizontal overflow or jitter
+   - Seamless single-column fluid stacking for all sections
+   - Full tap targets and buttery touch scrolling
+   - Total removal of desktop-only overlays (custom scrollbar, wandering nav, lizard canvas, cursor)
+   ========================================================================== */
+
+@media (max-width: 992px) {
+    /* Base Container & Grid Resets */
+    html, body {
+        overflow-x: hidden !important;
+        width: 100%;
+        max-width: 100vw;
+    }
+
+    .section {
+        padding: 3rem 1.5rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        min-height: auto;
+        padding: calc(var(--nav-height) + 1.5rem) 1.5rem 3rem;
+        background: radial-gradient(circle at 50% 30%, #352317 0%, #1E1510 50%, #121316 100%);
+    }
+
+    .hero__container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .hero__content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero__name {
+        font-size: clamp(2.4rem, 7vw, 3.8rem);
+        min-height: auto;
+        line-height: 1.15;
+    }
+
+    .hero__tagline {
+        font-size: 0.98rem;
+        line-height: 1.65;
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .hero__portrait {
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+
+    .hero__portrait-frame {
+        width: min(75vw, 320px);
+        height: auto;
+        aspect-ratio: 4 / 5;
+        margin: 0 auto;
+        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    /* About Section */
+    .about__grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .about__content-col {
+        order: 1;
+    }
+
+    .about__image-col {
+        order: 2;
+        width: 100%;
+    }
+
+    .about__image-wrapper {
+        max-width: min(80vw, 320px);
+        margin: 0 auto;
+    }
+
+    .about__stepper-wrapper {
+        max-width: 520px;
+        margin: 1.25rem auto 0;
+    }
+
+    /* Social Hub */
+    .social-hub__layout {
+        grid-template-columns: 1fr;
+        gap: 2.75rem;
+        text-align: center;
+    }
+
+    .social-circle-container {
+        margin: 0 auto;
+        min-height: 400px;
+    }
+
+    .social-stats-col {
+        text-align: left;
+    }
+
+    /* Experience Grid */
+    .exp__grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Contact Section */
+    .contact__grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* STRICT MOBILE OVERLAY REMOVAL FOR SILKY SMOOTH TOUCH EXPERIENCE */
+    .custom-scroll-track,
+    #custom-scroll-track,
+    .floating-nav,
+    #floating-nav,
+    .cursor-dot,
+    .cursor-ring,
+    #cursor-dot,
+    #cursor-ring,
+    .skeletal-lizard-canvas,
+    #skeletal-lizard-canvas,
+    .site-bg-portrait,
+    #site-bg-portrait {
+        display: none !important;
+        pointer-events: none !important;
+        visibility: hidden !important;
+    }
+
+    /* Prevent any horizontal dragging or wobbling */
+    body, html {
+        overflow-x: hidden !important;
+        width: 100%;
+        max-width: 100vw;
+        position: relative;
+    }
+
+    /* Top Sticky Header */
+    .site-header {
+        padding: 0.75rem 1rem;
+        height: 60px;
+        background: rgba(18, 19, 22, 0.96);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(197, 168, 128, 0.18);
+    }
+
+    .site-header__container {
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .site-header__brand-text {
+        font-size: 1.35rem;
+        letter-spacing: 0.14em;
+    }
+
+    .site-header__actions {
+        gap: 12px;
+    }
+
+    .site-header__icon-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .site-header__icon-btn svg {
+        width: 19px;
+        height: 19px;
+    }
+
+    /* Section Spacing */
+    .section {
+        padding: 2.25rem 1.15rem;
+    }
+
+    .section__title {
+        font-size: 1.85rem;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 80px 1.15rem 2rem;
+    }
+
+    .hero__name {
+        font-size: clamp(2.1rem, 8vw, 2.9rem);
+    }
+
+    .hero__tagline {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .hero__portrait-frame {
+        width: min(78vw, 270px);
+    }
+
+    .hero__scroll-indicator {
+        margin-top: 1.25rem;
+    }
+
+    /* About Section */
+    .about__subtitle {
+        font-size: 1.2rem;
+        line-height: 1.35;
+    }
+
+    .about__text {
+        font-size: 0.88rem;
+        line-height: 1.6;
+    }
+
+    .about__problem-pillars {
+        gap: 8px;
+    }
+
+    .about__pillar-item {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
+    .about__pillar-title {
+        font-size: 0.86rem;
+    }
+
+    .about__pillar-desc {
+        font-size: 0.78rem;
+    }
+
+    /* About Domain Stepper */
+    .about__stepper-wrapper {
+        margin-top: 14px;
+        width: 100%;
+    }
+
+    .about__stepper-track-wrap {
+        padding: 8px 6px 16px 6px;
+    }
+
+    .about__stepper-line {
+        top: 15px;
+        left: 20px;
+        right: 20px;
+    }
+
+    .stepper-dot__label {
+        font-size: 0.62rem;
+        letter-spacing: 0.02em;
+    }
+
+    .about__domain-panel {
+        padding: 1.15rem 1rem;
+    }
+
+    .about__domain-title {
+        font-size: 1.1rem;
+    }
+
+    .about__domain-stats {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+
+    .domain-stat {
+        padding: 8px 4px;
+    }
+
+    .domain-stat__num {
+        font-size: 1.1rem;
+    }
+
+    .domain-stat__lbl {
+        font-size: 0.55rem;
+    }
+
+    .about__domain-desc {
+        font-size: 0.78rem;
+        line-height: 1.45;
+    }
+
+    /* Interactive 360° Social Wheel on Mobile */
+    .social-hub {
+        padding: 2.25rem 1.15rem;
+    }
+
+    .social-circle-container {
+        min-height: 330px;
+        padding: 0.5rem 0;
+        width: 100%;
+    }
+
+    .social-circle-wrapper {
+        width: min(80vw, 300px);
+        height: min(80vw, 300px);
+    }
+
+    .social-circle-center {
+        width: 86px;
+        height: 86px;
+    }
+
+    .social-circle-center__monogram {
+        font-size: 1.25rem;
+    }
+
+    .social-circle-center__hint {
+        font-size: 0.55rem;
+    }
+
+    .social-orbit-node {
+        width: 40px;
+        height: 40px;
+    }
+
+    .social-orbit-node svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .social-circle-instruction {
+        font-size: 0.72rem;
+        margin-top: 10px;
+    }
+
+    .social-metrics-bento {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .social-platform-rows {
+        gap: 8px;
+    }
+
+    .social-platform-row {
+        padding: 10px 12px;
+    }
+
+    /* Skills Section on Mobile */
+    .skills {
+        padding: 2.25rem 1.15rem;
+    }
+
+    .skills__nav-tabs {
+        gap: 6px;
+        justify-content: center;
+    }
+
+    .skills__tab-btn {
+        padding: 7px 12px;
+        font-size: 0.78rem;
+        gap: 6px;
+    }
+
+    .skills__slider-box {
+        padding: 0;
+    }
+
+    /* Hide Desktop Arrow Buttons so they do not overlap cards on mobile */
+    .skills__arrow {
+        display: none !important;
+    }
+
+    .skills__slide {
+        padding: 1.35rem 1.15rem;
+    }
+
+    .skills__card-header {
+        gap: 12px;
+    }
+
+    .skills__card-icon-wrap {
+        width: 46px;
+        height: 46px;
+    }
+
+    .skills__card-title {
+        font-size: 1.18rem;
+    }
+
+    /* Certifications Compact Ribbon on Mobile */
+    .certs-compact {
+        padding: 1rem 0 1.5rem;
+    }
+
+    .certs-compact__container {
+        padding: 0 1.15rem;
+    }
+
+    .cert-thumb {
+        width: 165px;
+        height: 110px;
+    }
+
+    /* Experience Bento Cards on Mobile */
+    .exp__grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .exp-summary-ribbon {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 14px 16px;
+    }
+
+    .exp-summary-divider {
+        display: none;
+    }
+
+    .exp-card__inner {
+        padding: 1.25rem 1.15rem;
+    }
+
+    .exp-role-title {
+        font-size: 1.15rem;
+    }
+
+    .exp-meta-row {
+        flex-wrap: wrap;
+        gap: 6px;
+    }
+
+    .exp-tech-stack {
+        gap: 6px;
+    }
+
+    .exp-tech-tag {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+    }
+
+    /* Contact Form on Mobile */
+    .contact__grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
+
+    .contact__info-title {
+        font-size: 1.45rem;
+    }
+
+    .contact__form-panel {
+        padding: 1.35rem 1.15rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    /* Ensure form inputs have 16px font-size to prevent iOS Safari auto-zoom */
+    .form-group input,
+    .form-group textarea {
+        font-size: 16px !important;
+        padding: 12px 14px;
+    }
+
+    /* Footer on Mobile */
+    .footer {
+        padding: 2.25rem 1.15rem 1.75rem;
+    }
+
+    .footer__container {
+        flex-direction: column;
+        gap: 1.25rem;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero__name {
+        font-size: 2.15rem;
+    }
+
+    .hero__portrait-frame {
+        width: min(84vw, 250px);
+    }
+
+    .social-circle-wrapper {
+        width: min(84vw, 280px);
+        height: min(84vw, 280px);
+    }
+
+    .social-circle-center {
+        width: 78px;
+        height: 78px;
+    }
+
+    .social-circle-center__monogram {
+        font-size: 1.15rem;
+    }
+
+    .social-orbit-node {
+        width: 36px;
+        height: 36px;
+    }
+
+    .social-orbit-node svg {
+        width: 18px;
+        height: 18px;
+    }
+
+    .about__stepper-track-wrap {
+        padding: 6px 2px 14px 2px;
+    }
+
+    .stepper-dot__label {
+        font-size: 0.58rem;
+    }
+
+    .about__domain-stats {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
 }
