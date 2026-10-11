@@ -1,0 +1,13 @@
+node_modules/
+.next/
+app/
+backend/
+server.py
+requirements.txt
+package.json
+package-lock.json
+next.config.js
+.env*
+*.log
+scratch/
+portfolio_backup.zip

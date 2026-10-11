@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 540" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14100c"/>
+      <stop offset="50%" stop-color="#1c1610"/>
+      <stop offset="100%" stop-color="#0c0906"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e2c875"/>
+      <stop offset="50%" stop-color="#8b9a46"/>
+      <stop offset="100%" stop-color="#556024"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b9a46"/>
+      <stop offset="50%" stop-color="#a8bc5a"/>
+      <stop offset="100%" stop-color="#8b9a46"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="800" height="540" fill="url(#bg)"/>
+  <rect x="20" y="20" width="760" height="500" rx="10" fill="none" stroke="#332415" stroke-width="2"/>
+  <rect x="32" y="32" width="736" height="476" rx="6" fill="none" stroke="url(#gold)" stroke-width="1.5" stroke-dasharray="8 4"/>
+  <rect x="42" y="42" width="716" height="456" fill="none" stroke="#241a0f" stroke-width="1"/>
+
+  <g stroke="url(#gold)" stroke-width="2" fill="none">
+    <path d="M 45 65 L 45 45 L 65 45"/>
+    <path d="M 755 65 L 755 45 L 735 45"/>
+    <path d="M 45 475 L 45 495 L 65 495"/>
+    <path d="M 755 475 L 755 495 L 735 495"/>
+  </g>
+
+  <g transform="translate(400, 95)" text-anchor="middle">
+    <circle cx="0" cy="0" r="26" fill="#241910" stroke="url(#gold)" stroke-width="1.5" filter="url(#glow)"/>
+    <polygon points="0,-12 4,-3 13,-3 6,3 9,12 0,6 -9,12 -6,3 -13,-3 -4,-3" fill="#a8bc5a"/>
+  </g>
+
+  <text x="400" y="148" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" letter-spacing="4" fill="#a8bc5a" text-anchor="middle">GOOGLE CAREER CERTIFICATES PROGRAM</text>
+  <text x="400" y="190" font-family="'Georgia', serif" font-size="28" font-weight="700" letter-spacing="2" fill="#ffffff" text-anchor="middle">CERTIFICATE OF ACHIEVEMENT</text>
+  <text x="400" y="222" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" letter-spacing="2" fill="#8f7f6f" text-anchor="middle">THIS IS PROUDLY PRESENTED TO</text>
+
+  <text x="400" y="270" font-family="'Georgia', serif" font-size="32" font-weight="700" letter-spacing="3" fill="#ffffff" text-anchor="middle">SYED ALI MEHDI</text>
+  <line x1="240" y1="285" x2="560" y2="285" stroke="url(#accent)" stroke-width="2"/>
+
+  <text x="400" y="320" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#baaba0" text-anchor="middle">FOR ADVANCED COMPETENCE IN DATA ANALYTICS &amp; BUSINESS INTELLIGENCE</text>
+  <text x="400" y="348" font-family="'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#a8bc5a" text-anchor="middle">3rd Certificate — Data Analytics Professional</text>
+
+  <g transform="translate(100, 420)">
+    <text x="0" y="0" font-family="'Segoe UI', monospace" font-size="10" fill="#827263">CREDENTIAL ID</text>
+    <text x="0" y="16" font-family="'Segoe UI', monospace" font-size="11" font-weight="600" fill="#e5d9cf">SAM-GGL-2023-03</text>
+    <line x1="0" y1="28" x2="160" y2="28" stroke="#332415" stroke-width="1"/>
+    <text x="0" y="42" font-family="'Segoe UI', sans-serif" font-size="9" fill="#605448">VERIFIED CREDENTIAL</text>
+  </g>
+
+  <g transform="translate(400, 435)">
+    <circle cx="0" cy="0" r="32" fill="#281c12" stroke="url(#gold)" stroke-width="2"/>
+    <circle cx="0" cy="0" r="26" fill="none" stroke="url(#gold)" stroke-width="1" stroke-dasharray="3 2"/>
+    <text x="0" y="-4" font-family="'Segoe UI', sans-serif" font-size="8" font-weight="700" letter-spacing="1" fill="#e2c875" text-anchor="middle">★ VERIFIED ★</text>
+    <text x="0" y="8" font-family="'Segoe UI', sans-serif" font-size="7" font-weight="600" letter-spacing="1" fill="#a8bc5a" text-anchor="middle">OFFICIAL SEAL</text>
+    <text x="0" y="18" font-family="'Segoe UI', sans-serif" font-size="7" fill="#827263" text-anchor="middle">2023</text>
+  </g>
+
+  <g transform="translate(540, 420)">
+    <text x="0" y="0" font-family="'Segoe UI', monospace" font-size="10" fill="#827263">ISSUE DATE</text>
+    <text x="0" y="16" font-family="'Segoe UI', monospace" font-size="11" font-weight="600" fill="#e5d9cf">AUGUST 2023</text>
+    <line x1="0" y1="28" x2="160" y2="28" stroke="#332415" stroke-width="1"/>
+    <text x="0" y="42" font-family="'Segoe UI', sans-serif" font-size="9" fill="#605448">AUTHORIZED SIGNATURE</text>
+  </g>
+</svg>

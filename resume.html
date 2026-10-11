@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syed Ali Mehdi — Professional Resume</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <meta name="description" content="Official Black & White Executive Resume of Syed Ali Mehdi — Software & Web Developer, Digital Marketer, Quantitative Trader.">
+
+    <!-- Fonts: Inter for Clean Modern Typography & Cormorant Garamond for Executive Headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet">
+
+    <!-- html2pdf.js for 1-Click Client-Side PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        /* ==========================================================================
+           STRICT BLACK & WHITE EXECUTIVE RESUME (MINIMALIST, NO PHOTO, BLANK LINES)
+           ========================================================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border-radius: 0 !important;
+        }
+
+        :root {
+            --bw-bg: #FFFFFF;
+            --bw-page: #FFFFFF;
+            --bw-black: #000000;
+            --bw-dark: #1A1A1A;
+            --bw-body: #2B2B2B;
+            --bw-muted: #555555;
+            --bw-line: #000000;
+            --bw-line-light: #CCCCCC;
+            --bw-blank: #888888;
+        }
+
+        body {
+            background-color: #EFEFEF;
+            color: var(--bw-black);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 10.5pt;
+            line-height: 1.5;
+            padding: 2.5rem 1rem;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Top Action Bar (Hidden in Print & Downloaded PDF) */
+        .resume-top-bar {
+            max-width: 820px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .bar-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: #000000;
+            color: #FFFFFF;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            border: 1px solid #000000;
+            transition: all 0.2s ease;
+        }
+
+        .btn-back:hover {
+            background: #333333;
+        }
+
+        .bar-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: #FFFFFF;
+            color: #000000;
+            border: 1.5px solid #000000;
+            font-size: 0.85rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: all 0.2s ease;
+        }
+
+        .btn-action:hover {
+            background: #000000;
+            color: #FFFFFF;
+        }
+
+        .btn-action--primary {
+            background: #000000;
+            color: #FFFFFF;
+        }
+
+        .btn-action--primary:hover {
+            background: #333333;
+            border-color: #333333;
+        }
+
+        /* Resume Sheet (Standard A4 Dimension Proportions) */
+        .resume-sheet {
+            max-width: 820px;
+            margin: 0 auto;
+            background: var(--bw-page);
+            padding: 3.5rem 3.8rem;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.12);
+            border: 1px solid #D5D5D5;
+            position: relative;
+        }
+
+        /* Header Section: Pure Text, Bold, No Photo */
+        .resume-header {
+            text-align: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 2.5px solid var(--bw-black);
+            margin-bottom: 1.75rem;
+        }
+
+        .candidate-name {
+            font-family: 'Newsreader', 'Times New Roman', serif;
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--bw-black);
+            line-height: 1.1;
+            margin-bottom: 6px;
+        }
+
+        .candidate-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--bw-dark);
+            margin-bottom: 10px;
+        }
+
+        .contact-strip {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--bw-muted);
+            margin-top: 8px;
+        }
+
+        .contact-strip a {
+            color: var(--bw-black);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-strip a:hover {
+            text-decoration: underline;
+        }
+
+        .sep {
+            color: var(--bw-line-light);
+            user-select: none;
+        }
+
+        /* Resume Sections */
+        .resume-section {
+            margin-bottom: 1.6rem;
+        }
+
+        .section-title {
+            font-size: 0.92rem;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--bw-black);
+            border-bottom: 1.5px solid var(--bw-black);
+            padding-bottom: 4px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title-tag {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--bw-muted);
+            letter-spacing: 0.05em;
+        }
+
+        /* Executive Summary Paragraph */
+        .summary-p {
+            font-size: 0.92rem;
+            line-height: 1.6;
+            color: var(--bw-body);
+            text-align: justify;
+        }
+
+        /* Core Skills Multi-Column Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px 24px;
+            margin-top: 4px;
+        }
+
+        .skill-row {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            font-size: 0.88rem;
+        }
+
+        .skill-label {
+            font-weight: 700;
+            color: var(--bw-black);
+            min-width: 130px;
+            flex-shrink: 0;
+        }
+
+        .skill-values {
+            color: var(--bw-body);
+        }
+
+        /* Experience Item Block */
+        .exp-item {
+            margin-bottom: 1.15rem;
+        }
+
+        .exp-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .exp-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 3px;
+        }
+
+        .exp-role-company {
+            font-size: 0.95rem;
+            color: var(--bw-black);
+        }
+
+        .exp-role {
+            font-weight: 700;
+        }
+
+        .exp-company {
+            font-weight: 400;
+            font-style: italic;
+            color: var(--bw-dark);
+        }
+
+        .exp-period {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--bw-muted);
+            white-space: nowrap;
+            letter-spacing: 0.02em;
+        }
+
+        .exp-subhead {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--bw-muted);
+            margin-bottom: 6px;
+        }
+
+        .exp-bullets {
+            list-style: none;
+            padding-left: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .exp-bullets li {
+            position: relative;
+            padding-left: 18px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            color: var(--bw-body);
+        }
+
+        .exp-bullets li::before {
+            content: '▪';
+            position: absolute;
+            left: 2px;
+            top: 0;
+            font-size: 0.8rem;
+            color: var(--bw-black);
+        }
+
+        /* Education & Accreditations */
+        .edu-item {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 0.88rem;
+        }
+
+        .edu-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .edu-main {
+            font-weight: 700;
+            color: var(--bw-black);
+        }
+
+        .edu-sub {
+            font-weight: 400;
+            color: var(--bw-muted);
+            font-style: italic;
+            margin-left: 6px;
+        }
+
+        .edu-year {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--bw-muted);
+        }
+
+        /* Certifications List */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px 20px;
+            margin-top: 4px;
+            font-size: 0.85rem;
+        }
+
+        .cert-entry {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px dotted var(--bw-line-light);
+            padding-bottom: 2px;
+        }
+
+        .cert-name {
+            font-weight: 600;
+            color: var(--bw-black);
+        }
+
+        .cert-meta {
+            color: var(--bw-muted);
+            font-size: 0.78rem;
+        }
+
+        /* ==========================================================================
+           BLANK LINES & VERIFICATION NOTES (Requested: "blank lines ke sath")
+           ========================================================================== */
+        .resume-blank-section {
+            margin-top: 1.75rem;
+            padding-top: 1rem;
+            border-top: 2px solid var(--bw-black);
+        }
+
+        .blank-lines-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--bw-black);
+            margin-bottom: 10px;
+        }
+
+        .blank-line-group {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            margin-top: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .blank-line-row {
+            display: flex;
+            align-items: flex-end;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .blank-line-row span {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--bw-dark);
+            white-space: nowrap;
+        }
+
+        .blank-line {
+            flex: 1;
+            height: 1px;
+            background: var(--bw-line);
+            border-bottom: 1px solid var(--bw-line);
+        }
+
+        .blank-line--dotted {
+            background: transparent;
+            border-bottom: 1px dashed #777777;
+        }
+
+        .verification-signatures {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 2rem;
+            padding-top: 1.25rem;
+        }
+
+        .sig-box {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .sig-rule {
+            width: 100%;
+            height: 1px;
+            background: #000000;
+            margin-bottom: 4px;
+        }
+
+        .sig-title {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--bw-black);
+        }
+
+        .sig-sub {
+            font-size: 0.72rem;
+            color: var(--bw-muted);
+        }
+
+        /* Footer Declaration */
+        .resume-declaration {
+            margin-top: 1.25rem;
+            text-align: center;
+            font-size: 0.72rem;
+            color: var(--bw-muted);
+            letter-spacing: 0.04em;
+            border-top: 1px solid var(--bw-line-light);
+            padding-top: 8px;
+        }
+
+        /* ==========================================================================
+           PRINT & PDF STYLESHEET (@media print)
+           ========================================================================== */
+        @media print {
+            @page {
+                size: A4;
+                margin: 12mm 15mm;
+            }
+
+            body {
+                background: #FFFFFF !important;
+                color: #000000 !important;
+                padding: 0 !important;
+            }
+
+            .resume-top-bar {
+                display: none !important;
+            }
+
+            .resume-sheet {
+                max-width: 100% !important;
+                background: #FFFFFF !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            .candidate-name {
+                font-size: 2.2rem !important;
+            }
+
+            a {
+                text-decoration: none !important;
+                color: #000000 !important;
+            }
+
+            .blank-line, .sig-rule, .section-title, .resume-header {
+                border-color: #000000 !important;
+            }
+        }
+
+        /* Mobile Viewport Responsiveness */
+        @media (max-width: 680px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+
+            .resume-sheet {
+                padding: 2rem 1.25rem;
+            }
+
+            .candidate-name {
+                font-size: 1.85rem;
+            }
+
+            .skills-grid, .certs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .exp-head {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2px;
+            }
+
+            .verification-signatures {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+        }
+    
+        /* Close / Cross & Floating Action Buttons */
+        .btn-close-cross {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: #000000;
+            color: #FFFFFF;
+            border: 1px solid #000000;
+            text-decoration: none;
+            cursor: pointer;
+            margin-left: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-close-cross:hover {
+            background: #333333;
+            transform: scale(1.08);
+        }
+
+        .floating-close-btn {
+            position: fixed;
+            top: 18px;
+            right: 18px;
+            width: 44px;
+            height: 44px;
+            background: #000000;
+            color: #FFFFFF;
+            border: 1.5px solid #000000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+            transition: all 0.2s ease;
+        }
+
+        .floating-close-btn:hover {
+            background: #2B2B2B;
+            transform: scale(1.1);
+            box-shadow: 0 6px 22px rgba(0, 0, 0, 0.35);
+        }
+
+        @media print {
+            .floating-close-btn,
+            .resume-top-bar {
+                display: none !important;
+            }
+        }
+</style>
+</head>
+<body>
+
+    <!-- Top Action Floating Bar (Screen only, excluded from Print/PDF) -->
+    <!-- Floating Close Cross Button (Fixed Top-Right) -->
+    <a href="index.html" class="floating-close-btn" id="floating-close-btn" title="Close Resume & Return to Portfolio (Esc)" aria-label="Close Resume">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </a>
+
+    <!-- Top Action Bar (Screen only, excluded from Print/PDF) -->
+    <aside class="resume-top-bar" aria-label="Resume Actions">
+        <div class="bar-left">
+            <a href="index.html" class="btn-back" id="btn-back-portfolio" title="Return to Main Portfolio">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                <span>Back to Portfolio</span>
+            </a>
+        </div>
+        <div class="bar-actions">
+            <button type="button" class="btn-action" onclick="window.print()" title="Print Resume">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                <span>Print</span>
+            </button>
+            <button type="button" class="btn-action btn-action--primary" id="btn-download-pdf" onclick="downloadResumePDF()" title="Download Clean PDF">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                <span>Download PDF</span>
+            </button>
+            <a href="index.html" class="btn-close-cross" id="btn-close-resume" title="Close Resume & Return to Portfolio (Esc)" aria-label="Close Resume">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </a>
+        </div>
+    </aside>
+
+    <main class="resume-sheet" id="resume-canvas">
+
+        <!-- 1. Resume Header (Centered Typography, No Pic) -->
+        <header class="resume-header">
+            <h1 class="candidate-name">Syed Ali Mehdi</h1>
+            <p class="candidate-title">Software &amp; Web Developer • Digital Marketer • Quantitative Trader</p>
+            <div class="contact-strip">
+                <span>Peshawar, KP, Pakistan</span>
+                <span class="sep">•</span>
+                <a href="tel:+923709494308">+92 370 9494308</a>
+                <span class="sep">•</span>
+                <a href="mailto:alimehdi3417@gmail.com">alimehdi3417@gmail.com</a>
+                <span class="sep">•</span>
+                <a href="https://github.com/Alimehdi-tdf" target="_blank" rel="noopener">github.com/Alimehdi-tdf</a>
+            </div>
+        </header>
+
+        <!-- 2. Executive Summary -->
+        <section class="resume-section">
+            <h2 class="section-title">
+                <span>Executive Summary</span>
+                <span class="section-title-tag">Overview</span>
+            </h2>
+            <p class="summary-p">
+                Decisive problem-solver and multi-disciplinary digital architect with 4+ years of demonstrable impact across full-stack software development, performance digital marketing, and quantitative trading. Known for shipping 45+ high-performance web applications, scaling 50+ high-ROAS marketing funnels, and executing disciplined risk-managed financial models. Focused on high-velocity software architectures, measurable business growth, and resilient digital infrastructure.
+            </p>
+        </section>
+
+        <!-- 3. Core Competencies & Technical Skills -->
+        <section class="resume-section">
+            <h2 class="section-title">
+                <span>Core Competencies &amp; Technical Skills</span>
+                <span class="section-title-tag">Expertise</span>
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-row">
+                    <span class="skill-label">Web &amp; Software Dev:</span>
+                    <span class="skill-values">HTML5, CSS3, JavaScript (ES6+), React/Next.js, Python, FastAPI, REST APIs, Microservices</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Digital Marketing:</span>
+                    <span class="skill-values">Performance Marketing, Paid Ad Scaling (Meta &amp; Google Ads), Conversion Funnels, GA4, SEO</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Trading &amp; Finance:</span>
+                    <span class="skill-values">Quantitative Modeling, Systematic Market Analysis, Risk Mitigation, Technical Position Sizing</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Cloud &amp; DevOps:</span>
+                    <span class="skill-values">Git/GitHub, Docker, Linux Systems, Vercel Deployments, Cloud Infrastructure, CI/CD</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">System Architecture:</span>
+                    <span class="skill-values">Database Optimization (PostgreSQL/SQL), Edge Caching, Web Vitals Performance Tuning</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-label">Professional Standards:</span>
+                    <span class="skill-values">Agile Methodologies, Rapid Problem Deconstruction, Technical Strategy, Data-Driven Execution</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Professional Experience -->
+        <section class="resume-section">
+            <h2 class="section-title">
+                <span>Professional Experience</span>
+                <span class="section-title-tag">Career History</span>
+            </h2>
+
+            <!-- Role 1: Digital Marketing Strategist -->
+            <article class="exp-item">
+                <div class="exp-head">
+                    <div class="exp-role-company">
+                        <span class="exp-role">Growth Marketing Strategist &amp; Funnel Architect</span>
+                        <span class="sep">•</span>
+                        <span class="exp-company">Apex Digital Performance &amp; Media Practice</span>
+                    </div>
+                    <span class="exp-period">2021 — Present</span>
+                </div>
+                <div class="exp-subhead">
+                    <span>Performance Marketing &amp; Media</span>
+                    <span>50+ Campaigns Scaled • 3.8x Avg ROAS</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Constructed data-driven digital marketing campaigns, scaling 50+ paid acquisition funnels across Google and Meta ad platforms.</li>
+                    <li>Optimized landing page conversion rates delivering a +62% average conversion lift via rapid A/B testing and friction elimination.</li>
+                    <li>Automated multi-channel email workflows, customer lifecycle touchpoints, and analytics tracking architectures.</li>
+                </ul>
+            </article>
+
+            <!-- Role 3: Full-Stack Engineer -->
+            <article class="exp-item">
+                <div class="exp-head">
+                    <div class="exp-role-company">
+                        <span class="exp-role">Full-Stack Software Engineer</span>
+                        <span class="sep">•</span>
+                        <span class="exp-company">TechSolutions Global Labs</span>
+                    </div>
+                    <span class="exp-period">2022 — 2024</span>
+                </div>
+                <div class="exp-subhead">
+                    <span>Software Engineering</span>
+                    <span>45+ Web Applications Shipped</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Architected scalable RESTful API microservices utilizing Python/FastAPI, slashing average server response latency by 38%.</li>
+                    <li>Designed responsive, accessibility-compliant frontends with clean semantic code, boosting Core Web Vitals performance benchmarks by +45%.</li>
+                    <li>Automated database indexing and deployment workflows, ensuring 99.98% production system availability.</li>
+                </ul>
+            </article>
+
+            <!-- Role 4: Trading & Advisory -->
+            <article class="exp-item">
+                <div class="exp-head">
+                    <div class="exp-role-company">
+                        <span class="exp-role">Financial Markets Trader &amp; Risk Advisor</span>
+                        <span class="sep">•</span>
+                        <span class="exp-company">Proprietary Capital Portfolio</span>
+                    </div>
+                    <span class="exp-period">2021 — 2023</span>
+                </div>
+                <div class="exp-subhead">
+                    <span>Quantitative Advisory</span>
+                    <span>28+ Accounts Advised • 22+ Partner Portfolios</span>
+                </div>
+                <ul class="exp-bullets">
+                    <li>Built systematic risk allocation strategies maintaining strict drawdown parameters across dynamic market liquidity conditions.</li>
+                    <li>Conducted macroeconomic research and liquidity analysis to forecast capital growth trajectories for business advisory clients.</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- 5. Education & Accreditations -->
+        <section class="resume-section">
+            <h2 class="section-title">
+                <span>Education &amp; Academic Credentials</span>
+                <span class="section-title-tag">Academic</span>
+            </h2>
+            <div class="edu-item">
+                <div>
+                    <span class="edu-main">Higher Secondary Education / Pre-Engineering</span>
+                    <span class="edu-sub">Intermediate &amp; Secondary Education Board, Peshawar</span>
+                </div>
+                <span class="edu-year">Completed</span>
+            </div>
+            <div class="edu-item">
+                <div>
+                    <span class="edu-main">Self-Directed Computer Science &amp; Quantitative Finance</span>
+                    <span class="edu-sub">Advanced Open Courseware, Algorithmic Problem Solving</span>
+                </div>
+                <span class="edu-year">Continuous</span>
+            </div>
+        </section>
+
+        <!-- 6. Verified Industry Certifications -->
+        <section class="resume-section">
+            <h2 class="section-title">
+                <span>Verified Industry Certifications</span>
+                <span class="section-title-tag">Accreditations</span>
+            </h2>
+            <div class="certs-grid">
+                <div class="cert-entry">
+                    <span class="cert-name">Web Development Professional</span>
+                    <span class="cert-meta">Meta &amp; Coursera (2024)</span>
+                </div>
+                <div class="cert-entry">
+                    <span class="cert-name">Cloud Architecture &amp; DevOps</span>
+                    <span class="cert-meta">AWS Training (2023)</span>
+                </div>
+                <div class="cert-entry">
+                    <span class="cert-name">Data Analytics &amp; Visuals</span>
+                    <span class="cert-meta">Google Institute (2023)</span>
+                </div>
+                <div class="cert-entry">
+                    <span class="cert-name">Agile Project Management</span>
+                    <span class="cert-meta">Scrum Alliance (2022)</span>
+                </div>
+                <div class="cert-entry">
+                    <span class="cert-name">UI/UX Interface Engineering</span>
+                    <span class="cert-meta">Interaction Design (2024)</span>
+                </div>
+                <div class="cert-entry">
+                    <span class="cert-name">Enterprise Negotiation &amp; Sales</span>
+                    <span class="cert-meta">Executive Institute (2023)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Blank Lines for Notes, Evaluation & Official Signatures (Requested Feature) -->
+        <section class="resume-blank-section">
+            <div class="blank-lines-header">
+                <span>Official Evaluation &amp; Verification Remarks</span>
+                <span>[Blank Lines for Notes]</span>
+            </div>
+
+            <div class="blank-line-group">
+                <div class="blank-line-row">
+                    <span>1. Interview / Performance Notes:</span>
+                    <div class="blank-line blank-line--dotted"></div>
+                </div>
+                <div class="blank-line-row">
+                    <div class="blank-line blank-line--dotted"></div>
+                </div>
+                <div class="blank-line-row">
+                    <span>2. Strategic Fit / Role Recommendations:</span>
+                    <div class="blank-line blank-line--dotted"></div>
+                </div>
+                <div class="blank-line-row">
+                    <div class="blank-line blank-line--dotted"></div>
+                </div>
+                <div class="blank-line-row">
+                    <span>3. Executive Approvals &amp; Terms:</span>
+                    <div class="blank-line"></div>
+                </div>
+            </div>
+
+            <!-- Signature & Date Blank Lines -->
+            <div class="verification-signatures">
+                <div class="sig-box">
+                    <div class="sig-rule"></div>
+                    <span class="sig-title">Candidate Signature &amp; Date</span>
+                    <span class="sig-sub">Syed Ali Mehdi • Certified Valid</span>
+                </div>
+                <div class="sig-box">
+                    <div class="sig-rule"></div>
+                    <span class="sig-title">Reviewing Executive / HR Signature</span>
+                    <span class="sig-sub">Official Verification &amp; Date Stamp</span>
+                </div>
+            </div>
+
+            <p class="resume-declaration">
+                I hereby attest that the professional and academic information presented in this resume is accurate and true to the best of my knowledge.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- Client-Side PDF Generation Script -->
+    <script>
+        function downloadResumePDF() {
+            const element = document.getElementById('resume-canvas');
+            const downloadBtn = document.getElementById('btn-download-pdf');
+            if (downloadBtn) {
+                downloadBtn.disabled = true;
+                downloadBtn.innerHTML = 'Generating PDF...';
+            }
+
+            const opt = {
+                margin:       [8, 12, 8, 12],
+                filename:     'Syed_Ali_Mehdi_Resume.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true, letterRendering: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                if (downloadBtn) {
+                    downloadBtn.disabled = false;
+                    downloadBtn.innerHTML = `
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span>Download PDF</span>
+                    `;
+                }
+            }).catch(err => {
+                console.error('PDF generation error, triggering window.print() fallback:', err);
+                if (downloadBtn) {
+                    downloadBtn.disabled = false;
+                    downloadBtn.innerHTML = 'Download PDF';
+                }
+                window.print();
+            });
+        }
+
+        // Return to portfolio on Close, Back, or Escape key (Same tab navigation)
+        function returnToPortfolio(e) {
+            if (e) e.preventDefault();
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location.href = 'index.html';
+            }
+        }
+
+        document.getElementById('btn-back-portfolio')?.addEventListener('click', returnToPortfolio);
+        document.getElementById('btn-close-resume')?.addEventListener('click', returnToPortfolio);
+        document.getElementById('floating-close-btn')?.addEventListener('click', returnToPortfolio);
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') returnToPortfolio(e);
+        });
+    </script>
+</body>
+</html>

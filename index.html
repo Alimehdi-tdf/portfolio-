@@ -1,1281 +1,1269 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-    <!-- Character encoding for proper text rendering -->
     <meta charset="UTF-8">
-    <!-- Responsive Viewport Tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Syed Ali Mehdi (I M MEHDI) - Digital Marketer, Solo Freelancer, Business Advisor, Trader & Client Hunter. Scaling businesses through strategic marketing and modern web solutions.">
-    <meta name="author" content="Syed Ali Mehdi">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="logo.png">
-    
-    <title>Syed Ali Mehdi (I M MEHDI) | Digital Marketer, Business Advisor & Client Hunter</title>
-    
-    <!-- Google Fonts: Poppins & Signature Font (Caveat) -->
+    <meta name="description" content="Mehdi — Portfolio. Creative professional delivering impactful solutions.">
+    <title>Mehdi — Portfolio</title>
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- External CSS Stylesheet -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="logo.png" type="image/png">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Top Smooth Scroll Progress Indicator -->
+    <div class="scroll-progress-bar" id="scroll-progress-bar" aria-hidden="true"></div>
 
-    <!-- Subtle Trailing Olive Aura (System cursor active) -->
-    <div class="cursor-trailing-aura" id="cursor-trailing-aura"></div>
-
-    <!-- ======================================================= -->
-    <!-- INTERACTIVE FLUCTUATING MATRIX ANIMATED BACKGROUND      -->
-    <!-- ======================================================= -->
-    <div class="matrix-bg-container" id="matrix-bg" aria-hidden="true">
-        <!-- 1. Interactive Mouse Glow (400px soft blurred aura behind grid) -->
-        <div class="matrix-mouse-glow" id="matrix-mouse-glow"></div>
-
-        <!-- 2. Ambient Atmosphere Mood Lighting -->
-        <div class="matrix-ambient-glow ambient-glow-1"></div>
-        <div class="matrix-ambient-glow ambient-glow-2"></div>
-
-        <!-- 3. Faint Minimalist Geometric Grid -->
-        <div class="matrix-grid"></div>
-
-        <!-- 4. Fluctuating Vertical Light Beams (Live coding & trading flow) -->
-        <div class="matrix-beams">
-            <span class="matrix-beam beam-cyan beam-pos-1"></span>
-            <span class="matrix-beam beam-orange beam-pos-2"></span>
-            <span class="matrix-beam beam-cyan beam-pos-3"></span>
-            <span class="matrix-beam beam-cyan beam-pos-4"></span>
-            <span class="matrix-beam beam-orange beam-pos-5"></span>
-            <span class="matrix-beam beam-cyan beam-pos-6"></span>
-            <span class="matrix-beam beam-orange beam-pos-7"></span>
-            <span class="matrix-beam beam-cyan beam-pos-8"></span>
-        </div>
+    <!-- ========== GLOBAL BACKGROUND (Subtle Profile Watermark) ========== -->
+    <div class="global-bg site-bg-portrait" id="site-bg-portrait" aria-hidden="true">
+        <div class="global-bg__image site-bg-portrait__img"></div>
+        <div class="global-bg__overlay site-bg-portrait__overlay"></div>
+        <div class="global-bg__grain"></div>
     </div>
 
-    <!-- ======================================================= -->
-    <!-- 1. ICON-BASED NAVBAR (Minimalist SVG Icons + Tooltips)  -->
-    <!-- ======================================================= -->
-    <header class="site-header" id="site-header">
-        <div class="container nav-container">
-            <!-- Brand Logo -->
-            <a href="#hero" class="brand-logo-link" id="brand-logo" title="Syed Ali Mehdi">
-                <img src="logo.png" alt="Ali Mehdi Logo" class="brand-logo">
+    <!-- ========== INTERACTIVE CURSOR ========== -->
+    <div id="cursor-dot" class="cursor-dot" aria-hidden="true"></div>
+    <div id="cursor-ring" class="cursor-ring" aria-hidden="true"></div>
+
+    <!-- ========== PROCEDURAL SKELETON LIZARD CANVAS ========== -->
+    <canvas id="skeletal-lizard-canvas" class="skeletal-lizard-canvas" aria-hidden="true"></canvas>
+
+    <!-- ========== FLOATING RIGHT-SIDE ICON NAVIGATION DOCK ========== -->
+    <nav id="floating-nav" class="floating-nav" aria-label="Quick Page Navigation">
+        <div class="floating-nav__dock">
+            <a href="#hero" class="float-nav__btn active" data-section="hero" aria-label="Home">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span class="float-nav__tooltip">Home</span>
             </a>
 
-            <!-- Minimalist Icon-Based Navigation Menu (No Text Links) -->
-            <nav class="main-nav" id="main-nav" aria-label="Main Navigation">
-                <ul class="nav-icon-links" id="nav-links">
-                    
-                    <!-- 1. Home Icon -->
-                    <li class="nav-icon-item">
-                        <a href="#hero" class="nav-icon-link active" aria-label="Home Section">
-                            <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                            </svg>
-                            <span class="nav-text">Home</span>
-                            <span class="nav-tooltip">Home</span>
-                        </a>
-                    </li>
+            <a href="#about" class="float-nav__btn" data-section="about" aria-label="About">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span class="float-nav__tooltip">About</span>
+            </a>
 
-                    <!-- 2. About Icon -->
-                    <li class="nav-icon-item">
-                        <a href="#about" class="nav-icon-link" aria-label="About Section">
-                            <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                            <span class="nav-text">About</span>
-                            <span class="nav-tooltip">About</span>
-                        </a>
-                    </li>
+            <a href="#social" class="float-nav__btn" data-section="social" aria-label="Social">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                <span class="float-nav__tooltip">Social</span>
+            </a>
 
-                    <!-- 3. Digital Marketing Icon -->
-                    <li class="nav-icon-item">
-                        <a href="#digital-marketing" class="nav-icon-link" aria-label="Digital Marketing Section">
-                            <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                                <polyline points="17 6 23 6 23 12"></polyline>
-                            </svg>
-                            <span class="nav-text">Marketing</span>
-                            <span class="nav-tooltip">Marketing</span>
-                        </a>
-                    </li>
+            <a href="#skills" class="float-nav__btn" data-section="skills" aria-label="Skills">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                <span class="float-nav__tooltip">Skills</span>
+            </a>
 
-                    <!-- 4. Freelancing Icon -->
-                    <li class="nav-icon-item">
-                        <a href="#freelancing" class="nav-icon-link" aria-label="Freelancing Section">
-                            <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                            </svg>
-                            <span class="nav-text">Freelancing</span>
-                            <span class="nav-tooltip">Freelancing</span>
-                        </a>
-                    </li>
+            <a href="#certifications" class="float-nav__btn" data-section="certifications" aria-label="Certifications">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                <span class="float-nav__tooltip">Certifications</span>
+            </a>
 
-                    <!-- 5. Business Advisory Icon -->
-                    <li class="nav-icon-item">
-                        <a href="#business-advisory" class="nav-icon-link" aria-label="Business Advisory Section">
-                            <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                            </svg>
-                            <span class="nav-text">Advisory</span>
-                            <span class="nav-tooltip">Advisory</span>
-                        </a>
-                    </li>
+            <a href="#experience" class="float-nav__btn" data-section="experience" aria-label="Experience">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                <span class="float-nav__tooltip">Experience</span>
+            </a>
 
-                    <!-- 6. Financial Markets & Trading Icon -->
-                    <li class="nav-icon-item">
-                        <a href="#trading" class="nav-icon-link" aria-label="Trading Section">
-                            <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="18" y1="20" x2="18" y2="4"></line>
-                                <line x1="6" y1="20" x2="6" y2="14"></line>
-                                <rect x="4" y="8" width="4" height="6" rx="1"></rect>
-                                <rect x="16" y="10" width="4" height="6" rx="1"></rect>
-                            </svg>
-                            <span class="nav-text">Trading</span>
-                            <span class="nav-tooltip">Trading</span>
-                        </a>
-                    </li>
+            <a href="#contact" class="float-nav__btn" data-section="contact" aria-label="Contact">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span class="float-nav__tooltip">Contact</span>
+            </a>
 
-                    <!-- 7. Working With Icon -->
-                    <li class="nav-icon-item">
-                        <a href="#working-at" class="nav-icon-link" aria-label="Working With Section">
-                            <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-                                <line x1="3" y1="6" x2="21" y2="6"></line>
-                                <path d="M16 10a4 4 0 0 1-8 0"></path>
-                            </svg>
-                            <span class="nav-text">Experience</span>
-                            <span class="nav-tooltip">Experience</span>
-                        </a>
-                    </li>
+            <a href="admin.html" class="float-nav__btn float-nav__btn--admin" aria-label="Admin Portal">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                <span class="float-nav__tooltip">Admin Portal</span>
+            </a>
+        </div>
+    </nav>
 
-                    <!-- 8. Contact Icon -->
-                    <li class="nav-icon-item">
-                        <a href="#contact" class="nav-icon-link" aria-label="Contact Section">
-                            <svg class="nav-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                            </svg>
-                            <span class="nav-text">Contact</span>
-                            <span class="nav-tooltip">Contact</span>
-                        </a>
-                    </li>
-
-                </ul>
-            </nav>
-
-            <!-- Header Actions: Theme Toggle + Contact CTA -->
-            <div class="header-actions">
-                <!-- Dark / Light Switch -->
-                <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Theme" title="Switch Theme">
-                    <span class="theme-icon-indicator" id="theme-icon">
-                        <svg class="theme-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                        </svg>
-                    </span>
-                    <span class="theme-label" id="theme-label">Dark</span>
-                </button>
-
-                <!-- Book Call Header Button -->
-                <a href="#contact" class="nav-cta-btn">Book a Call</a>
-
-                <!-- Mobile Hamburger Button -->
-                <button class="hamburger-btn" id="hamburger-btn" aria-label="Toggle Navigation Menu" aria-expanded="false">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </button>
+    <!-- ========== CUSTOM SLEEK INTERACTIVE SCROLL TRACK & DRAGGABLE LINE ========== -->
+    <aside id="custom-scroll-track" class="custom-scroll-track" aria-label="Interactive Page Scroll Line" role="scrollbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+        <div class="custom-scroll-line" id="custom-scroll-line">
+            <div class="custom-scroll-thumb" id="custom-scroll-thumb" title="Click &amp; Drag down to scroll page">
+                <div class="custom-scroll-thumb-pill"></div>
             </div>
+        </div>
+        <div class="custom-scroll-tooltip" id="custom-scroll-tooltip">Home</div>
+    </aside>
+
+    <!-- ========== HERO SECTION ========== -->
+    <header id="hero" class="hero">
+        <div class="hero__mouse-glow" id="hero-mouse-glow" aria-hidden="true"></div>
+        <div class="hero__grid-lines" aria-hidden="true"></div>
+
+        <!-- Top Header Navigation Bar (Logo on left, Resume & Get In Touch on far right) -->
+        <div class="site-header">
+            <div class="site-header__container">
+                <div class="site-header__brand" id="header-brand-mehdi" role="button" tabindex="0" aria-label="Mehdi Interactive Brand" title="Click me!">
+                    <span class="site-header__brand-text" id="brand-mehdi-text">
+                        <span class="brand-letter" data-orig="M">M</span>
+                        <span class="brand-letter" data-orig="E">E</span>
+                        <span class="brand-letter" data-orig="H">H</span>
+                        <span class="brand-letter" data-orig="D">D</span>
+                        <span class="brand-letter" data-orig="I">I</span>
+                    </span>
+                </div>
+                <div class="site-header__actions">
+                    <a href="resume.html" class="site-header__icon-btn site-header__icon-btn--resume" aria-label="Resume" title="View Resume">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </a>
+                    <a href="#contact" class="site-header__icon-btn site-header__icon-btn--contact" aria-label="Get in touch" title="Get in touch">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero__container">
+            <div class="hero__content">
+                <h1 class="hero__name reveal">
+                    <span class="hero__typewriter-text" id="typewriter-text"></span><span class="hero__typewriter-cursor" id="typewriter-cursor">|</span>
+                </h1>
+                <p class="hero__tagline reveal reveal--delay-1">
+                    Software &amp; Web Developer, Digital Marketer &amp; Quantitative Trader. Architecting high-performance digital platforms, scaling acquisition funnels, and executing disciplined market models.
+                </p>
+            </div>
+
+            <div class="hero__portrait">
+                <div class="hero__portrait-frame">
+                    <div class="hero__portrait-glow" aria-hidden="true"></div>
+                    <img src="profile.jpg" alt="Syed Ali Mehdi — Professional Portrait" class="hero__portrait-img" loading="eager">
+                </div>
+            </div>
+        </div>
+
+        <div class="hero__scroll-indicator reveal reveal--delay-5" id="hero-scroll-indicator" role="button" tabindex="0" aria-label="Click or drag down to scroll">
+            <span class="hero__scroll-text">Scroll Down</span>
+            <div class="hero__scroll-line-interactive" id="hero-scroll-line-interactive">
+                <span class="hero__scroll-pill"></span>
+            </div>
+            <span class="hero__scroll-hint">Drag down to scroll</span>
         </div>
     </header>
 
+    <!-- ========== ABOUT SECTION ========== -->
+    <section id="about" class="section about">
+        <div class="section__container">
+            <div class="section__header reveal">
+                <span class="section__label">01</span>
+                <h2 class="section__title">About <span class="text-accent">Me</span></h2>
+                <div class="section__line"></div>
+            </div>
 
-    <!-- ======================================================= -->
-    <!-- MAIN CONTENT WRAPPER                                    -->
-    <!-- ======================================================= -->
-    <main id="main-content">
-
-        <!-- ======================================================= -->
-        <!-- 2. HERO SECTION                                         -->
-        <!-- Left: Profile Card (Photo, Signature, Socials, CTA)     -->
-        <!-- Right: Roles, Tagline, Clickable Skill Tags, Stats      -->
-        <!-- ======================================================= -->
-        <section class="hero-section" id="hero">
-            <div class="container hero-container">
-                
-                <!-- Left: Executive Profile Card -->
-                <div class="hero-profile-col">
-                    <div class="executive-profile-card">
-                        
-                        <!-- Top Status Pill -->
-                        <div class="card-top-row">
-                            <span class="dot-status-pill">
-                                <span class="status-pulse-dot"></span> Available for new projects
-                            </span>
-                        </div>
-
-                        <!-- Professional Photo Container -->
-                        <div class="profile-photo-wrapper">
-                            <img src="ChatGPT Image Sep 7, 2026, 11_21_55 AM.png" alt="Syed Ali Mehdi" class="profile-photo" loading="eager">
-                        </div>
-
-                        <!-- Signature Style Name -->
-                        <div class="signature-block">
-                            <h3 class="signature-name">Ali Mehdi</h3>
-                            <p class="profile-email">alimehdi3417@gmail.com</p>
-                            <p class="profile-location">Based in Peshawar, Pakistan</p>
-                        </div>
-
-                        <!-- Social Media Icon Buttons (5 Equal-Sized Sleek Icons) -->
-                        <div class="social-links-row">
-                            <!-- 1. LinkedIn -->
-                            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="LinkedIn" title="LinkedIn">
-                                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.65 1.65 0 1 0 0 3.3 1.65 1.65 0 0 0 0-3.3Z"/>
-                                </svg>
-                            </a>
-
-                            <!-- 2. Facebook -->
-                            <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Facebook" title="Facebook">
-                                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/>
-                                </svg>
-                            </a>
-
-                            <!-- 3. Instagram -->
-                            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Instagram" title="Instagram">
-                                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                                </svg>
-                            </a>
-
-                            <!-- 4. TradingView -->
-                            <a href="https://tradingview.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="TradingView" title="TradingView">
-                                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M15.8654 8.2789c0 1.3541-1.0978 2.4519-2.452 2.4519-1.354 0-2.4519-1.0978-2.4519-2.452 0-1.354 1.0978-2.4518 2.452-2.4518 1.3541 0 2.4519 1.0977 2.4519 2.4519zM9.75 6H0v4.9038h4.8462v7.2692H9.75Zm8.5962 0H24l-5.1058 12.173h-5.6538z"/>
-                                </svg>
-                            </a>
-
-                            <!-- 5. Fiverr -->
-                            <a href="https://fiverr.com/" target="_blank" rel="noopener noreferrer" class="social-btn" aria-label="Fiverr" title="Fiverr">
-                                <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M23.004 15.588a.995.995 0 1 0 .002-1.99.995.995 0 0 0-.002 1.99zm-.996-3.705h-.85c-.546 0-.84.41-.84 1.092v2.466h-1.61v-3.558h-.684c-.547 0-.84.41-.84 1.092v2.466h-1.61v-4.874h1.61v.74c.264-.574.626-.74 1.163-.74h1.972v.74c.264-.574.625-.74 1.162-.74h.527v1.316zm-6.786 1.501h-3.359c.088.546.43.858 1.006.858.43 0 .732-.175.83-.487l1.425.4c-.351.848-1.22 1.364-2.255 1.364-1.748 0-2.549-1.355-2.549-2.515 0-1.14.703-2.505 2.45-2.505 1.856 0 2.471 1.384 2.471 2.408 0 .224-.01.37-.02.477zm-1.562-.945c-.04-.42-.342-.81-.889-.81-.508 0-.81.225-.908.81h1.797zM7.508 15.44h1.416l1.767-4.874h-1.62l-.86 2.837-.878-2.837H5.72l1.787 4.874zm-6.6 0H2.51v-3.558h1.524v3.558h1.591v-4.874H2.51v-.302c0-.332.235-.536.606-.536h.918V8.412H2.85c-1.162 0-1.943.712-1.943 1.755v.4H0v1.316h.908v3.558z"/>
-                                </svg>
-                            </a>
-                        </div>
-
-                        <!-- 4. PROFILE CARD CTA: 'Book a Strategy Call' (With Icon) -->
-                        <div class="card-action-bottom">
-                            <a href="#contact" class="btn-strategy-call">
-                                <span class="call-btn-left">
-                                    <span class="call-icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                                            <line x1="16" y1="2" x2="16" y2="6"></line>
-                                            <line x1="8" y1="2" x2="8" y2="6"></line>
-                                            <line x1="3" y1="10" x2="21" y2="10"></line>
-                                        </svg>
-                                    </span>
-                                    <span class="call-text">Book a Strategy Call</span>
-                                </span>
-                                <span class="arrow-circle">&nearr;</span>
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- Right: Hero Text, Roles, Tagline, Clickable Tags & Beginner-Friendly Stats -->
-                <div class="hero-text-col">
-                    <!-- Main Name & Roles Headline -->
-                    <h1 class="hero-title">
-                        Syed Ali Mehdi
-                        <span class="gradient-text hero-roles-sub">
-                            Digital Marketer • Freelancer • Business Advisor • Trader • Client Hunter
-                        </span>
-                    </h1>
-
-                    <!-- 2. PROFESSIONAL TAGLINE (As requested) -->
-                    <div class="tagline-quote-box">
-                        <p class="hero-tagline-statement">
-                            "Scaling businesses through strategic marketing, dynamic trading, and expert client hunting."
-                        </p>
-                    </div>
-
-                    <!-- Professional English Description -->
-                    <p class="hero-intro">
-                        Driven by quantitative market intelligence and relentless client acquisition strategies, I help growing enterprises capture market share, optimize conversion funnels, and build predictable digital revenue engines.
+            <div class="about__grid">
+                <div class="about__content-col reveal reveal--left">
+                    <h3 class="about__subtitle">Solving Real-World Problems Through Engineering Excellence</h3>
+                    <p class="about__text">
+                        <strong>I am Syed Ali Mehdi.</strong> In today’s competitive digital landscape, what clients truly need isn’t just lines of code—it’s <strong>decisive problem-solving</strong>.
+                    </p>
+                    <p class="about__text">
+                        Every project begins by identifying your core technical and business bottlenecks. Whether you need to eliminate lag, architect resilient backend services, automate workflows, or design frictionless digital experiences that turn visitors into paying clients, I build targeted solutions that solve real problems.
+                    </p>
+                    <p class="about__text">
+                        With end-to-end full-stack capabilities across Python, modern frameworks, and cloud architecture, I bridge the gap between technical complexity and business growth—delivering measurable, high-velocity results.
                     </p>
 
-                    <!-- 3. CLICKABLE SKILL TAGS (Smooth Scroll To Specific Sections) -->
-                    <div class="hero-tags-pill-row" aria-label="Interactive Skill Navigation">
-                        <a href="#digital-marketing" class="pill-chip clickable-tag" title="Jump to Digital Marketing">
-                            <span class="tag-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                                    <polyline points="17 6 23 6 23 12"></polyline>
-                                </svg>
-                            </span>
-                            Digital Marketing
-                        </a>
-                        <a href="#freelancing" class="pill-chip clickable-tag" title="Jump to Solo Freelancing">
-                            <span class="tag-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                                </svg>
-                            </span>
-                            Solo Freelancing
-                        </a>
-                        <a href="#business-advisory" class="pill-chip clickable-tag" title="Jump to Client Hunting">
-                            <span class="tag-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="10"></circle>
-                                    <circle cx="12" cy="12" r="6"></circle>
-                                    <circle cx="12" cy="12" r="2"></circle>
-                                </svg>
-                            </span>
-                            Client Hunting
-                        </a>
-                        <a href="#business-advisory" class="pill-chip clickable-tag" title="Jump to Business Advisory">
-                            <span class="tag-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                                </svg>
-                            </span>
-                            Business Advisory
-                        </a>
-                        <a href="#trading" class="pill-chip clickable-tag" title="Jump to Financial Markets & Trading">
-                            <span class="tag-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="18" y1="20" x2="18" y2="10"></line>
-                                    <line x1="12" y1="20" x2="12" y2="4"></line>
-                                    <line x1="6" y1="20" x2="6" y2="14"></line>
-                                </svg>
-                            </span>
-                            Dynamic Trading
-                        </a>
-                    </div>
-
-                    <!-- CTA Buttons Group: Hire Me & View CV -->
-                    <div class="hero-cta-group">
-                        <a href="#contact" class="btn btn-primary" id="hire-me-btn">
-                            <span>Hire Me</span>
-                            <svg class="btn-inline-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="22" y1="2" x2="11" y2="13"></line>
-                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                            </svg>
-                        </a>
-                        <a href="cv.html" class="btn btn-outline" id="view-cv-btn">
-                            <span>View CV</span>
-                            <svg class="btn-inline-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                                <polyline points="14 2 14 8 20 8"></polyline>
-                                <line x1="16" y1="13" x2="8" y2="13"></line>
-                                <line x1="16" y1="17" x2="8" y2="17"></line>
-                                <polyline points="10 9 9 9 8 9"></polyline>
-                            </svg>
-                        </a>
-                    </div>
-
-                    <!-- 5. BEGINNER-FRIENDLY STATS (Replacing 'Years of Experience') -->
-                    <div class="capability-blocks-grid">
-                        
-                        <!-- Block 1: Fresh Perspective -->
-                        <div class="capability-card">
-                            <div class="cap-card-header">
-                                <span class="cap-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M9 18h6"></path>
-                                        <path d="M10 22h4"></path>
-                                        <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
-                                    </svg>
-                                </span>
-                                <span class="cap-status">Modern Mindset</span>
-                            </div>
-                            <h3 class="cap-title">Fresh Perspective</h3>
-                            <p class="cap-desc">Unbiased innovation leveraging cutting-edge growth strategies, AI tools, and next-gen funnels.</p>
-                        </div>
-
-                        <!-- Block 2: High Adaptability -->
-                        <div class="capability-card">
-                            <div class="cap-card-header">
-                                <span class="cap-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                                    </svg>
-                                </span>
-                                <span class="cap-status">Fast Agile Learner</span>
-                            </div>
-                            <h3 class="cap-title">High Adaptability</h3>
-                            <p class="cap-desc">Rapid turnaround across shifting market algorithms, cross-industry niches, and global timezones.</p>
-                        </div>
-
-                        <!-- Block 3: Client-Driven Approach -->
-                        <div class="capability-card">
-                            <div class="cap-card-header">
-                                <span class="cap-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <circle cx="12" cy="12" r="6"></circle>
-                                        <circle cx="12" cy="12" r="2"></circle>
-                                    </svg>
-                                </span>
-                                <span class="cap-status">100% Focused</span>
-                            </div>
-                            <h3 class="cap-title">Client-Driven Approach</h3>
-                            <p class="cap-desc">Zero vanity metrics. Dedicated exclusively to qualified client hunting and direct bottom-line ROI.</p>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- ======================================================= -->
-        <!-- 3. ABOUT SECTION                                        -->
-        <!-- ======================================================= -->
-        <section class="about-section" id="about">
-            <div class="container about-container">
-                <div class="section-header">
-                    <h2 class="section-title">About Me</h2>
-                    <div class="title-underline"></div>
-                    <p class="section-desc">Connecting commercial marketing science with agile client acquisition and trading execution</p>
-                </div>
-
-                <div class="about-content-grid">
-                    <!-- Left Narrative -->
-                    <div class="about-text-col reveal">
-                        <h3 class="about-subtitle">Strategic Vision & Execution</h3>
-                        <p class="about-paragraph">
-                            I am <strong>Syed Ali Mehdi</strong> (professionally known as <em>I M MEHDI</em>). As an agile digital growth specialist, solo freelancer, business advisor, trader, and client hunter, I combine data-backed market analysis with high-velocity outbound client acquisition.
-                        </p>
-                        <p class="about-paragraph">
-                            Rather than relying on outdated playbooks, I bring an active, forward-thinking approach to modern commerce. By integrating continuous web development knowledge with conversion-focused funnels, I empower companies to turn digital visibility into repeatable sales pipelines.
-                        </p>
-
-                        <div class="about-highlights">
-                            <div class="highlight-item">
-                                <span class="highlight-num">100%</span>
-                                <span class="highlight-label">Client-Centric Execution</span>
-                            </div>
-                            <div class="highlight-item">
-                                <span class="highlight-num">2+</span>
-                                <span class="highlight-label">Associated Tech Partners</span>
+                    <div class="about__problem-pillars">
+                        <div class="about__pillar-item">
+                            <span class="about__pillar-icon">⚡</span>
+                            <div class="about__pillar-content">
+                                <h4 class="about__pillar-title">Software &amp; Web Development</h4>
+                                <p class="about__pillar-desc">Designing robust full-stack applications, scalable APIs, and reactive user interfaces.</p>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Right Four Pillars -->
-                    <div class="about-skills-col reveal delay-1">
-                        <h3 class="about-subtitle">Core Pillars of Action</h3>
-                        <p class="skills-intro">The multidisciplinary framework driving every project:</p>
-
-                        <div class="pillars-list">
-                            <div class="pillar-box">
-                                <div class="pillar-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <circle cx="12" cy="12" r="10"></circle>
-                                        <circle cx="12" cy="12" r="6"></circle>
-                                        <circle cx="12" cy="12" r="2"></circle>
-                                    </svg>
-                                </div>
-                                <div class="pillar-info">
-                                    <h4>1. Client Hunting & Acquisition</h4>
-                                    <p>Identifying high-value B2B prospects and orchestrating multi-channel outbound conversion pipelines.</p>
-                                </div>
+                        <div class="about__pillar-item">
+                            <span class="about__pillar-icon">📈</span>
+                            <div class="about__pillar-content">
+                                <h4 class="about__pillar-title">Data-Driven Digital Marketing</h4>
+                                <p class="about__pillar-desc">Building conversion funnels, high-ROAS ad campaigns, and scalable acquisition engines.</p>
                             </div>
-
-                            <div class="pillar-box">
-                                <div class="pillar-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                                        <polyline points="17 6 23 6 23 12"></polyline>
-                                    </svg>
-                                </div>
-                                <div class="pillar-info">
-                                    <h4>2. Strategic Digital Marketing</h4>
-                                    <p>Performance campaigns, paid acquisition, search visibility, and full-funnel optimization.</p>
-                                </div>
-                            </div>
-
-                            <div class="pillar-box">
-                                <div class="pillar-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                                    </svg>
-                                </div>
-                                <div class="pillar-info">
-                                    <h4>3. Business Advisory</h4>
-                                    <p>Go-to-market strategies, commercial pricing models, and operational growth architecture.</p>
-                                </div>
-                            </div>
-
-                            <div class="pillar-box">
-                                <div class="pillar-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <line x1="18" y1="20" x2="18" y2="10"></line>
-                                        <line x1="12" y1="20" x2="12" y2="4"></line>
-                                        <line x1="6" y1="20" x2="6" y2="14"></line>
-                                    </svg>
-                                </div>
-                                <div class="pillar-info">
-                                    <h4>4. Dynamic Market Trading</h4>
-                                    <p>Risk management, quantitative market analysis, and disciplined execution in financial markets.</p>
-                                </div>
+                        </div>
+                        <div class="about__pillar-item">
+                            <span class="about__pillar-icon">📊</span>
+                            <div class="about__pillar-content">
+                                <h4 class="about__pillar-title">Quantitative Trading &amp; Analysis</h4>
+                                <p class="about__pillar-desc">Executing disciplined technical models, risk-weighted positioning, and capital growth.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-
-        <!-- ======================================================= -->
-        <!-- PERSONAL EXPERIENCE SECTION (Stats Journey)             -->
-        <!-- ======================================================= -->
-        <section class="personal-experience-section" id="personal-experience">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Personal Experience Journey</h2>
-                    <div class="title-underline"></div>
-                    <p class="section-desc">A snapshot of my hands-on expertise across multiple high-impact domains.</p>
-                </div>
-
-                <div class="pe-stats-grid">
-
-                    <!-- Stat 1: Trading -->
-                    <div class="pe-stat-card reveal">
-                        <div class="pe-stat-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
-                                <polyline points="17 6 23 6 23 12"></polyline>
-                            </svg>
-                        </div>
-                        <h3 class="pe-stat-title">Trading</h3>
-                        <span class="pe-stat-value">4 Years+</span>
-                        <p class="pe-stat-label">Experience</p>
+<!-- Image Column (RIGHT) -->
+                <div class="about__image-col">
+                    <div class="about__image-wrapper">
+                        <img src="profile.jpg" alt="Mehdi" class="about__image img-flip-horizontal" loading="lazy">
+                        <div class="about__image-accent" aria-hidden="true"></div>
                     </div>
 
-                    <!-- Stat 2: Business Advisory -->
-                    <div class="pe-stat-card reveal delay-1">
-                        <div class="pe-stat-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-                            </svg>
-                        </div>
-                        <h3 class="pe-stat-title">Business Advisory</h3>
-                        <span class="pe-stat-value">1 Year+</span>
-                        <p class="pe-stat-label">Experience</p>
-                    </div>
-
-                    <!-- Stat 3: Digital Marketing -->
-                    <div class="pe-stat-card reveal delay-2">
-                        <div class="pe-stat-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <circle cx="12" cy="12" r="6"></circle>
-                                <circle cx="12" cy="12" r="2"></circle>
-                            </svg>
-                        </div>
-                        <h3 class="pe-stat-title">Digital Marketing</h3>
-                        <span class="pe-stat-value">6 Months+</span>
-                        <p class="pe-stat-label">Experience</p>
-                    </div>
-
-                    <!-- Stat 4: Freelancing -->
-                    <div class="pe-stat-card reveal delay-2">
-                        <div class="pe-stat-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="2" y1="12" x2="22" y2="12"></line>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="pe-stat-title">Freelancing</h3>
-                        <span class="pe-stat-value">2 Months</span>
-                        <p class="pe-stat-label">Experience</p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ======================================================= -->
-        <!-- 4. DEDICATED SECTION: DIGITAL MARKETING                 -->
-        <!-- ======================================================= -->
-        <section class="service-detail-section" id="digital-marketing">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Digital Marketing</h2>
-                    <div class="title-underline"></div>
-                    <p class="section-desc">Targeted user acquisition, performance campaigns, and measurable ROI generation.</p>
-                </div>
-
-                <div class="service-grid">
-                    <div class="service-card reveal">
-                        <div class="service-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <circle cx="12" cy="12" r="6"></circle>
-                                <circle cx="12" cy="12" r="2"></circle>
-                            </svg>
-                        </div>
-                        <h3>Performance Advertising</h3>
-                        <p>Laser-targeted Google Ads, Meta Ads, and LinkedIn campaigns calibrated for qualified lead generation.</p>
-                        <ul class="service-bullet-list">
-                            <li>Audience Segmentation & Funnel Retargeting</li>
-                            <li>Cost-Per-Acquisition (CPA) Reduction</li>
-                            <li>High-Converting A/B Creative Testing</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card reveal delay-1">
-                        <div class="service-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                        </div>
-                        <h3>Search Engine Optimization (SEO)</h3>
-                        <p>Modern organic search positioning ensuring your business gets discovered by high-intent buyers.</p>
-                        <ul class="service-bullet-list">
-                            <li>Keyword Gap & Competitor Analysis</li>
-                            <li>Technical SEO & Speed Optimization</li>
-                            <li>Authority Building & Content Architecture</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card reveal delay-2">
-                        <div class="service-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <line x1="18" y1="20" x2="18" y2="10"></line>
-                                <line x1="12" y1="20" x2="12" y2="4"></line>
-                                <line x1="6" y1="20" x2="6" y2="14"></line>
-                            </svg>
-                        </div>
-                        <h3>Analytics & CRO</h3>
-                        <p>Eliminating conversion drop-offs with detailed funnel tracking, heatmaps, and event tracking.</p>
-                        <ul class="service-bullet-list">
-                            <li>GA4 & Google Tag Manager Setup</li>
-                            <li>Landing Page Split-Testing</li>
-                            <li>Clear Weekly Performance Dashboards</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ======================================================= -->
-        <!-- 5. DEDICATED SECTION: FREELANCING                       -->
-        <!-- ======================================================= -->
-        <section class="service-detail-section alt-bg" id="freelancing">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Solo Freelancing</h2>
-                    <div class="title-underline"></div>
-                    <p class="section-desc">Independent, agile, and accountable consulting without corporate overhead.</p>
-                </div>
-
-                <div class="service-grid">
-                    <div class="service-card reveal">
-                        <div class="service-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                            </svg>
-                        </div>
-                        <h3>1-on-1 Dedicated Partnership</h3>
-                        <p>Direct communication and tailored consulting sessions focused specifically on your business targets.</p>
-                        <ul class="service-bullet-list">
-                            <li>Custom Strategic Roadmaps</li>
-                            <li>Transparent Milestones & Delivery</li>
-                            <li>Zero Middlemen or Bureaucracy</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card reveal delay-1">
-                        <div class="service-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-                            </svg>
-                        </div>
-                        <h3>Rapid Agile Execution</h3>
-                        <p>Fast sprint execution ensuring your projects cross the finish line ahead of deadlines.</p>
-                        <ul class="service-bullet-list">
-                            <li>Fast Turnaround Times</li>
-                            <li>Global Timezone Alignment (US/EU/Asia)</li>
-                            <li>Iterative Feedback & Rapid Polish</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card reveal delay-2">
-                        <div class="service-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <line x1="2" y1="12" x2="22" y2="12"></line>
-                                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                            </svg>
-                        </div>
-                        <h3>Global Accountability</h3>
-                        <p>Professional contracts, strict confidentiality, and clean collaboration via modern tools.</p>
-                        <ul class="service-bullet-list">
-                            <li>Full Non-Disclosure Agreement (NDA)</li>
-                            <li>Slack, Notion & Trello Collaboration</li>
-                            <li>Post-Project Handover & Support</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ======================================================= -->
-        <!-- 6. DEDICATED SECTION: BUSINESS ADVISORY & HUNTING       -->
-        <!-- ======================================================= -->
-        <section class="service-detail-section" id="business-advisory">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Business Advisory & Client Hunting</h2>
-                    <div class="title-underline"></div>
-                    <p class="section-desc">Commercial positioning, client acquisition strategies, and sustainable margin growth.</p>
-                </div>
-
-                <div class="service-grid">
-                    <div class="service-card reveal">
-                        <div class="service-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                            </svg>
-                        </div>
-                        <h3>Expert Client Hunting</h3>
-                        <p>Targeted prospecting frameworks that actively hunt and capture qualified enterprise clients.</p>
-                        <ul class="service-bullet-list">
-                            <li>Ideal Client Profile (ICP) Mapping</li>
-                            <li>Cold Outreach & Lead Generation Funnels</li>
-                            <li>Deal Closing & High-Ticket Positioning</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card reveal delay-1">
-                        <div class="service-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                            </svg>
-                        </div>
-                        <h3>Market Positioning & Strategy</h3>
-                        <p>Designing unique value propositions that make your company the obvious choice over competitors.</p>
-                        <ul class="service-bullet-list">
-                            <li>Competitive Gaps & Advantage</li>
-                            <li>Value-Based Pricing Models</li>
-                            <li>Offer Packaging & Scalability</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-card reveal delay-2">
-                        <div class="service-card-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"></path>
-                                <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"></path>
-                                <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"></path>
-                                <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"></path>
-                            </svg>
-                        </div>
-                        <h3>Startup & Revenue Advisory</h3>
-                        <p>Guiding founders from initial launch to predictable revenue, healthy cash flow, and client retention.</p>
-                        <ul class="service-bullet-list">
-                            <li>Go-To-Market (GTM) Architecture</li>
-                            <li>Customer Retention & Lifetime Value</li>
-                            <li>Strategic Partnership Formation</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ======================================================= -->
-        <!-- 7. TRADING PORTFOLIO SECTION (Financial Markets)        -->
-        <!-- ======================================================= -->
-        <section class="trading-section" id="trading">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="section-title">Financial Markets & Trading</h2>
-                    <div class="title-underline"></div>
-                    <p class="section-desc">Disciplined execution, asymmetric risk-to-reward ratios, and high-probability market structure analysis.</p>
-                </div>
-
-                <div class="trading-grid">
-                    
-                    <!-- Card 1: Forex Trading -->
-                    <div class="trading-card trading-card-forex reveal">
-                        <div class="trading-glow-backdrop"></div>
-                        <div class="trading-card-header">
-                            <div class="trading-icon-wrap forex-glow">
-                                <svg class="trading-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <line x1="18" y1="20" x2="18" y2="4"></line>
-                                    <line x1="6" y1="20" x2="6" y2="14"></line>
-                                    <rect x="4" y="8" width="4" height="6" rx="1"></rect>
-                                    <rect x="16" y="10" width="4" height="6" rx="1"></rect>
-                                    <path d="M10 14l2-2 4 4"></path>
-                                    <circle cx="12" cy="12" r="1"></circle>
-                                </svg>
+                    <!-- Sleek Timeline Stepper Line with 3 Interactive Dots -->
+                    <div class="about__stepper-wrapper">
+                        <div class="about__stepper-track-wrap">
+                            <div class="about__stepper-line" id="about-stepper-line">
+                                <div class="about__stepper-progress" id="about-stepper-progress" style="width: 0%;"></div>
                             </div>
-                            <span class="trading-badge">Forex Trading</span>
-                        </div>
-
-                        <div class="trading-card-body">
-                            <h3 class="trading-title">Forex Trading</h3>
-                            <p class="trading-desc">
-                                Strategic Forex Trading with a focus on risk management, price action, and global macroeconomic trends.
-                            </p>
-                            
-                            <ul class="trading-bullet-list">
-                                <li>
-                                    <span class="feat-dot"></span>
-                                    <span>Major & Cross Currency Pairs</span>
-                                </li>
-                                <li>
-                                    <span class="feat-dot"></span>
-                                    <span>Macroeconomic Catalysts</span>
-                                </li>
-                                <li>
-                                    <span class="feat-dot"></span>
-                                    <span>Liquidity Sweeps</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="trading-card-footer">
-                            <div class="trading-metric">
-                                <span class="metric-label">Execution Style</span>
-                                <span class="metric-val">Price Action & Structure</span>
-                            </div>
-                            <div class="trading-metric text-right">
-                                <span class="metric-label">Risk Protocol</span>
-                                <span class="metric-val">Capital Safety First</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 2: Cryptocurrency -->
-                    <div class="trading-card trading-card-crypto reveal delay-1">
-                        <div class="trading-glow-backdrop"></div>
-                        <div class="trading-card-header">
-                            <div class="trading-icon-wrap crypto-glow">
-                                <svg class="trading-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <circle cx="12" cy="12" r="9"></circle>
-                                    <path d="M14.5 9h-3.5a1.5 1.5 0 0 0 0 3h2a1.5 1.5 0 0 1 0 3H9.5"></path>
-                                    <line x1="12" y1="6" x2="12" y2="8"></line>
-                                    <line x1="12" y1="16" x2="12" y2="18"></line>
-                                </svg>
-                            </div>
-                            <span class="trading-badge">Cryptocurrency</span>
-                        </div>
-
-                        <div class="trading-card-body">
-                            <h3 class="trading-title">Cryptocurrency</h3>
-                            <p class="trading-desc">
-                                Crypto Asset Analysis, leveraging market volatility and blockchain trends for high-probability setups.
-                            </p>
-                            
-                            <ul class="trading-bullet-list">
-                                <li>
-                                    <span class="feat-dot"></span>
-                                    <span>BTC & High-Cap Momentum</span>
-                                </li>
-                                <li>
-                                    <span class="feat-dot"></span>
-                                    <span>On-Chain Intelligence</span>
-                                </li>
-                                <li>
-                                    <span class="feat-dot"></span>
-                                    <span>Market Cycle</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="trading-card-footer">
-                            <div class="trading-metric">
-                                <span class="metric-label">Market Focus</span>
-                                <span class="metric-val">Volatility & Trend</span>
-                            </div>
-                            <div class="trading-metric text-right">
-                                <span class="metric-label">Analysis Edge</span>
-                                <span class="metric-val">On-Chain Intelligence</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 3: Stock Market (New) -->
-                    <div class="trading-card trading-card-stock reveal delay-2">
-                        <div class="trading-glow-backdrop"></div>
-                        <div class="trading-card-header">
-                            <div class="trading-icon-wrap stock-glow">
-                                <svg class="trading-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
-                                    <polyline points="16 7 22 7 22 13"></polyline>
-                                    <rect x="3" y="19" width="18" height="2" rx="1"></rect>
-                                </svg>
-                            </div>
-                            <span class="trading-badge">Stock Market</span>
-                        </div>
-
-                        <div class="trading-card-body">
-                            <h3 class="trading-title">Stock Market</h3>
-                            <p class="trading-desc">
-                                Equity and index asset trading targeting structural corporate growth, earnings catalysts, and technical trend continuation.
-                            </p>
-                            
-                            <ul class="trading-bullet-list">
-                                <li>
-                                    <span class="feat-dot"></span>
-                                    <span>Equities & Index Funds</span>
-                                </li>
-                                <li>
-                                    <span class="feat-dot"></span>
-                                    <span>Earnings Reports Analysis</span>
-                                </li>
-                                <li>
-                                    <span class="feat-dot"></span>
-                                    <span>Volume & Technical Patterns</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="trading-card-footer">
-                            <div class="trading-metric">
-                                <span class="metric-label">Asset Focus</span>
-                                <span class="metric-val">Equities & Indices</span>
-                            </div>
-                            <div class="trading-metric text-right">
-                                <span class="metric-label">Strategy</span>
-                                <span class="metric-val">Volume & Breakouts</span>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ======================================================= -->
-        <!-- 8B. COMPANIES SECTION (Currently Working At)            -->
-        <!-- ======================================================= -->
-        <section class="experience-section" id="working-at">
-            <div class="container experience-container">
-                <div class="section-header">
-                    <h2 class="section-title">Currently Working At</h2>
-                    <div class="title-underline"></div>
-                    <p class="section-desc">Prestigious companies where I actively contribute to growth, strategy, and innovation.</p>
-                </div>
-
-                <div class="experience-grid" id="experience-grid">
-                    
-                    <!-- Company 1: Tech4edges -->
-                    <article class="experience-card reveal" id="exp-tech4edges">
-                        <div class="exp-card-header">
-                            <div class="exp-company-logo">
-                                <img src="image_4d3e51.png" alt="Tech4edges Logo" class="company-logo-img">
-                            </div>
-                            <span class="exp-badge">Software Company</span>
-                            <span class="exp-duration-badge">Working for 6 Months+</span>
-                        </div>
-
-                        <div class="exp-card-body">
-                            <h3 class="exp-title">Tech4edges</h3>
-                            <p class="exp-role">Software Solutions & Digital Innovation</p>
-                            <p class="exp-desc">
-                                Tech4edges is a premier software development company delivering enterprise digital solutions and scalable engineering. I actively drive digital strategy, outreach, and B2B client acquisition.
-                            </p>
-                            <div class="exp-tags">
-                                <span>Software Development</span>
-                                <span>Digital Marketing</span>
-                                <span>Client Hunting</span>
-                                <span>Enterprise Tech</span>
-                            </div>
-                        </div>
-
-                        <div class="exp-card-footer">
-                            <a href="https://tech4edges.com/" target="_blank" rel="noopener noreferrer" class="btn-compact-link" title="Visit Tech4edges Website">
-                                <span class="compact-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <circle cx="11" cy="11" r="8"></circle>
-                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                    </svg>
-                                </span>
-                                <span class="compact-text">Search the website</span>
-                                <span class="arrow-indicator">&nearr;</span>
-                            </a>
-                        </div>
-                    </article>
-
-                    <!-- Company 2: Theminearch -->
-                    <article class="experience-card reveal delay-1" id="exp-theminearch">
-                        <div class="exp-card-header">
-                            <div class="exp-company-logo logo-alt">
-                                <img src="image_4d42ad.png" alt="Theminearch Logo" class="company-logo-img">
-                            </div>
-                            <span class="exp-badge">Architecture & Innovation</span>
-                            <span class="exp-duration-badge">Working for 6 Months+</span>
-                        </div>
-
-                        <div class="exp-card-body">
-                            <h3 class="exp-title">Theminearch</h3>
-                            <p class="exp-role">Creative Architecture & Brand Solutions</p>
-                            <p class="exp-desc">
-                                Theminearch pioneers modern design, spatial architecture, and commercial brand positioning. I serve as a business advisor, guiding market alignment, client relations, and commercial expansion.
-                            </p>
-                            <div class="exp-tags">
-                                <span>Creative Architecture</span>
-                                <span>Business Advisory</span>
-                                <span>Brand Scaling</span>
-                                <span>Client Strategy</span>
-                            </div>
-                        </div>
-
-                        <div class="exp-card-footer">
-                            <a href="https://theminearch.com/" target="_blank" rel="noopener noreferrer" class="btn-compact-link" title="Visit Theminearch Website">
-                                <span class="compact-icon">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <circle cx="11" cy="11" r="8"></circle>
-                                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                                    </svg>
-                                </span>
-                                <span class="compact-text">Search the website</span>
-                                <span class="arrow-indicator">&nearr;</span>
-                            </a>
-                        </div>
-                    </article>
-
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ======================================================= -->
-        <!-- 8. CONTACT SECTION (2-Column Layout: Info + Formspree)   -->
-        <!-- ======================================================= -->
-        <section class="contact-section" id="contact">
-            <div class="container contact-container">
-                <div class="section-header">
-                    <h2 class="section-title">Let's Connect</h2>
-                    <div class="title-underline"></div>
-                    <p class="section-desc">Ready to scale your business, hunt high-value clients, or book a strategy session? Reach out directly or drop a message below!</p>
-                </div>
-
-                <div class="contact-grid-2col reveal">
-                    
-                    <!-- 1. LEFT COLUMN: Contact Information & Direct WhatsApp -->
-                    <div class="contact-info-col">
-                        <div class="contact-info-card">
-                            <div class="contact-card-badge">Direct Communication</div>
-                            <h3 class="contact-info-title">Let's Discuss Your Next Big Move</h3>
-                            <p class="contact-info-lead">
-                                Whether you are looking to scale B2B client acquisition, optimize conversion funnels, or explore market opportunities, reach out directly.
-                            </p>
-
-                            <!-- Contact Details List -->
-                            <div class="contact-details-list">
-                                
-                                <!-- Email Item -->
-                                <div class="contact-detail-item">
-                                    <div class="detail-icon-box">
-                                        <svg class="detail-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                                            <polyline points="22,6 12,13 2,6"></polyline>
-                                        </svg>
-                                    </div>
-                                    <div class="detail-content">
-                                        <span class="detail-label">Email</span>
-                                        <a href="mailto:alimehdi3417@gmail.com" class="detail-value">alimehdi3417@gmail.com</a>
-                                    </div>
-                                </div>
-
-                                <!-- Phone Item (Direct WhatsApp Link) -->
-                                <div class="contact-detail-item">
-                                    <div class="detail-icon-box">
-                                        <svg class="detail-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                                        </svg>
-                                    </div>
-                                    <div class="detail-content">
-                                        <span class="detail-label">Phone & WhatsApp</span>
-                                        <a href="https://wa.me/923709494308" target="_blank" rel="noopener noreferrer" class="detail-value whatsapp-clickable-link" title="Click to chat directly on WhatsApp">
-                                            <span>+92 370 9494308</span>
-                                            <span class="chat-hint-tag">Chat on WhatsApp &rarr;</span>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <!-- Location Item -->
-                                <div class="contact-detail-item">
-                                    <div class="detail-icon-box">
-                                        <svg class="detail-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                            <circle cx="12" cy="10" r="3"></circle>
-                                        </svg>
-                                    </div>
-                                    <div class="detail-content">
-                                        <span class="detail-label">Location</span>
-                                        <span class="detail-value static-text">Peshawar, Pakistan</span>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <!-- Social Media Icons (LinkedIn & WhatsApp) -->
-                            <div class="contact-socials-block">
-                                <span class="socials-label">Connect Socially:</span>
-                                <div class="contact-social-icons">
-                                    <!-- LinkedIn -->
-                                    <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="contact-social-btn" aria-label="LinkedIn Profile" title="Connect on LinkedIn">
-                                        <svg class="social-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.65 1.65 0 1 0 0 3.3 1.65 1.65 0 0 0 0-3.3Z"/>
-                                        </svg>
-                                        <span>LinkedIn</span>
-                                    </a>
-
-                                    <!-- WhatsApp -->
-                                    <a href="https://wa.me/923709494308" target="_blank" rel="noopener noreferrer" class="contact-social-btn whatsapp-social-btn" aria-label="WhatsApp Chat" title="Open WhatsApp Chat">
-                                        <svg class="social-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor">
-                                            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-                                        </svg>
-                                        <span>WhatsApp</span>
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- 2. RIGHT COLUMN: Functional Form with Formspree Integration -->
-                    <div class="contact-form-col">
-                        <div class="contact-form-card">
-                            <form class="contact-form" id="contact-form" action="https://formspree.io/f/mdeowaeg" method="POST">
-                                
-                                <!-- 1. Your Name -->
-                                <div class="form-group">
-                                    <label for="user-name" class="form-label">Your Name</label>
-                                    <input 
-                                        type="text" 
-                                        id="user-name" 
-                                        name="name" 
-                                        class="form-input" 
-                                        placeholder="e.g. John Doe" 
-                                        required
-                                    >
-                                </div>
-
-                                <!-- 2. Your Email -->
-                                <div class="form-group">
-                                    <label for="user-email" class="form-label">Your Email</label>
-                                    <input 
-                                        type="email" 
-                                        id="user-email" 
-                                        name="email" 
-                                        class="form-input" 
-                                        placeholder="name@example.com" 
-                                        required
-                                    >
-                                </div>
-
-                                <!-- 3. Subject -->
-                                <div class="form-group">
-                                    <label for="user-subject" class="form-label">Subject</label>
-                                    <input 
-                                        type="text" 
-                                        id="user-subject" 
-                                        name="subject" 
-                                        class="form-input" 
-                                        placeholder="e.g. Scaling B2B Acquisition Funnel" 
-                                        required
-                                    >
-                                </div>
-
-                                <!-- 4. Your Message -->
-                                <div class="form-group">
-                                    <label for="user-message" class="form-label">Your Message</label>
-                                    <textarea 
-                                        id="user-message" 
-                                        name="message" 
-                                        class="form-textarea" 
-                                        rows="5" 
-                                        placeholder="Describe your business goals, project scope, or advisory requirements..." 
-                                        required
-                                    ></textarea>
-                                </div>
-
-                                <!-- Submit Button -->
-                                <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
-                                    <span>Send Message</span>
-                                    <svg class="btn-inline-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <line x1="22" y1="2" x2="11" y2="13"></line>
-                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                                    </svg>
+                            <div class="about__stepper-dots" id="about-stepper-dots" role="tablist">
+                                <button type="button" class="about__stepper-dot active" data-domain="developer" role="tab" aria-selected="true" title="Software &amp; Web Developer">
+                                    <span class="stepper-dot__circle"></span>
+                                    <span class="stepper-dot__label">Developer</span>
                                 </button>
-                            </form>
+                                <button type="button" class="about__stepper-dot" data-domain="marketer" role="tab" aria-selected="false" title="Digital Marketer">
+                                    <span class="stepper-dot__circle"></span>
+                                    <span class="stepper-dot__label">Digital Marketer</span>
+                                </button>
+                                <button type="button" class="about__stepper-dot" data-domain="trader" role="tab" aria-selected="false" title="Quantitative Trader">
+                                    <span class="stepper-dot__circle"></span>
+                                    <span class="stepper-dot__label">Trader</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Active Domain Dynamic Info Panel (Expands smoothly on dot selection) -->
+                        <div class="about__domain-panel" id="about-domain-panel">
+                            <div class="about__domain-header">
+                                <span class="about__domain-tag" id="domain-tag">Specialization 01</span>
+                                <h4 class="about__domain-title" id="domain-title">Software &amp; Web Developer</h4>
+                            </div>
+                            <div class="about__domain-stats" id="domain-stats">
+                                <div class="domain-stat">
+                                    <span class="domain-stat__num" id="stat-years">4+</span>
+                                    <span class="domain-stat__lbl" id="stat-years-label">Years Engineering</span>
+                                </div>
+                                <div class="domain-stat">
+                                    <span class="domain-stat__num" id="stat-projects">45+</span>
+                                    <span class="domain-stat__lbl" id="stat-projects-label">Web Apps Shipped</span>
+                                </div>
+                                <div class="domain-stat">
+                                    <span class="domain-stat__num" id="stat-clients">35+</span>
+                                    <span class="domain-stat__lbl" id="stat-clients-label">Cloud Deployments</span>
+                                </div>
+                            </div>
+                            <p class="about__domain-desc" id="domain-desc">
+                                End-to-end full-stack architectures, high-velocity Python/FastAPI microservices, modern reactive frontends, and resilient cloud deployments.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Section Interactive Scroll Line -->
+            <div class="about__scroll-indicator reveal reveal--delay-2" id="about-scroll-indicator" role="button" tabindex="0" aria-label="Click or drag down to continue scrolling">
+                <span class="about__scroll-text">Scroll Down</span>
+                <div class="about__scroll-line-interactive" id="about-scroll-line-interactive">
+                    <span class="about__scroll-pill"></span>
+                </div>
+                <span class="about__scroll-hint">Drag down to explore</span>
+            </div>
+        </div>
+    </section>
+
+        <!-- ========== SOCIAL MEDIA SECTION (Interactive 360° Orbiting Circle + Right Stats Panel) ========== -->
+    <section id="social" class="section social-hub" aria-label="Interactive Social Media Hub">
+        <div class="section__container">
+            <div class="section__header reveal">
+                <span class="section__label">02</span>
+                <h2 class="section__title">Social <span class="text-accent">Presence</span></h2>
+                <div class="section__line"></div>
+            </div>
+
+            <div class="social-hub__layout">
+                <!-- LEFT COLUMN: The Interactive Rotating Circle (Borderless 3D Elevated Dial with Floating Dark Embers) -->
+                <div class="social-circle-container reveal reveal--left" id="social-circle-container">
+                    <!-- Background Dark Ember Sparks Canvas ("black black chingariyan") for 3D Atmosphere -->
+                    <canvas id="social-ember-canvas" class="social-ember-canvas" aria-hidden="true"></canvas>
+
+                    <!-- Ambient 3D Occlusion Shadow (pops the wheel forward into 3D space) -->
+                    <div class="social-circle-shadow-depth" aria-hidden="true"></div>
+
+                    <div class="social-circle-wrapper" id="social-circle-wrapper">
+                        <!-- Center Core Badge (Elevated 3D Center Dial) -->
+                        <div class="social-circle-center" id="social-circle-center">
+                            <div class="social-circle-center__glow"></div>
+                            <span class="social-circle-center__monogram">SAM</span>
+                            <span class="social-circle-center__hint">SPIN WHEEL</span>
+                        </div>
+
+                        <!-- 9 Rotating Platform Nodes: 100% BORDERLESS LOGOS (Colorless by default, vibrant on hover/drag) -->
+                        <div class="social-orbit-ring" id="social-orbit-ring">
+                            <!-- Node 1: X (formerly Twitter) -->
+                            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-orbit-node" data-index="0" data-platform="X" aria-label="X (formerly Twitter)">
+                                <span class="social-orbit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></span>
+                                <span class="social-orbit-tooltip">X</span>
+                            </a>
+
+                            <!-- Node 2: GitHub -->
+                            <a href="https://github.com/Alimehdi-tdf" target="_blank" rel="noopener noreferrer" class="social-orbit-node" data-index="1" data-platform="GitHub" aria-label="GitHub">
+                                <span class="social-orbit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></span>
+                                <span class="social-orbit-tooltip">GitHub</span>
+                            </a>
+
+                            <!-- Node 3: LinkedIn -->
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-orbit-node" data-index="2" data-platform="LinkedIn" aria-label="LinkedIn">
+                                <span class="social-orbit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76c.92 0 1.66-.74 1.66-1.66a1.66 1.66 0 0 0-3.32 0c0 .92.74 1.66 1.66 1.66m-1.4 9.74h2.8v-8.37h-2.8v8.37z"/></svg></span>
+                                <span class="social-orbit-tooltip">LinkedIn</span>
+                            </a>
+
+                            <!-- Node 4: YouTube -->
+                            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-orbit-node" data-index="3" data-platform="YouTube" aria-label="YouTube">
+                                <span class="social-orbit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></span>
+                                <span class="social-orbit-tooltip">YouTube</span>
+                            </a>
+
+                            <!-- Node 5: Instagram -->
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-orbit-node" data-index="4" data-platform="Instagram" aria-label="Instagram">
+                                <span class="social-orbit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></span>
+                                <span class="social-orbit-tooltip">Instagram</span>
+                            </a>
+
+                            <!-- Node 6: Reddit -->
+                            <a href="https://reddit.com" target="_blank" rel="noopener noreferrer" class="social-orbit-node" data-index="5" data-platform="Reddit" aria-label="Reddit">
+                                <span class="social-orbit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 0 1-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 0 1 .042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 0 1 4.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 0 1 .14-.197.35.35 0 0 1 .238-.042l2.906.609a1.24 1.24 0 0 1 1.108-.695zM9.25 12C8.56 12 8 12.56 8 13.25c0 .69.56 1.25 1.25 1.25.69 0 1.25-.56 1.25-1.25C10.5 12.56 9.94 12 9.25 12zm5.5 0c-.69 0-1.25.56-1.25 1.25 0 .69.56 1.25 1.25 1.25.69 0 1.25-.56 1.25-1.25 0-.69-.56-1.25-1.25-1.25zm-5.465 4.14a.438.438 0 0 0-.083.61c.642.793 1.637 1.19 2.798 1.19 1.16 0 2.155-.397 2.798-1.19a.438.438 0 1 0-.685-.548c-.468.577-1.254.858-2.113.858-.86 0-1.645-.281-2.113-.858a.438.438 0 0 0-.602-.062z"/></svg></span>
+                                <span class="social-orbit-tooltip">Reddit</span>
+                            </a>
+
+                            <!-- Node 7: Pinterest -->
+                            <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" class="social-orbit-node" data-index="6" data-platform="Pinterest" aria-label="Pinterest">
+                                <span class="social-orbit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 0 0-4.37 23.17c-.07-.63-.13-1.6.03-2.29.14-.62.92-3.89.92-3.89s-.23-.47-.23-1.17c0-1.1.64-1.92 1.43-1.92.68 0 1 .51 1 1.12 0 .68-.43 1.7-.66 2.64-.19.79.4 1.44 1.18 1.44 1.41 0 2.5-1.49 2.5-3.64 0-1.9-1.37-3.23-3.32-3.23-2.26 0-3.59 1.7-3.59 3.45 0 .68.26 1.42.59 1.82.07.08.08.15.06.23-.06.27-.21.84-.24.96-.04.15-.13.18-.3.11-1.12-.52-1.82-2.16-1.82-3.47 0-2.83 2.05-5.42 5.92-5.42 3.11 0 5.53 2.22 5.53 5.18 0 3.09-1.95 5.58-4.66 5.58-.91 0-1.77-.47-2.06-1.03l-.56 2.14c-.2.78-.75 1.76-1.12 2.36A12 12 0 1 0 12 0z"/></svg></span>
+                                <span class="social-orbit-tooltip">Pinterest</span>
+                            </a>
+
+                            <!-- Node 8: Facebook -->
+                            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-orbit-node" data-index="7" data-platform="Facebook" aria-label="Facebook">
+                                <span class="social-orbit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></span>
+                                <span class="social-orbit-tooltip">Facebook</span>
+                            </a>
+
+                            <!-- Node 9: TikTok -->
+                            <a href="https://tiktok.com/@syedalimehdi" target="_blank" rel="noopener noreferrer" class="social-orbit-node" data-index="8" data-platform="TikTok" aria-label="TikTok">
+                                <span class="social-orbit-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.89 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.34 0 .66.06.96.17V9.32a6.33 6.33 0 0 0-.96-.07A6.34 6.34 0 0 0 3.15 15.6a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.71a8.21 8.21 0 0 0 4.76 1.49v-3.51h-1z"/></svg></span>
+                                <span class="social-orbit-tooltip">TikTok</span>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="social-circle-instruction"><span>↻</span> Flick &amp; push to spin fast • Drag to control</p>
+                </div>
+
+                <!-- RIGHT COLUMN: Direct Social Profiles & Verified Presence Panel -->
+                <div class="social-stats-col reveal reveal--right">
+                    <div class="social-stats-header">
+                        <span class="social-stats-badge">Audience &amp; Influence</span>
+                        <h3 class="social-stats-title">Community &amp; Developer Hub</h3>
+                        <p class="social-stats-desc">
+                            Directly connected across engineering, open-source, market analysis, and creator platforms.
+                        </p>
+                    </div>
+
+                    <!-- Top 3 Quick Stats Bento (No Follower/Subscriber Counts) -->
+                    <div class="social-metrics-bento">
+                        <div class="social-metric-card">
+                            <span class="social-metric-num">50+</span>
+                            <span class="social-metric-label">GitHub Repos</span>
+                        </div>
+                        <div class="social-metric-card">
+                            <span class="social-metric-num">Level A+</span>
+                            <span class="social-metric-label">Code Standards</span>
+                        </div>
+                        <div class="social-metric-card">
+                            <span class="social-metric-num">100%</span>
+                            <span class="social-metric-label">Active Presence</span>
                         </div>
                     </div>
 
+                    <!-- Detailed Platform Compact Rows (Direct Clickable Profiles, Zero Follower/Sub Counts) -->
+                    <div class="social-platform-rows">
+                        <!-- GitHub -->
+                        <a href="https://github.com/Alimehdi-tdf" target="_blank" rel="noopener noreferrer" class="social-platform-row">
+                            <div class="social-row-left">
+                                <span class="social-row-icon social-row-icon--github">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                                </span>
+                                <div>
+                                    <h4 class="social-row-name">GitHub Developer Hub</h4>
+                                    <span class="social-row-meta">50+ Repositories • 1.2K+ Stars • Level A+</span>
+                                </div>
+                            </div>
+                            <span class="social-row-action">Explore ↗</span>
+                        </a>
+
+                        <!-- X (formerly Twitter) -->
+                        <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-platform-row">
+                            <div class="social-row-left">
+                                <span class="social-row-icon social-row-icon--x">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                </span>
+                                <div>
+                                    <h4 class="social-row-name">X (formerly Twitter)</h4>
+                                    <span class="social-row-meta">Engineering Insights • Market Updates • Tech Threads</span>
+                                </div>
+                            </div>
+                            <span class="social-row-action">Visit ↗</span>
+                        </a>
+
+                        <!-- LinkedIn -->
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="social-platform-row">
+                            <div class="social-row-left">
+                                <span class="social-row-icon social-row-icon--linkedin">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76c.92 0 1.66-.74 1.66-1.66a1.66 1.66 0 0 0-3.32 0c0 .92.74 1.66 1.66 1.66m-1.4 9.74h2.8v-8.37h-2.8v8.37z"/></svg>
+                                </span>
+                                <div>
+                                    <h4 class="social-row-name">LinkedIn Professional Network</h4>
+                                    <span class="social-row-meta">Senior Full-Stack Architect • Verified Profile</span>
+                                </div>
+                            </div>
+                            <span class="social-row-action">Connect ↗</span>
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="social-platform-row">
+                            <div class="social-row-left">
+                                <span class="social-row-icon social-row-icon--youtube">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                                </span>
+                                <div>
+                                    <h4 class="social-row-name">YouTube Tech Channel</h4>
+                                    <span class="social-row-meta">Full-Stack Tutorials &amp; Engineering Demos</span>
+                                </div>
+                            </div>
+                            <span class="social-row-action">Watch ↗</span>
+                        </a>
+
+                        <!-- Instagram & TikTok -->
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-platform-row">
+                            <div class="social-row-left">
+                                <span class="social-row-icon social-row-icon--insta">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                                </span>
+                                <div>
+                                    <h4 class="social-row-name">Instagram &amp; TikTok Creator</h4>
+                                    <span class="social-row-meta">@syedalimehdi • Daily Dev Tips &amp; Insights</span>
+                                </div>
+                            </div>
+                            <span class="social-row-action">View ↗</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    </main>
-
-
-    <!-- ======================================================= -->
-    <!-- FOOTER SECTION                                          -->
-    <!-- ======================================================= -->
-    <footer class="site-footer" id="site-footer">
-        <div class="container footer-container">
-            <div class="footer-brand">
-                <span class="logo-accent">&lt;</span>I M MEHDI<span class="logo-accent">/&gt;</span>
+    <!-- ========== SKILLS SECTION ========== -->
+    <section id="skills" class="section skills">
+        <div class="section__container">
+            <div class="section__header reveal">
+                <span class="section__label">02</span>
+                <h2 class="section__title">My <span class="text-accent">Skills</span></h2>
+                <div class="section__line"></div>
             </div>
-            <p class="footer-text">
-                &copy; 2026 <strong>Syed Ali Mehdi</strong>. All rights reserved.
-            </p>
-            <p class="footer-subtext">
-                Digital Marketer • Solo Freelancer • Business Advisor • Trader • Client Hunter
-            </p>
+
+            <!-- E-Commerce Hero-Style Skills Slider / Box -->
+            <div class="skills__slider-wrapper reveal">
+                <!-- Category Navigation Tabs -->
+                <div class="skills__nav-tabs" id="skills-tabs" role="tablist">
+                    <button class="skills__tab-btn active" data-slide="0" role="tab" aria-selected="true">
+                        <span class="skills__tab-icon">&lt;/&gt;</span>
+                        <span>Frontend</span>
+                    </button>
+                    <button class="skills__tab-btn" data-slide="1" role="tab" aria-selected="false">
+                        <span class="skills__tab-icon">⚙</span>
+                        <span>Backend</span>
+                    </button>
+                    <button class="skills__tab-btn" data-slide="2" role="tab" aria-selected="false">
+                        <span class="skills__tab-icon">🛠</span>
+                        <span>Tools &amp; Cloud</span>
+                    </button>
+                    <button class="skills__tab-btn" data-slide="3" role="tab" aria-selected="false">
+                        <span class="skills__tab-icon">🎨</span>
+                        <span>UI/UX &amp; Design</span>
+                    </button>
+                </div>
+
+                <!-- Main Featured Slider Box -->
+                <div class="skills__slider-box">
+                    <!-- Prev Arrow Button -->
+                    <button class="skills__arrow skills__arrow--prev magnetic-btn" id="skills-prev-btn" aria-label="Previous skill">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                    </button>
+
+                    <!-- Slides Track Container (Mouse drag & Touch swipe enabled) -->
+                    <div class="skills__track-container" id="skills-track-container">
+                        <div class="skills__track" id="skills-track">
+
+                            <!-- Slide 1: Frontend Development -->
+                            <div class="skills__slide" data-index="0">
+                                <div class="skills__card-content">
+                                    <div class="skills__card-header">
+                                        <div class="skills__card-icon-wrap">
+                                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                                        </div>
+                                        <div class="skills__card-title-group">
+                                            <span class="skills__card-badge">Specialization 01</span>
+                                            <h3 class="skills__card-title">Frontend Development</h3>
+                                        </div>
+                                        <div class="skills__card-rate">
+                                            <span class="skills__rate-num">95%</span>
+                                            <span class="skills__rate-label">Mastery</span>
+                                        </div>
+                                    </div>
+
+                                    <p class="skills__card-desc">
+                                        Engineering modern, high-performance responsive interfaces with clean modular code, silky animations, and state-of-the-art UI standards.
+                                    </p>
+
+                                    <div class="skills__card-bar-wrap">
+                                        <div class="skills__card-bar-header">
+                                            <span>Proficiency &amp; Mastery</span>
+                                            <span class="text-accent font-bold">95%</span>
+                                        </div>
+                                        <div class="skill-card__bar">
+                                            <div class="skill-card__bar-fill" style="width: 95%;" data-width="95"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="skills__card-tags-group">
+                                        <h4 class="skills__tags-heading">Key Technologies:</h4>
+                                        <div class="skill-card__tags">
+                                            <span class="skill-tag">HTML5 / Semantic</span>
+                                            <span class="skill-tag">CSS3 / Vanilla</span>
+                                            <span class="skill-tag">JavaScript (ES6+)</span>
+                                            <span class="skill-tag">React.js</span>
+                                            <span class="skill-tag">Responsive Design</span>
+                                            <span class="skill-tag">Flexbox &amp; Grid</span>
+                                            <span class="skill-tag">Performance Tuning</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 2: Backend Development -->
+                            <div class="skills__slide" data-index="1">
+                                <div class="skills__card-content">
+                                    <div class="skills__card-header">
+                                        <div class="skills__card-icon-wrap">
+                                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                                        </div>
+                                        <div class="skills__card-title-group">
+                                            <span class="skills__card-badge">Specialization 02</span>
+                                            <h3 class="skills__card-title">Backend Development</h3>
+                                        </div>
+                                        <div class="skills__card-rate">
+                                            <span class="skills__rate-num">85%</span>
+                                            <span class="skills__rate-label">Mastery</span>
+                                        </div>
+                                    </div>
+
+                                    <p class="skills__card-desc">
+                                        Developing robust server-side architectures, scalable RESTful APIs, and reliable database structures built for high data integrity and security.
+                                    </p>
+
+                                    <div class="skills__card-bar-wrap">
+                                        <div class="skills__card-bar-header">
+                                            <span>Proficiency &amp; Mastery</span>
+                                            <span class="text-accent font-bold">85%</span>
+                                        </div>
+                                        <div class="skill-card__bar">
+                                            <div class="skill-card__bar-fill" style="width: 85%;" data-width="85"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="skills__card-tags-group">
+                                        <h4 class="skills__tags-heading">Key Technologies:</h4>
+                                        <div class="skill-card__tags">
+                                            <span class="skill-tag">Node.js</span>
+                                            <span class="skill-tag">Express.js</span>
+                                            <span class="skill-tag">Python</span>
+                                            <span class="skill-tag">REST APIs</span>
+                                            <span class="skill-tag">Databases (SQL &amp; NoSQL)</span>
+                                            <span class="skill-tag">JWT Authentication</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 3: Tools & Platforms -->
+                            <div class="skills__slide" data-index="2">
+                                <div class="skills__card-content">
+                                    <div class="skills__card-header">
+                                        <div class="skills__card-icon-wrap">
+                                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                                        </div>
+                                        <div class="skills__card-title-group">
+                                            <span class="skills__card-badge">Specialization 03</span>
+                                            <h3 class="skills__card-title">Tools, Cloud &amp; Workflow</h3>
+                                        </div>
+                                        <div class="skills__card-rate">
+                                            <span class="skills__rate-num">88%</span>
+                                            <span class="skills__rate-label">Mastery</span>
+                                        </div>
+                                    </div>
+
+                                    <p class="skills__card-desc">
+                                        Leveraging streamlined developer tooling, Git version control, cloud infrastructure, and modern deployment environments for rapid iteration.
+                                    </p>
+
+                                    <div class="skills__card-bar-wrap">
+                                        <div class="skills__card-bar-header">
+                                            <span>Proficiency &amp; Mastery</span>
+                                            <span class="text-accent font-bold">88%</span>
+                                        </div>
+                                        <div class="skill-card__bar">
+                                            <div class="skill-card__bar-fill" style="width: 88%;" data-width="88"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="skills__card-tags-group">
+                                        <h4 class="skills__tags-heading">Key Technologies:</h4>
+                                        <div class="skill-card__tags">
+                                            <span class="skill-tag">Git &amp; GitHub</span>
+                                            <span class="skill-tag">VS Code</span>
+                                            <span class="skill-tag">Linux / Unix CLI</span>
+                                            <span class="skill-tag">Cloud Hosting</span>
+                                            <span class="skill-tag">CI/CD Pipelines</span>
+                                            <span class="skill-tag">Postman</span>
+                                            <span class="skill-tag">Vite &amp; Build Tools</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Slide 4: Design & Strategy -->
+                            <div class="skills__slide" data-index="3">
+                                <div class="skills__card-content">
+                                    <div class="skills__card-header">
+                                        <div class="skills__card-icon-wrap">
+                                            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                                        </div>
+                                        <div class="skills__card-title-group">
+                                            <span class="skills__card-badge">Specialization 04</span>
+                                            <h3 class="skills__card-title">UI/UX Design &amp; Strategy</h3>
+                                        </div>
+                                        <div class="skills__card-rate">
+                                            <span class="skills__rate-num">90%</span>
+                                            <span class="skills__rate-label">Mastery</span>
+                                        </div>
+                                    </div>
+
+                                    <p class="skills__card-desc">
+                                        Transforming complex ideas into intuitive user experiences with interactive wireframes, design systems, and conversion-focused thinking.
+                                    </p>
+
+                                    <div class="skills__card-bar-wrap">
+                                        <div class="skills__card-bar-header">
+                                            <span>Proficiency &amp; Mastery</span>
+                                            <span class="text-accent font-bold">90%</span>
+                                        </div>
+                                        <div class="skill-card__bar">
+                                            <div class="skill-card__bar-fill" style="width: 90%;" data-width="90"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="skills__card-tags-group">
+                                        <h4 class="skills__tags-heading">Key Technologies:</h4>
+                                        <div class="skill-card__tags">
+                                            <span class="skill-tag">UI/UX Strategy</span>
+                                            <span class="skill-tag">Figma Prototyping</span>
+                                            <span class="skill-tag">Design Systems</span>
+                                            <span class="skill-tag">Wireframing</span>
+                                            <span class="skill-tag">Brand Identity</span>
+                                            <span class="skill-tag">User Journey</span>
+                                            <span class="skill-tag">Micro-Interactions</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Next Arrow Button -->
+                    <button class="skills__arrow skills__arrow--next magnetic-btn" id="skills-next-btn" aria-label="Next skill">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </button>
+                </div>
+
+                <!-- Bottom Indicators: Dots & Slide Counter -->
+                <div class="skills__controls">
+                    <div class="skills__dots" id="skills-dots">
+                        <button class="skills__dot active" data-slide="0" aria-label="Go to slide 1"></button>
+                        <button class="skills__dot" data-slide="1" aria-label="Go to slide 2"></button>
+                        <button class="skills__dot" data-slide="2" aria-label="Go to slide 3"></button>
+                        <button class="skills__dot" data-slide="3" aria-label="Go to slide 4"></button>
+                    </div>
+                    <div class="skills__counter" id="skills-counter">
+                        <span class="skills__counter-curr" id="skills-current-num">01</span>
+                        <span class="skills__counter-divider">/</span>
+                        <span class="skills__counter-total">04</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ========== CERTIFICATIONS (Compact Rolling Picture Ribbon Connected Directly to Skills) ========== -->
+        <div id="certifications" class="certs-compact reveal">
+            <div class="certs-compact__container">
+                <div class="certs-compact__header">
+                    <span class="certs-compact__badge">✦ Verified Credentials</span>
+                    <h3 class="certs-compact__title">Accredited <span class="text-accent">Certificates</span></h3>
+                    <span class="certs-compact__hint">Click any certificate picture to view full preview</span>
+                </div>
+
+                <!-- Rolling / Continuous Loop Ribbon of Certificate Pictures -->
+                <div class="certs-ticker" id="certs-ticker">
+                    <div class="certs-ticker__track" id="certs-track">
+                        <!-- 1st Certificate Picture -->
+                        <div class="cert-thumb" data-cert-id="1" data-cert-img="cert-1.svg" data-cert-tag="1st Certificate" data-title="Web Development Professional" data-issuer="Meta &amp; Coursera" data-date="2024" role="button" tabindex="0" aria-label="View 1st Certificate">
+                            <div class="cert-thumb__img-wrap">
+                                <img src="cert-1.svg" alt="1st Certificate - Web Development" class="cert-thumb__img" loading="lazy">
+                                <span class="cert-thumb__badge">1st Certificate</span>
+                                <div class="cert-thumb__overlay">
+                                    <span class="cert-thumb__view-btn">View Full ↗</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2nd Certificate Picture -->
+                        <div class="cert-thumb" data-cert-id="2" data-cert-img="cert-2.svg" data-cert-tag="2nd Certificate" data-title="Cloud Architecture &amp; DevOps" data-issuer="AWS Training" data-date="2023" role="button" tabindex="0" aria-label="View 2nd Certificate">
+                            <div class="cert-thumb__img-wrap">
+                                <img src="cert-2.svg" alt="2nd Certificate - Cloud Architecture" class="cert-thumb__img" loading="lazy">
+                                <span class="cert-thumb__badge">2nd Certificate</span>
+                                <div class="cert-thumb__overlay">
+                                    <span class="cert-thumb__view-btn">View Full ↗</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3rd Certificate Picture -->
+                        <div class="cert-thumb" data-cert-id="3" data-cert-img="cert-3.svg" data-cert-tag="3rd Certificate" data-title="Data Analytics &amp; Visuals" data-issuer="Google Institute" data-date="2023" role="button" tabindex="0" aria-label="View 3rd Certificate">
+                            <div class="cert-thumb__img-wrap">
+                                <img src="cert-3.svg" alt="3rd Certificate - Data Analytics" class="cert-thumb__img" loading="lazy">
+                                <span class="cert-thumb__badge">3rd Certificate</span>
+                                <div class="cert-thumb__overlay">
+                                    <span class="cert-thumb__view-btn">View Full ↗</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4th Certificate Picture -->
+                        <div class="cert-thumb" data-cert-id="4" data-cert-img="cert-4.svg" data-cert-tag="4th Certificate" data-title="Agile Project Management" data-issuer="Scrum Alliance" data-date="2022" role="button" tabindex="0" aria-label="View 4th Certificate">
+                            <div class="cert-thumb__img-wrap">
+                                <img src="cert-4.svg" alt="4th Certificate - Agile Project Management" class="cert-thumb__img" loading="lazy">
+                                <span class="cert-thumb__badge">4th Certificate</span>
+                                <div class="cert-thumb__overlay">
+                                    <span class="cert-thumb__view-btn">View Full ↗</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5th Certificate Picture -->
+                        <div class="cert-thumb" data-cert-id="5" data-cert-img="cert-5.svg" data-cert-tag="5th Certificate" data-title="UI/UX Interface Design" data-issuer="Interaction Design" data-date="2024" role="button" tabindex="0" aria-label="View 5th Certificate">
+                            <div class="cert-thumb__img-wrap">
+                                <img src="cert-5.svg" alt="5th Certificate - UI/UX Design" class="cert-thumb__img" loading="lazy">
+                                <span class="cert-thumb__badge">5th Certificate</span>
+                                <div class="cert-thumb__overlay">
+                                    <span class="cert-thumb__view-btn">View Full ↗</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Duplicate Set for Seamless Continuous Loop -->
+                        <div class="cert-thumb" data-cert-id="1" data-cert-img="cert-1.svg" data-cert-tag="1st Certificate" data-title="Web Development Professional" data-issuer="Meta &amp; Coursera" data-date="2024" aria-hidden="true" tabindex="-1">
+                            <div class="cert-thumb__img-wrap">
+                                <img src="cert-1.svg" alt="" class="cert-thumb__img" loading="lazy">
+                                <span class="cert-thumb__badge">1st Certificate</span>
+                                <div class="cert-thumb__overlay">
+                                    <span class="cert-thumb__view-btn">View Full ↗</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cert-thumb" data-cert-id="2" data-cert-img="cert-2.svg" data-cert-tag="2nd Certificate" data-title="Cloud Architecture &amp; DevOps" data-issuer="AWS Training" data-date="2023" aria-hidden="true" tabindex="-1">
+                            <div class="cert-thumb__img-wrap">
+                                <img src="cert-2.svg" alt="" class="cert-thumb__img" loading="lazy">
+                                <span class="cert-thumb__badge">2nd Certificate</span>
+                                <div class="cert-thumb__overlay">
+                                    <span class="cert-thumb__view-btn">View Full ↗</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cert-thumb" data-cert-id="3" data-cert-img="cert-3.svg" data-cert-tag="3rd Certificate" data-title="Data Analytics &amp; Visuals" data-issuer="Google Institute" data-date="2023" aria-hidden="true" tabindex="-1">
+                            <div class="cert-thumb__img-wrap">
+                                <img src="cert-3.svg" alt="" class="cert-thumb__img" loading="lazy">
+                                <span class="cert-thumb__badge">3rd Certificate</span>
+                                <div class="cert-thumb__overlay">
+                                    <span class="cert-thumb__view-btn">View Full ↗</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cert-thumb" data-cert-id="4" data-cert-img="cert-4.svg" data-cert-tag="4th Certificate" data-title="Agile Project Management" data-issuer="Scrum Alliance" data-date="2022" aria-hidden="true" tabindex="-1">
+                            <div class="cert-thumb__img-wrap">
+                                <img src="cert-4.svg" alt="" class="cert-thumb__img" loading="lazy">
+                                <span class="cert-thumb__badge">4th Certificate</span>
+                                <div class="cert-thumb__overlay">
+                                    <span class="cert-thumb__view-btn">View Full ↗</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cert-thumb" data-cert-id="5" data-cert-img="cert-5.svg" data-cert-tag="5th Certificate" data-title="UI/UX Interface Design" data-issuer="Interaction Design" data-date="2024" aria-hidden="true" tabindex="-1">
+                            <div class="cert-thumb__img-wrap">
+                                <img src="cert-5.svg" alt="" class="cert-thumb__img" loading="lazy">
+                                <span class="cert-thumb__badge">5th Certificate</span>
+                                <div class="cert-thumb__overlay">
+                                    <span class="cert-thumb__view-btn">View Full ↗</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== CERTIFICATE PICTURE MODAL / LIGHTBOX ========== -->
+        <div id="cert-modal" class="cert-modal" aria-hidden="true" role="dialog" aria-modal="true">
+            <div class="cert-modal__backdrop" id="cert-modal-backdrop"></div>
+            <div class="cert-modal__container">
+                <button class="cert-modal__close" id="cert-modal-close" aria-label="Close certificate preview">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+                <div class="cert-modal__body">
+                    <!-- Certificate Image Preview Card -->
+                    <div class="cert-modal__card">
+                        <div class="cert-modal__img-container">
+                            <img id="modal-cert-img" class="cert-modal__image" src="cert-1.svg" alt="Full Certificate View">
+                        </div>
+                        <div class="cert-modal__info-bar">
+                            <div class="cert-modal__info-left">
+                                <span class="cert-modal__pill" id="modal-cert-tag">1st Certificate</span>
+                                <h3 class="cert-modal__cert-title" id="modal-cert-title">Web Development Professional</h3>
+                                <p class="cert-modal__cert-sub" id="modal-cert-sub">Meta &amp; Coursera • 2024</p>
+                            </div>
+                            <div class="cert-modal__actions">
+                                <a id="modal-cert-download" href="cert-1.svg" target="_blank" download class="btn btn--primary cert-modal__action-btn">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    <span>Download</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== EXPERIENCE SECTION ========== -->
+    <section id="experience" class="section experience">
+        <div class="section__container">
+            <div class="section__header reveal">
+                <span class="section__label">03</span>
+                <h2 class="section__title">Work <span class="text-accent">Experience</span></h2>
+                <div class="section__line"></div>
+                <p class="section__subtitle">A proven track record of architecting scalable applications, high-performance user interfaces, and delivering enterprise solutions.</p>
+            </div>
+
+            <!-- Executive Metrics Ticker Ribbon -->
+            <div class="exp-summary-ribbon reveal">
+                <div class="exp-summary-item">
+                    <span class="exp-summary-icon">⚡</span>
+                    <div class="exp-summary-text">
+                        <span class="exp-summary-num">4+ Years</span>
+                        <span class="exp-summary-lbl">Software &amp; Web Development</span>
+                    </div>
+                </div>
+                <div class="exp-summary-divider" aria-hidden="true"></div>
+                <div class="exp-summary-item">
+                    <span class="exp-summary-icon">📈</span>
+                    <div class="exp-summary-text">
+                        <span class="exp-summary-num">50+ Campaigns</span>
+                        <span class="exp-summary-lbl">Digital Marketing &amp; Growth</span>
+                    </div>
+                </div>
+                <div class="exp-summary-divider" aria-hidden="true"></div>
+                <div class="exp-summary-item">
+                    <span class="exp-summary-icon">📊</span>
+                    <div class="exp-summary-text">
+                        <span class="exp-summary-num">88%+ Win-Rate</span>
+                        <span class="exp-summary-lbl">Quantitative Trading Discipline</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Role Category Filter Controls (3 Core Domains) -->
+            <div class="exp__filters reveal" id="exp-filters" role="tablist">
+                <button class="exp__filter-btn active" data-filter="all" role="tab" aria-selected="true">
+                    <span class="exp__filter-icon">✦</span>
+                    <span>All Domains</span>
+                    <span class="exp__filter-count">3</span>
+                </button>
+                <button class="exp__filter-btn" data-filter="developer" role="tab" aria-selected="false">
+                    <span class="exp__filter-icon">⚡</span>
+                    <span>Software &amp; Web Developer</span>
+                </button>
+                <button class="exp__filter-btn" data-filter="marketer" role="tab" aria-selected="false">
+                    <span class="exp__filter-icon">📈</span>
+                    <span>Digital Marketer</span>
+                </button>
+                <button class="exp__filter-btn" data-filter="trader" role="tab" aria-selected="false">
+                    <span class="exp__filter-icon">📊</span>
+                    <span>Quantitative Trader</span>
+                </button>
+            </div>
+
+            <!-- Experience Bento Cards Grid -->
+            <div class="exp__grid" id="exp-grid">
+
+                <!-- Experience Card 1 (Software & Web Developer) -->
+                <div class="exp-card reveal exp-card--featured" data-category="developer">
+                    <div class="exp-card__glow-border" aria-hidden="true"></div>
+                    <div class="exp-card__inner">
+                        <div class="exp-card__header">
+                            <div class="exp-card__company-group">
+                                <div class="exp-card__emblem exp-card__emblem--fullstack" aria-hidden="true">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                                    <span class="exp-card__emblem-glow"></span>
+                                </div>
+                                <div class="exp-card__titles">
+                                    <div class="exp-card__domain-tag">Engineering &amp; Cloud Architecture</div>
+                                    <h3 class="exp-card__role">Senior Full-Stack &amp; Software Architect</h3>
+                                    <div class="exp-card__company-line">
+                                        <span class="exp-card__company">Apex Global &amp; Engineering Labs</span>
+                                        <span class="exp-card__bullet">•</span>
+                                        <span class="exp-card__location">Remote</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="exp-card__badge-group">
+                                <span class="exp-card__status-pill">
+                                    <span class="exp-card__status-dot"></span>
+                                    Active Engineering
+                                </span>
+                                <span class="exp-card__period">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                    2022 — Present
+                                </span>
+                            </div>
+                        </div>
+
+                        <p class="exp-card__summary">
+                            Architecting resilient web applications, modern reactive user interfaces, and high-throughput Python/FastAPI microservices. Eliminating latency bottlenecks and streamlining end-to-end cloud deployments.
+                        </p>
+
+                        <div class="exp-card__bullets">
+                            <div class="exp-card__bullet-item">
+                                <span class="exp-card__bullet-icon">✦</span>
+                                <p>Delivered 45+ production web applications and APIs with 99.98% availability SLA.</p>
+                            </div>
+                            <div class="exp-card__bullet-item">
+                                <span class="exp-card__bullet-icon">✦</span>
+                                <p>Optimized Core Web Vitals and load velocity by +45% via modular bundling and edge caching.</p>
+                            </div>
+                            <div class="exp-card__bullet-item">
+                                <span class="exp-card__bullet-icon">✦</span>
+                                <p>Engineered automated CI/CD pipelines, Docker containerization, and PostgreSQL schemas.</p>
+                            </div>
+                        </div>
+
+                        <div class="exp-card__metrics">
+                            <div class="exp-metric">
+                                <span class="exp-metric__val">45+</span>
+                                <span class="exp-metric__label">Web Apps Shipped</span>
+                            </div>
+                            <div class="exp-metric">
+                                <span class="exp-metric__val">+45%</span>
+                                <span class="exp-metric__label">Speed Benchmark</span>
+                            </div>
+                            <div class="exp-metric">
+                                <span class="exp-metric__val">99.98%</span>
+                                <span class="exp-metric__label">System Uptime</span>
+                            </div>
+                        </div>
+
+                        <div class="exp-card__tech">
+                            <span class="exp-tech-tag">React.js</span>
+                            <span class="exp-tech-tag">Next.js</span>
+                            <span class="exp-tech-tag">Python</span>
+                            <span class="exp-tech-tag">FastAPI</span>
+                            <span class="exp-tech-tag">PostgreSQL</span>
+                            <span class="exp-tech-tag">Docker</span>
+                            <span class="exp-tech-tag">REST APIs</span>
+                            <span class="exp-tech-tag">Git CI/CD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Card 2 (Digital Marketer) -->
+                <div class="exp-card reveal" data-category="marketer">
+                    <div class="exp-card__glow-border" aria-hidden="true"></div>
+                    <div class="exp-card__inner">
+                        <div class="exp-card__header">
+                            <div class="exp-card__company-group">
+                                <div class="exp-card__emblem exp-card__emblem--marketer" aria-hidden="true">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/></svg>
+                                    <span class="exp-card__emblem-glow"></span>
+                                </div>
+                                <div class="exp-card__titles">
+                                    <div class="exp-card__domain-tag">Growth &amp; Performance Marketing</div>
+                                    <h3 class="exp-card__role">Growth Marketing Strategist &amp; Funnel Architect</h3>
+                                    <div class="exp-card__company-line">
+                                        <span class="exp-card__company">Apex Digital Performance &amp; Media Practice</span>
+                                        <span class="exp-card__bullet">•</span>
+                                        <span class="exp-card__location">International</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="exp-card__badge-group">
+                                <span class="exp-card__status-pill exp-card__status-pill--amber">
+                                    <span class="exp-card__status-dot"></span>
+                                    Strategic Growth
+                                </span>
+                                <span class="exp-card__period">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                    2021 — Present
+                                </span>
+                            </div>
+                        </div>
+
+                        <p class="exp-card__summary">
+                            Designing data-driven digital marketing campaigns, high-converting acquisition funnels, and performance media strategies. Scaling paid advertising, search optimization, and automated customer journeys.
+                        </p>
+
+                        <div class="exp-card__bullets">
+                            <div class="exp-card__bullet-item">
+                                <span class="exp-card__bullet-icon">✦</span>
+                                <p>Scaled 50+ digital campaigns generating consistent 3.8x average return on ad spend (ROAS).</p>
+                            </div>
+                            <div class="exp-card__bullet-item">
+                                <span class="exp-card__bullet-icon">✦</span>
+                                <p>Optimized landing page conversion rates delivering a +62% average conversion lift.</p>
+                            </div>
+                            <div class="exp-card__bullet-item">
+                                <span class="exp-card__bullet-icon">✦</span>
+                                <p>Automated multi-channel email marketing workflows and lead nurturing pipelines.</p>
+                            </div>
+                        </div>
+
+                        <div class="exp-card__metrics">
+                            <div class="exp-metric">
+                                <span class="exp-metric__val">50+</span>
+                                <span class="exp-metric__label">Campaigns Scaled</span>
+                            </div>
+                            <div class="exp-metric">
+                                <span class="exp-metric__val">3.8x</span>
+                                <span class="exp-metric__label">Avg Return (ROAS)</span>
+                            </div>
+                            <div class="exp-metric">
+                                <span class="exp-metric__val">+62%</span>
+                                <span class="exp-metric__label">Conversion Lift</span>
+                            </div>
+                        </div>
+
+                        <div class="exp-card__tech">
+                            <span class="exp-tech-tag">Performance Marketing</span>
+                            <span class="exp-tech-tag">Meta Ads</span>
+                            <span class="exp-tech-tag">Google Ads</span>
+                            <span class="exp-tech-tag">SEO / SEM</span>
+                            <span class="exp-tech-tag">Conversion Funnels</span>
+                            <span class="exp-tech-tag">Google Analytics 4</span>
+                            <span class="exp-tech-tag">Marketing Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience Card 3 (Trader) -->
+                <div class="exp-card reveal" data-category="trader">
+                    <div class="exp-card__glow-border" aria-hidden="true"></div>
+                    <div class="exp-card__inner">
+                        <div class="exp-card__header">
+                            <div class="exp-card__company-group">
+                                <div class="exp-card__emblem exp-card__emblem--trading" aria-hidden="true">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                                    <span class="exp-card__emblem-glow"></span>
+                                </div>
+                                <div class="exp-card__titles">
+                                    <div class="exp-card__domain-tag">Quantitative Risk &amp; Analysis</div>
+                                    <h3 class="exp-card__role">Systematic Trader &amp; Market Analyst</h3>
+                                    <div class="exp-card__company-line">
+                                        <span class="exp-card__company">Synergy Trading &amp; Strategic Advisory</span>
+                                        <span class="exp-card__bullet">•</span>
+                                        <span class="exp-card__location">Remote</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="exp-card__badge-group">
+                                <span class="exp-card__status-pill exp-card__status-pill--gold">
+                                    <span class="exp-card__status-dot"></span>
+                                    Quantitative Strategy
+                                </span>
+                                <span class="exp-card__period">
+                                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                                    2021 — Present
+                                </span>
+                            </div>
+                        </div>
+
+                        <p class="exp-card__summary">
+                            Advising businesses and portfolio managers on systematic market analysis, risk-weighted asset execution, and capital expansion strategies. Developing quantitative indicators and emotional discipline models.
+                        </p>
+
+                        <div class="exp-card__bullets">
+                            <div class="exp-card__bullet-item">
+                                <span class="exp-card__bullet-icon">✦</span>
+                                <p>Guided 28+ consulting accounts through risk mitigation, capital preservation, and technical setups.</p>
+                            </div>
+                            <div class="exp-card__bullet-item">
+                                <span class="exp-card__bullet-icon">✦</span>
+                                <p>Formulated disciplined trade execution strategies delivering 88%+ consistency in risk-managed environments.</p>
+                            </div>
+                            <div class="exp-card__bullet-item">
+                                <span class="exp-card__bullet-icon">✦</span>
+                                <p>Structured systematic market review routines, risk-to-reward matrices, and portfolio growth roadmaps.</p>
+                            </div>
+                        </div>
+
+                        <div class="exp-card__metrics">
+                            <div class="exp-metric">
+                                <span class="exp-metric__val">28+</span>
+                                <span class="exp-metric__label">Accounts Advised</span>
+                            </div>
+                            <div class="exp-metric">
+                                <span class="exp-metric__val">88%</span>
+                                <span class="exp-metric__label">Strategy Accuracy</span>
+                            </div>
+                            <div class="exp-metric">
+                                <span class="exp-metric__val">3+</span>
+                                <span class="exp-metric__label">Years in Markets</span>
+                            </div>
+                        </div>
+
+                        <div class="exp-card__tech">
+                            <span class="exp-tech-tag">Technical Analysis</span>
+                            <span class="exp-tech-tag">Risk Modeling</span>
+                            <span class="exp-tech-tag">Quantitative Strategies</span>
+                            <span class="exp-tech-tag">Financial Discipline</span>
+                            <span class="exp-tech-tag">Macro Strategy</span>
+                            <span class="exp-tech-tag">Risk Management</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <section id="contact" class="section contact">
+        <div class="section__container">
+            <div class="section__header reveal">
+                <span class="section__label">04</span>
+                <h2 class="section__title">Get In <span class="text-accent">Touch</span></h2>
+                <div class="section__line"></div>
+            </div>
+
+            <div class="contact__grid">
+                <div class="contact__info reveal reveal--left">
+                    <h3 class="contact__info-title">Let's work together</h3>
+                    <p class="contact__info-text">
+                        Have a project in mind? I'd love to hear about it. Drop me a message and let's create something amazing together.
+                    </p>
+
+                    <div class="contact__details">
+                        <a href="mailto:contact@mehdi.com" class="contact__detail-item magnetic-btn">
+                            <div class="contact__detail-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div>
+                                <span class="contact__detail-label">Email</span>
+                                <span class="contact__detail-value">contact@mehdi.com</span>
+                            </div>
+                        </a>
+
+                        <a href="tel:+920000000000" class="contact__detail-item magnetic-btn">
+                            <div class="contact__detail-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                            </div>
+                            <div>
+                                <span class="contact__detail-label">Phone</span>
+                                <span class="contact__detail-value">+92 000 000 0000</span>
+                            </div>
+                        </a>
+
+                        <div class="contact__detail-item">
+                            <div class="contact__detail-icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div>
+                                <sp
+                                an class="contact__detail-label">Location</span>
+                                <span class="contact__detail-value">Pakistan</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact__social">
+                        <a href="https://tiktok.com/@syedalimehdi" target="_blank" rel="noopener noreferrer" class="contact__social-link" aria-label="TikTok">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.89 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.34 0 .66.06.96.17V9.32a6.33 6.33 0 0 0-.96-.07A6.34 6.34 0 0 0 3.15 15.6a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.71a8.21 8.21 0 0 0 4.76 1.49v-3.51h-1z"/></svg>
+                        </a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="contact__social-link" aria-label="YouTube">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="contact__social-link" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="contact__social-link" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76c.92 0 1.66-.74 1.66-1.66a1.66 1.66 0 0 0-3.32 0c0 .92.74 1.66 1.66 1.66m-1.4 9.74h2.8v-8.37h-2.8v8.37z"/></svg>
+                        </a>
+                        <a href="https://github.com/Alimehdi-tdf" target="_blank" rel="noopener noreferrer" class="contact__social-link" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <form class="contact__form reveal reveal--right" id="contact-form" action="https://formspree.io/f/mdeowaeg" method="POST">
+                    <div class="form__group">
+                        <input type="text" name="name" id="contact-name" class="form__input" required autocomplete="name">
+                        <label for="contact-name" class="form__label">Your Name</label>
+                        <div class="form__highlight"></div>
+                    </div>
+                    <div class="form__group">
+                        <input type="email" name="email" id="contact-email" class="form__input" required autocomplete="email">
+                        <label for="contact-email" class="form__label">Your Email</label>
+                        <div class="form__highlight"></div>
+                    </div>
+                    <div class="form__group">
+                        <input type="text" name="subject" id="contact-subject" class="form__input" required>
+                        <label for="contact-subject" class="form__label">Subject</label>
+                        <div class="form__highlight"></div>
+                    </div>
+                    <div class="form__group">
+                        <textarea name="message" id="contact-message" class="form__input form__textarea" rows="5" required></textarea>
+                        <label for="contact-message" class="form__label">Your Message</label>
+                        <div class="form__highlight"></div>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full magnetic-btn">
+                        <span>Send Message</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__text">&copy; 2026 Syed Ali Mehdi. All rights reserved.</p>
+            <div class="footer__links">
+                <a href="#hero">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
         </div>
     </footer>
 
-
-    <!-- ======================================================= -->
-    <!-- WHATSAPP FLOATING BUTTON                                -->
-    <!-- ======================================================= -->
-    <a 
-        href="https://wa.me/923709494308?text=Hello%20Syed%20Ali%20Mehdi,%20I%20would%20like%20to%20book%20a%20strategy%20call%20and%20discuss%20marketing%20services." 
-        class="whatsapp-float" 
-        id="whatsapp-btn" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        aria-label="Contact Syed Ali Mehdi on WhatsApp"
-        title="Chat on WhatsApp"
-    >
-        <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor">
-            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-        </svg>
-        <span class="whatsapp-badge-text">WhatsApp</span>
-    </a>
-
-    <!-- JavaScript File -->
     <script src="script.js"></script>
 </body>
 </html>

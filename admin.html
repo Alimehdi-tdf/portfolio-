@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard — Syed Ali Mehdi Portfolio</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #121316;
+            --bg-card: #1D1F25;
+            --bg-sidebar: #18191E;
+            --accent: #C5A880;
+            --accent-light: #DFB78C;
+            --border: rgba(197, 168, 128, 0.25);
+            --text-main: #f3f4f6;
+            --text-muted: #9E9C96;
+        }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; border-radius: 0 !important; }
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 270px;
+            background-color: var(--bg-sidebar);
+            border-right: 1px solid var(--border);
+            padding: 24px 16px;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            margin-bottom: 24px;
+        }
+
+        .brand img { width: 40px; height: 40px; object-fit: contain; }
+        .brand h2 { font-size: 1rem; font-weight: 700; color: #fff; }
+        .brand span { font-size: 0.7rem; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+
+        .nav-list { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: none;
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            font-weight: 500;
+            cursor: pointer;
+            text-align: left;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-btn:hover { color: #fff; background: rgba(139, 154, 70, 0.1); }
+        .nav-btn.active {
+            color: var(--accent-light);
+            background: rgba(139, 154, 70, 0.18);
+            font-weight: 700;
+            border-left-color: var(--accent);
+        }
+
+        .live-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px;
+            background: var(--accent);
+            color: #0d120a;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-decoration: none;
+            box-shadow: 0 4px 14px rgba(139, 154, 70, 0.3);
+            margin-top: 20px;
+        }
+
+        /* Main Area */
+        .main-content {
+            flex: 1;
+            padding: 36px 48px;
+            overflow-y: auto;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .header h1 { font-size: 1.75rem; font-weight: 800; color: #fff; }
+        .header p { font-size: 0.88rem; color: var(--text-muted); margin-top: 4px; }
+
+        .pill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            background: rgba(139, 154, 70, 0.15);
+            color: var(--accent-light);
+            border: 1px solid rgba(139, 154, 70, 0.3);
+        }
+
+        .dot-green {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4ade80;
+            box-shadow: 0 0 8px #4ade80;
+        }
+
+        /* Cards Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .stat-card-title { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600; }
+        .stat-card-val { font-size: 1.8rem; font-weight: 800; color: #fff; margin: 8px 0 4px; }
+        .stat-card-sub { font-size: 0.78rem; color: var(--accent-light); }
+
+        /* Content Blocks */
+        .panel-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .panel-box h3 { font-size: 1.15rem; font-weight: 700; color: #fff; margin-bottom: 16px; }
+
+        .item-row {
+            padding: 16px;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .btn-add {
+            padding: 10px 18px;
+            background: var(--accent);
+            color: #0d120a;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+
+        .code-box {
+            background: #060904;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: var(--accent-light);
+            overflow-x: auto;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="brand">
+            <img src="logo.png" alt="Mehdi Logo">
+            <div>
+                <h2>Mehdi Admin</h2>
+                <span>Full-Stack Portal</span>
+            </div>
+        </div>
+
+        <nav class="nav-list">
+            <button class="nav-btn active" onclick="switchTab('overview')">📊 Overview</button>
+            <button class="nav-btn" onclick="switchTab('experience')">💼 Work Experience</button>
+            <button class="nav-btn" onclick="switchTab('certs')">📜 Certifications</button>
+            <button class="nav-btn" onclick="switchTab('inquiries')">📬 Contact Inquiries</button>
+            <button class="nav-btn" onclick="switchTab('supabase')">⚡ Supabase Backend</button>
+        </nav>
+
+        <a href="index.html" class="live-btn">← Back to Portfolio</a>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="header">
+            <div>
+                <h1 id="tab-title">System Dashboard Overview</h1>
+                <p>Full-Stack Administrative Control Center • Supabase &amp; React Enabled</p>
+            </div>
+            <div class="pill-badge">
+                <span class="dot-green"></span>
+                <span>Supabase &amp; Next.js Active</span>
+            </div>
+        </header>
+
+        <!-- Tab 1: Overview -->
+        <section id="tab-overview">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-card-title">Inquiries Received</span>
+                    <div class="stat-card-val" id="count-inquiries">2</div>
+                    <span class="stat-card-sub">Active messages</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-card-title">Experience Roles</span>
+                    <div class="stat-card-val">3</div>
+                    <span class="stat-card-sub">Apex, Nexus, ByteCraft</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-card-title">Verified Certs</span>
+                    <div class="stat-card-val">5</div>
+                    <span class="stat-card-sub">Accredited documents</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-card-title">Architecture</span>
+                    <div class="stat-card-val">Full-Stack</div>
+                    <span class="stat-card-sub">React + Supabase + API</span>
+                </div>
+            </div>
+
+            <div class="panel-box">
+                <h3>Latest Contact Form Messages</h3>
+                <div class="item-row">
+                    <div>
+                        <strong style="color: #fff;">Sarah Jenkins</strong> &lt;sarah.j@enterprise.io&gt;
+                        <div style="font-size: 0.85rem; color: #d1d5db; margin-top: 4px;">"Loved your portfolio and would like to discuss an enterprise React project."</div>
+                    </div>
+                    <span style="font-size: 0.78rem; color: var(--text-muted);">Today, 2:15 PM</span>
+                </div>
+                <div class="item-row">
+                    <div>
+                        <strong style="color: #fff;">David Zhao</strong> &lt;david@venturelabs.tech&gt;
+                        <div style="font-size: 0.85rem; color: #d1d5db; margin-top: 4px;">"Looking for a senior full-stack architect to overhaul our client portal."</div>
+                    </div>
+                    <span style="font-size: 0.78rem; color: var(--text-muted);">Yesterday, 6:40 PM</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 2: Experience -->
+        <section id="tab-experience" style="display: none;">
+            <div class="panel-box">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                    <h3>Manage Experience Entries</h3>
+                    <button class="btn-add" onclick="promptAddExperience()">+ Add Experience Role</button>
+                </div>
+
+                <div id="experience-list">
+                    <div class="item-row">
+                        <div>
+                            <strong style="color: #fff; font-size: 1rem;">Senior Full-Stack Architect</strong>
+                            <div style="font-size: 0.85rem; color: var(--accent-light);">Apex Global Technologies • 2023 — Present • Remote</div>
+                        </div>
+                        <span style="font-size: 0.8rem; color: #4ade80;">Currently Active</span>
+                    </div>
+
+                    <div class="item-row">
+                        <div>
+                            <strong style="color: #fff; font-size: 1rem;">Lead Frontend &amp; UI Engineer</strong>
+                            <div style="font-size: 0.85rem; color: var(--accent-light);">Nexus Innovations Studio • 2021 — 2023 • Hybrid</div>
+                        </div>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">Completed</span>
+                    </div>
+
+                    <div class="item-row">
+                        <div>
+                            <strong style="color: #fff; font-size: 1rem;">Full-Stack Software Developer</strong>
+                            <div style="font-size: 0.85rem; color: var(--accent-light);">ByteCraft Software Solutions • 2019 — 2021 • On-Site</div>
+                        </div>
+                        <span style="font-size: 0.8rem; color: var(--text-muted);">Completed</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 3: Certs -->
+        <section id="tab-certs" style="display: none;">
+            <div class="panel-box">
+                <h3>Accredited Certifications (1st to 5th)</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span style="color: var(--accent); font-size: 0.75rem; font-weight: 700;">1ST CERTIFICATE</span>
+                        <div style="color: #fff; font-weight: 700; margin: 4px 0;">Web Development Professional</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Meta &amp; Coursera • 2024</div>
+                    </div>
+                    <div class="stat-card">
+                        <span style="color: var(--accent); font-size: 0.75rem; font-weight: 700;">2ND CERTIFICATE</span>
+                        <div style="color: #fff; font-weight: 700; margin: 4px 0;">Cloud Architecture &amp; DevOps</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">AWS Training • 2023</div>
+                    </div>
+                    <div class="stat-card">
+                        <span style="color: var(--accent); font-size: 0.75rem; font-weight: 700;">3RD CERTIFICATE</span>
+                        <div style="color: #fff; font-weight: 700; margin: 4px 0;">Data Analytics &amp; Visuals</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Google Institute • 2023</div>
+                    </div>
+                    <div class="stat-card">
+                        <span style="color: var(--accent); font-size: 0.75rem; font-weight: 700;">4TH CERTIFICATE</span>
+                        <div style="color: #fff; font-weight: 700; margin: 4px 0;">Agile Project Management</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Scrum Alliance • 2022</div>
+                    </div>
+                    <div class="stat-card">
+                        <span style="color: var(--accent); font-size: 0.75rem; font-weight: 700;">5TH CERTIFICATE</span>
+                        <div style="color: #fff; font-weight: 700; margin: 4px 0;">UI/UX Interface Design</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">Interaction Design • 2024</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 4: Inquiries -->
+        <section id="tab-inquiries" style="display: none;">
+            <div class="panel-box">
+                <h3>Contact Inquiries Inbox</h3>
+                <div class="item-row">
+                    <div>
+                        <strong style="color: #fff;">Sarah Jenkins</strong> &lt;sarah.j@enterprise.io&gt;
+                        <div style="font-size: 0.88rem; color: #d1d5db; margin-top: 6px;">
+                            "Hi Mehdi, we loved your portfolio and would like to discuss an enterprise Next.js/React architecture project."
+                        </div>
+                    </div>
+                    <span style="font-size: 0.78rem; color: var(--text-muted);">Today, 2:15 PM</span>
+                </div>
+                <div class="item-row">
+                    <div>
+                        <strong style="color: #fff;">David Zhao</strong> &lt;david@venturelabs.tech&gt;
+                        <div style="font-size: 0.88rem; color: #d1d5db; margin-top: 6px;">
+                            "Hey Syed, looking for a lead frontend architect to overhaul our client portal. Are you available for a discovery call?"
+                        </div>
+                    </div>
+                    <span style="font-size: 0.78rem; color: var(--text-muted);">Yesterday, 6:40 PM</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tab 5: Supabase -->
+        <section id="tab-supabase" style="display: none;">
+            <div class="panel-box">
+                <h3>Supabase Backend Configuration</h3>
+                <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">
+                    The Supabase JS client is installed in your workspace. You can connect your live Supabase cloud database by configuring <code>.env.local</code>.
+                </p>
+
+                <div class="code-box">
+# .env.local
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-public-key
+                </div>
+
+                <h4 style="margin-top: 20px; color: #fff;">Supabase SQL Schema:</h4>
+                <div class="code-box">
+CREATE TABLE inquiries (
+    id BIGINT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,
+    name TEXT NOT NULL,
+    email TEXT NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function switchTab(tabId) {
+            const tabs = ['overview', 'experience', 'certs', 'inquiries', 'supabase'];
+            tabs.forEach(t => {
+                const el = document.getElementById('tab-' + t);
+                if (el) el.style.display = (t === tabId) ? 'block' : 'none';
+            });
+
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const titles = {
+                overview: 'System Dashboard Overview',
+                experience: 'Work Experience Manager',
+                certs: 'Accredited Certifications',
+                inquiries: 'Contact Form Inquiries Inbox',
+                supabase: 'Supabase Cloud Backend Integration'
+            };
+            document.getElementById('tab-title').textContent = titles[tabId] || 'Admin Dashboard';
+        }
+
+        function promptAddExperience() {
+            const role = prompt("Enter Job Role (e.g. Lead Full-Stack Architect):");
+            if (!role) return;
+            const company = prompt("Enter Company Name:");
+            if (!company) return;
+
+            const list = document.getElementById('experience-list');
+            const row = document.createElement('div');
+            row.className = 'item-row';
+            row.innerHTML = `
+                <div>
+                    <strong style="color: #fff; font-size: 1rem;">${role}</strong>
+                    <div style="font-size: 0.85rem; color: var(--accent-light);">${company} • 2024 — Present • Full-Time</div>
+                </div>
+                <span style="font-size: 0.8rem; color: #4ade80;">Active</span>
+            `;
+            list.prepend(row);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "routes": [
+    { "src": "/cv", "dest": "/cv.html" },
+    { "src": "/resume", "dest": "/resume.html" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
