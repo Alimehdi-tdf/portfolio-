@@ -1877,31 +1877,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
-        // Skip completely on mobile / touch devices (< 768px) to eliminate CPU/GPU drain
-        const isMobileOrTouch = window.innerWidth < 768 || ('ontouchstart' in window && !window.matchMedia('(hover: hover)').matches);
-        if (isMobileOrTouch) {
-            canvas.style.display = 'none';
-            return;
-        }
+        const isMobileDevice = window.innerWidth < 768 || ('ontouchstart' in window && !window.matchMedia('(hover: hover)').matches);
 
-        // Position firmly in background layer behind all cards
+        // Position as global fixed overlay visible across the entire website
         canvas.style.position = 'fixed';
         canvas.style.top = '0';
         canvas.style.left = '0';
         canvas.style.width = '100vw';
         canvas.style.height = '100vh';
         canvas.style.pointerEvents = 'none';
-        canvas.style.zIndex = '2';
-        canvas.style.opacity = '0.38';
+        canvas.style.zIndex = '18'; // Floats above all section backgrounds across entire site
+        canvas.style.opacity = isMobileDevice ? '0.36' : '0.40';
+        canvas.style.display = 'block';
 
         let width = window.innerWidth;
         let height = window.innerHeight;
-        let dpr = Math.min(window.devicePixelRatio || 1, 1.2); // Cap at 1.2 for ultra-fast rendering
+        let dpr = isMobileDevice ? 1.0 : Math.min(window.devicePixelRatio || 1, 1.2);
 
         function resizeCanvas() {
             width = window.innerWidth;
             height = window.innerHeight;
-            dpr = Math.min(window.devicePixelRatio || 1, 1.2);
+            const mobile = (width < 768 || ('ontouchstart' in window && !window.matchMedia('(hover: hover)').matches));
+            dpr = mobile ? 1.0 : Math.min(window.devicePixelRatio || 1, 1.2);
             canvas.width = Math.floor(width * dpr);
             canvas.height = Math.floor(height * dpr);
             canvas.style.width = width + 'px';
@@ -2256,6 +2253,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let mouseX = width / 2;
         let mouseY = height / 2;
+        let touchActive = false;
+        let touchX = width / 2;
+        let touchY = height / 2;
         let isDragging = false;
         let hasUserMoved = false;
         let lastInteractionTime = performance.now();
@@ -2277,10 +2277,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.addEventListener('mousedown', () => { isDragging = true; wakeLizard(); });
         window.addEventListener('mouseup', () => { isDragging = false; wakeLizard(); });
-        window.addEventListener('scroll', () => {
-            if (!document.body.classList.contains('is-scrolling')) {
+
+        // Mobile touch tracking & interaction
+        window.addEventListener('touchstart', (e) => {
+            if (e.touches && e.touches.length > 0) {
+                touchX = e.touches[0].clientX;
+                touchY = e.touches[0].clientY;
+                touchActive = true;
+                hasUserMoved = true;
                 wakeLizard();
             }
+        }, { passive: true });
+
+        window.addEventListener('touchmove', (e) => {
+            if (e.touches && e.touches.length > 0) {
+                touchX = e.touches[0].clientX;
+                touchY = e.touches[0].clientY;
+                touchActive = true;
+                hasUserMoved = true;
+                wakeLizard();
+            }
+        }, { passive: true });
+
+        window.addEventListener('touchend', () => {
+            setTimeout(() => { touchActive = false; }, 1800);
+        }, { passive: true });
+
+        // Wake lizard on scroll so it swims across whichever section user views
+        window.addEventListener('scroll', () => {
+            wakeLizard();
         }, { passive: true });
 
         document.addEventListener('visibilitychange', () => {
@@ -2292,7 +2317,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Buttery smooth animation loop (throttled when tab is hidden or idle to save 100% CPU on laptops)
+        // Buttery smooth animation loop (60-120 FPS continuous kinematics)
         let time = 0;
         function animateLizard() {
             if (document.hidden) {
@@ -2300,32 +2325,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Conserve 100% canvas GPU bandwidth while user is actively scrolling page on laptops
-            if (document.body.classList.contains('is-scrolling')) {
-                lizardRafId = requestAnimationFrame(animateLizard);
-                return;
-            }
-
             const now = performance.now();
             const idleTime = now - lastInteractionTime;
 
-            // When idle for > 3.5s and critter is close to target, rest gracefully
-            if (hasUserMoved && idleTime > 3500) {
+            // Desktop only: after 6s idle near mouse, rest gracefully
+            if (!isMobileDevice && hasUserMoved && idleTime > 6000) {
                 const distToMouse = Math.hypot(critter.x - mouseX, critter.y - mouseY);
                 if (distToMouse < 22) {
                     lizardRafId = null;
-                    return; // 0% CPU at rest!
+                    return; // 0% CPU at rest on desktop!
                 }
             }
 
-            time += 0.038;
+            time += 0.032;
 
             let targetX = mouseX;
             let targetY = mouseY;
 
-            if (!hasUserMoved) {
-                targetX = width / 2 + Math.cos(time * 0.45) * (width * 0.22);
-                targetY = height / 2 + Math.sin(time * 0.9) * (height * 0.18);
+            if (isMobileDevice) {
+                // Mobile UI: Autonomously and organically roams randomly across the screen ("randomly kahin na kahin ghumta rahe")
+                if (touchActive) {
+                    targetX = touchX;
+                    targetY = touchY;
+                } else {
+                    const cx = width * 0.5;
+                    const cy = height * 0.5;
+                    const rx = width * 0.40;
+                    const ry = height * 0.38;
+                    // Multi-harmonic Lissajous organic roaming across the screen
+                    targetX = cx + Math.cos(time * 0.38 + 1.2) * (rx * 0.85) + Math.sin(time * 0.77) * (rx * 0.15);
+                    targetY = cy + Math.sin(time * 0.29) * (ry * 0.85) + Math.cos(time * 0.65) * (ry * 0.15);
+                }
+            } else if (!hasUserMoved) {
+                targetX = width / 2 + Math.cos(time * 0.45) * (width * 0.28);
+                targetY = height / 2 + Math.sin(time * 0.9) * (height * 0.24);
             } else {
                 const distToMouse = Math.hypot(critter.x - mouseX, critter.y - mouseY);
                 const wanderAmp = Math.min(18, Math.max(5, distToMouse * 0.06));

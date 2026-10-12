@@ -263,15 +263,15 @@ ul { list-style: none; }
 }
 
 /* ========== PROCEDURAL SKELETON LIZARD CANVAS ========== */
-/* ========== PROCEDURAL SKELETON LIZARD CANVAS (BACKGROUND LAYER) ========== */
+/* ========== PROCEDURAL SKELETON LIZARD CANVAS (GLOBAL VIEWPORT OVERLAY) ========== */
 .skeletal-lizard-canvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    pointer-events: none;
-    z-index: 2;
+    pointer-events: none !important;
+    z-index: 18 !important; /* Floats gracefully above section backgrounds across entire site */
     opacity: 0.40;
     will-change: transform;
 }
@@ -4162,12 +4162,25 @@ body { animation: fadeIn 0.5s ease; }
     .cursor-dot,
     .cursor-ring,
     #cursor-dot,
-    #cursor-ring,
-    .skeletal-lizard-canvas,
-    #skeletal-lizard-canvas {
+    #cursor-ring {
         display: none !important;
         pointer-events: none !important;
         visibility: hidden !important;
+    }
+
+    /* ========== PROCEDURAL SKELETON LIZARD CANVAS ON MOBILE ========== */
+    .skeletal-lizard-canvas,
+    #skeletal-lizard-canvas {
+        display: block !important;
+        visibility: visible !important;
+        pointer-events: none !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 18 !important;
+        opacity: 0.36 !important;
     }
 
     /* ========== MOBILE BOTTOM NAVIGATION DOCK (Home, About, Social, Skills, Certs, Exp, Contact, Admin) ========== */
