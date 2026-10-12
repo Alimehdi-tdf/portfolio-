@@ -443,6 +443,11 @@ ul { list-style: none; }
     box-shadow: none !important;
 }
 
+/* Pause wandering keyframes during active scrolling to preserve 60-120fps on laptop */
+body.is-scrolling .float-nav__btn {
+    animation-play-state: paused !important;
+}
+
 /* Keyframes for random wandering within bounded right-side zone */
 @keyframes navWander1 {
     0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
@@ -910,8 +915,9 @@ ul { list-style: none; }
     display: flex;
     align-items: center;
     padding: calc(var(--nav-height) + 2rem) var(--space-lg) calc(var(--space-3xl) + 2.5rem);
-    overflow: hidden;
-    z-index: 1;
+    overflow-x: clip;
+    overflow-y: visible;
+    z-index: 3;
     /* Studio lighting: Rich warm brown glow centered on user portrait blending into dark slate grey */
     background: radial-gradient(circle at 74% 42%, #3E291C 0%, #241A13 45%, #121316 100%);
 }
@@ -1039,7 +1045,7 @@ ul { list-style: none; }
 /* Hero Portrait — Right */
 .hero__portrait {
     position: relative;
-    z-index: 5;
+    z-index: 25;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -3197,26 +3203,38 @@ ul { list-style: none; }
 /* ========== SCROLL REVEAL ANIMATIONS ========== */
 .reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+    transform: translateY(35px);
+    transition: opacity 0.75s var(--ease-out-expo), transform 0.75s var(--ease-out-expo);
+    will-change: opacity, transform;
 }
 
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
+.reveal.active,
+.reveal.is-visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
 }
 
 .reveal--left {
-    transform: translateX(-50px);
+    transform: translateX(-40px);
+    will-change: opacity, transform;
 }
 
-.reveal--left.active { transform: translateX(0); }
+.reveal--left.active,
+.reveal--left.is-visible {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
 
 .reveal--right {
-    transform: translateX(50px);
+    transform: translateX(40px);
+    will-change: opacity, transform;
 }
 
-.reveal--right.active { transform: translateX(0); }
+.reveal--right.active,
+.reveal--right.is-visible {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
 
 .reveal--delay-1 { transition-delay: 0.1s; }
 .reveal--delay-2 { transition-delay: 0.2s; }
@@ -4138,22 +4156,110 @@ body { animation: fadeIn 0.5s ease; }
 }
 
 @media (max-width: 768px) {
-    /* STRICT MOBILE OVERLAY REMOVAL FOR SILKY SMOOTH TOUCH EXPERIENCE */
+    /* DESKTOP-ONLY OVERLAYS HIDDEN ON MOBILE */
     .custom-scroll-track,
     #custom-scroll-track,
-    .floating-nav,
-    #floating-nav,
     .cursor-dot,
     .cursor-ring,
     #cursor-dot,
     #cursor-ring,
     .skeletal-lizard-canvas,
-    #skeletal-lizard-canvas,
-    .site-bg-portrait,
-    #site-bg-portrait {
+    #skeletal-lizard-canvas {
         display: none !important;
         pointer-events: none !important;
         visibility: hidden !important;
+    }
+
+    /* ========== MOBILE BOTTOM NAVIGATION DOCK (Home, About, Social, Skills, Certs, Exp, Contact, Admin) ========== */
+    .floating-nav,
+    #floating-nav {
+        display: block !important;
+        visibility: visible !important;
+        pointer-events: auto !important;
+        position: fixed !important;
+        bottom: 12px !important;
+        left: 50% !important;
+        right: auto !important;
+        top: auto !important;
+        transform: translateX(-50%) !important;
+        width: calc(100% - 20px) !important;
+        max-width: 440px !important;
+        z-index: 10005 !important;
+    }
+
+    .floating-nav__dock {
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: space-around !important;
+        padding: 6px 6px !important;
+        background: rgba(18, 19, 22, 0.95) !important;
+        backdrop-filter: blur(24px) !important;
+        -webkit-backdrop-filter: blur(24px) !important;
+        border: 1px solid rgba(197, 168, 128, 0.35) !important;
+        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(197, 168, 128, 0.15) !important;
+        border-radius: 0 !important;
+        gap: 2px !important;
+    }
+
+    .float-nav__btn {
+        animation: none !important;
+        transform: none !important;
+        width: 38px !important;
+        height: 38px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 0 !important;
+        color: rgba(209, 213, 219, 0.75) !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        transition: color 0.18s ease, background 0.18s ease !important;
+    }
+
+    .float-nav__btn svg {
+        width: 17px !important;
+        height: 17px !important;
+        transform: none !important;
+        filter: none !important;
+    }
+
+    .float-nav__btn:hover,
+    .float-nav__btn:focus,
+    .float-nav__btn:active {
+        color: var(--clr-accent-light) !important;
+        background: rgba(197, 168, 128, 0.15) !important;
+    }
+
+    .float-nav__btn.active {
+        color: var(--clr-accent-light) !important;
+        background: rgba(197, 168, 128, 0.22) !important;
+        box-shadow: inset 0 -2px 0 var(--clr-accent) !important;
+    }
+
+    .float-nav__btn.active svg {
+        color: var(--clr-accent-light) !important;
+        filter: drop-shadow(0 0 8px rgba(197, 168, 128, 0.7)) !important;
+    }
+
+    .float-nav__btn .float-nav__tooltip {
+        display: none !important;
+    }
+
+    /* Soft Mobile Watermark silhouette across page background */
+    .site-bg-portrait,
+    #site-bg-portrait {
+        display: block !important;
+        width: 100vw !important;
+        max-width: 100vw !important;
+        height: 100vh !important;
+        pointer-events: none !important;
+    }
+
+    .site-bg-portrait.is-active-bg {
+        opacity: 0.10 !important;
+        visibility: visible !important;
     }
 
     /* Prevent any horizontal dragging or wobbling */
@@ -4488,7 +4594,7 @@ body { animation: fadeIn 0.5s ease; }
 
     /* Footer on Mobile */
     .footer {
-        padding: 2.25rem 1.15rem 1.75rem;
+        padding: 2.25rem 1.15rem 5.75rem;
     }
 
     .footer__container {

@@ -246,22 +246,42 @@ document.addEventListener('DOMContentLoaded', () => {
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
+                    entry.target.classList.add('active', 'is-visible');
                     observer.unobserve(entry.target);
                 }
             });
         }, {
             root: null,
-            threshold: 0.1,
-            rootMargin: '0px 0px -60px 0px'
+            threshold: 0.05,
+            rootMargin: '0px 0px 50px 0px'
         });
 
         revealElements.forEach(el => revealObserver.observe(el));
     } else {
         // Fallback
-        revealElements.forEach(el => el.classList.add('active'));
+        revealElements.forEach(el => el.classList.add('active', 'is-visible'));
     }
 
+    // Immediately reveal hero elements so home section is never hidden or blank
+    document.querySelectorAll('#hero .reveal').forEach(el => {
+        el.classList.add('active', 'is-visible');
+    });
+
+    /* ==========================================================================
+       ACTIVE SCROLL GPU ACCELERATOR
+       - Adds .is-scrolling class to body during active scrolling
+       - Pauses secondary keyframes and offloads GPU during scroll on laptops
+       ========================================================================== */
+    let isScrollingTimer = null;
+    window.addEventListener('scroll', () => {
+        if (!document.body.classList.contains('is-scrolling')) {
+            document.body.classList.add('is-scrolling');
+        }
+        if (isScrollingTimer) clearTimeout(isScrollingTimer);
+        isScrollingTimer = setTimeout(() => {
+            document.body.classList.remove('is-scrolling');
+        }, 120);
+    }, { passive: true });
 
     /* ==========================================================================
        5. STICKY NAV SCROLL DETECTION
@@ -308,27 +328,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ScrollSpy — Highlights active icon as user scrolls (rAF throttled)
+    // ScrollSpy — Highlights active icon as user scrolls (zero layout reflow)
+    let sectionMetrics = [];
+    function cacheSectionMetrics() {
+        sectionMetrics = Array.from(sections).map(sec => ({
+            id: sec.getAttribute('id'),
+            top: sec.offsetTop,
+            height: sec.offsetHeight
+        }));
+    }
+    cacheSectionMetrics();
+    window.addEventListener('resize', cacheSectionMetrics, { passive: true });
+
     let scrollSpyScheduled = false;
     window.addEventListener('scroll', () => {
         if (!scrollSpyScheduled) {
             scrollSpyScheduled = true;
             requestAnimationFrame(() => {
                 scrollSpyScheduled = false;
+                if (sectionMetrics.length === 0) cacheSectionMetrics();
                 const scrollPos = window.pageYOffset + 240;
-                sections.forEach(section => {
-                    const top = section.offsetTop;
-                    const height = section.offsetHeight;
-                    const id = section.getAttribute('id');
-                    if (scrollPos >= top && scrollPos < top + height) {
+                for (let i = 0; i < sectionMetrics.length; i++) {
+                    const sm = sectionMetrics[i];
+                    if (scrollPos >= sm.top && scrollPos < sm.top + sm.height) {
                         floatNavBtns.forEach(btn => {
-                            btn.classList.remove('active');
-                            if (btn.getAttribute('data-section') === id) {
-                                btn.classList.add('active');
+                            if (btn.getAttribute('data-section') === sm.id) {
+                                if (!btn.classList.contains('active')) btn.classList.add('active');
+                            } else {
+                                btn.classList.remove('active');
                             }
                         });
+                        break;
                     }
-                });
+                }
             });
         }
     }, { passive: true });
@@ -1583,17 +1615,18 @@ document.addEventListener('DOMContentLoaded', () => {
        15. LIGHTWEIGHT SECTION REVEAL OBSERVER
        - Smooth CSS-accelerated reveal without layout thrashing
        ========================================================================== */
-    const revealSections = document.querySelectorAll('.reveal, .section__header');
+    const revealSections = document.querySelectorAll('.section__header');
     if ('IntersectionObserver' in window) {
-        const revealObserver = new IntersectionObserver((entries) => {
+        const headerObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
+                    entry.target.classList.add('active', 'is-visible');
+                    observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.15 });
+        }, { threshold: 0.1, rootMargin: '0px 0px 50px 0px' });
 
-        revealSections.forEach(el => revealObserver.observe(el));
+        revealSections.forEach(el => headerObserver.observe(el));
     }
 
 
@@ -1613,13 +1646,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (heroPortrait && aboutSection && aboutImgWrapper) {
         let portraitRaf = null;
+        let cachedAboutTop = 0;
+        let cachedAboutHeight = 0;
+
+        function updateAboutMetrics() {
+            if (aboutSection) {
+                cachedAboutTop = aboutSection.offsetTop;
+                cachedAboutHeight = aboutSection.offsetHeight;
+            }
+        }
+        updateAboutMetrics();
+        window.addEventListener('resize', updateAboutMetrics, { passive: true });
 
         function updatePortraitJourney() {
             const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-            const aboutTop = aboutSection.offsetTop;
-            const aboutHeight = aboutSection.offsetHeight;
+            if (cachedAboutTop === 0) updateAboutMetrics();
+            const aboutTop = cachedAboutTop || 700;
+            const aboutHeight = cachedAboutHeight || 800;
 
-            // Travel Range between Header and About (Symmetric & fully reversible)
+            const isMobile = window.innerWidth < 992;
+            if (isMobile) {
+                // Mobile layout: Keep hero portrait and about image at natural full visibility
+                heroPortrait.style.transform = 'none';
+                heroPortrait.style.opacity = '1';
+                aboutImgWrapper.style.transform = 'none';
+                aboutImgWrapper.style.opacity = '1';
+                aboutImgWrapper.style.pointerEvents = 'auto';
+
+                // Soft mobile watermark below About
+                const mobileExit = aboutTop + (aboutHeight * 0.40);
+                if (bgPortrait) {
+                    if (scrollY > mobileExit) {
+                        bgPortrait.classList.add('is-active-bg');
+                        bgPortrait.style.opacity = '0.10';
+                        bgPortrait.style.visibility = 'visible';
+                    } else {
+                        bgPortrait.classList.remove('is-active-bg');
+                        bgPortrait.style.opacity = '0';
+                        bgPortrait.style.visibility = 'hidden';
+                    }
+                }
+                return;
+            }
+
+            // Desktop layout: Bidirectional smooth glide from Hero to About
             const travelMax = Math.max(aboutTop * 0.85, 400);
 
             if (scrollY < travelMax) {
@@ -1627,7 +1697,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const p = Math.max(0, Math.min(1, scrollY / travelMax));
 
                 // 1. Hero picture translates smoothly down or up with scroll
-                // Downward scroll moves it down; Upward scroll moves it right back up!
                 const travelY = scrollY * 0.72;
                 heroPortrait.style.transform = `translateY(${travelY.toFixed(1)}px)`;
 
@@ -1678,8 +1747,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 } else {
                     // PAST ABOUT SECTION:
-                    // "about section se jab neeche jaye to background me meri picture dikhni chahiye halki halki,
-                    // poori website me meri background me picture dikhni chahiye"
                     const pastDistance = scrollY - exitPoint;
                     const dissolve = Math.min(1, pastDistance / 220);
 
@@ -1691,7 +1758,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     // BACKGROUND WATERMARK ACTIVATES ACROSS THE ENTIRE WEBSITE!
                     if (bgPortrait) {
                         bgPortrait.classList.add('is-active-bg');
-                        // Soft, elegant watermark opacity: 0.16 (clearly visible silhouette without obstructing text)
                         bgPortrait.style.opacity = '0.16';
                         bgPortrait.style.visibility = 'visible';
                     }
@@ -1715,7 +1781,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         window.addEventListener('scroll', onScrollPortraitJourney, { passive: true });
-        window.addEventListener('resize', updatePortraitJourney);
+        window.addEventListener('resize', updatePortraitJourney, { passive: true });
         // Initial call
         updatePortraitJourney();
     }
@@ -2211,7 +2277,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.addEventListener('mousedown', () => { isDragging = true; wakeLizard(); });
         window.addEventListener('mouseup', () => { isDragging = false; wakeLizard(); });
-        window.addEventListener('scroll', () => { wakeLizard(); }, { passive: true });
+        window.addEventListener('scroll', () => {
+            if (!document.body.classList.contains('is-scrolling')) {
+                wakeLizard();
+            }
+        }, { passive: true });
 
         document.addEventListener('visibilitychange', () => {
             if (!document.hidden) {
@@ -2227,6 +2297,12 @@ document.addEventListener('DOMContentLoaded', () => {
         function animateLizard() {
             if (document.hidden) {
                 lizardRafId = null;
+                return;
+            }
+
+            // Conserve 100% canvas GPU bandwidth while user is actively scrolling page on laptops
+            if (document.body.classList.contains('is-scrolling')) {
+                lizardRafId = requestAnimationFrame(animateLizard);
                 return;
             }
 
