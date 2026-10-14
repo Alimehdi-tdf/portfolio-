@@ -276,52 +276,7 @@ ul { list-style: none; }
     will-change: transform;
 }
 
-/* ========== NAVIGATION ========== */
-.main-nav {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: var(--nav-height);
-    z-index: 1000;
-    transition: background var(--transition-base), box-shadow var(--transition-base), backdrop-filter var(--transition-base);
-}
 
-.main-nav.scrolled {
-    background: rgba(10, 10, 10, 0.85);
-    backdrop-filter: blur(20px) saturate(1.4);
-    -webkit-backdrop-filter: blur(20px) saturate(1.4);
-    box-shadow: 0 1px 0 var(--clr-border), 0 8px 32px rgba(0, 0, 0, 0.3);
-}
-
-.nav__container {
-    max-width: 1280px;
-    height: 100%;
-    margin: 0 auto;
-    padding: 0 var(--space-lg);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.nav__logo {
-    display: flex;
-    align-items: center;
-    z-index: 1001;
-}
-
-.nav__logo-img {
-    height: 42px;
-    width: auto;
-    filter: drop-shadow(0 0 8px var(--clr-accent-glow));
-    transition: filter var(--transition-fast), transform var(--transition-fast);
-}
-
-.nav__logo:hover .nav__logo-img {
-    filter: drop-shadow(0 0 16px var(--clr-accent-glow));
-    transform: scale(1.05);
-}
 
 /* ========== FLOATING RIGHT-SIDE ICON NAVIGATION DOCK (Playful Floating Random Drift Mode) ========== */
 .floating-nav {
@@ -383,7 +338,6 @@ ul { list-style: none; }
 .float-nav__btn:nth-child(5) { animation: navWander5 2.7s ease-in-out infinite 0.3s; }
 .float-nav__btn:nth-child(6) { animation: navWander6 3.1s ease-in-out infinite 0.5s; }
 .float-nav__btn:nth-child(7) { animation: navWander7 2.6s ease-in-out infinite 0.2s; }
-.float-nav__btn:nth-child(8) { animation: navWander8 3.3s ease-in-out infinite 0.4s; }
 
 /* When mouse drags / hovers in right area: slowly and smoothly line up ("slowly slowly fix ho") */
 .floating-nav:hover .float-nav__btn,
@@ -408,8 +362,6 @@ ul { list-style: none; }
 .floating-nav.is-aligned .float-nav__btn:nth-child(6) { transition-delay: 0.40s !important; }
 .floating-nav:hover .float-nav__btn:nth-child(7),
 .floating-nav.is-aligned .float-nav__btn:nth-child(7) { transition-delay: 0.48s !important; }
-.floating-nav:hover .float-nav__btn:nth-child(8),
-.floating-nav.is-aligned .float-nav__btn:nth-child(8) { transition-delay: 0.56s !important; }
 
 /* Hover & Active States: Zero background box, JUST the glowing logo */
 .float-nav__btn:hover,
@@ -438,10 +390,7 @@ ul { list-style: none; }
     color: var(--clr-accent) !important;
 }
 
-.float-nav__btn--admin {
-    background: transparent !important;
-    box-shadow: none !important;
-}
+
 
 /* Pause wandering keyframes during active scrolling to preserve 60-120fps on laptop */
 body.is-scrolling .float-nav__btn {
@@ -512,14 +461,7 @@ body.is-scrolling .float-nav__btn {
     100% { transform: translate3d(0, 0, 0) rotate(0deg); }
 }
 
-@keyframes navWander8 {
-    0%   { transform: translate3d(0, 0, 0) rotate(0deg); }
-    26%  { transform: translate3d(12px, 16px, 0) rotate(-3deg); }
-    50%  { transform: translate3d(-15px, -14px, 0) rotate(4deg); }
-    74%  { transform: translate3d(16px, -10px, 0) rotate(-4deg); }
-    90%  { transform: translate3d(-10px, 14px, 0) rotate(3deg); }
-    100% { transform: translate3d(0, 0, 0) rotate(0deg); }
-}
+
 
 /* Tooltip on Hover (Strict 2D Badge) */
 .float-nav__tooltip {
@@ -559,14 +501,7 @@ body.is-scrolling .float-nav__btn {
     opacity: 1;
 }
 
-.float-nav__btn--admin,
-.float-nav__btn--admin:hover,
-.float-nav__btn--admin.active {
-    background: transparent !important;
-    background-color: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-}
+
 
 /* Explicit global guard: floating nav buttons MUST NEVER have a background box */
 .float-nav__btn,
@@ -3322,33 +3257,7 @@ body.is-scrolling .float-nav__btn {
 @media (max-width: 768px) {
     :root { --nav-height: 64px; }
 
-    .nav__links {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 280px;
-        height: 100vh;
-        flex-direction: column;
-        justify-content: center;
-        gap: var(--space-xs);
-        background: rgba(10, 10, 10, 0.97);
-        backdrop-filter: blur(30px);
-        -webkit-backdrop-filter: blur(30px);
-        transition: right 0.5s var(--ease-out-expo);
-        padding: var(--space-lg);
-        border-left: 1px solid var(--clr-border);
-    }
 
-    .nav__links.active { right: 0; }
-
-    .nav__hamburger { display: flex; }
-
-    .nav__link {
-        font-size: 1rem;
-        padding: 12px 20px;
-        width: 100%;
-        text-align: left;
-    }
 
     .section { padding: 2rem var(--space-md); }
 
@@ -4246,7 +4155,7 @@ body { animation: fadeIn 0.5s ease; }
         opacity: 0.36 !important;
     }
 
-    /* ========== MOBILE BOTTOM NAVIGATION DOCK (Home, About, Social, Skills, Certs, Exp, Contact, Admin) ========== */
+    /* ========== MOBILE BOTTOM NAVIGATION DOCK (Home, About, Social, Skills, Certs, Exp, Contact) ========== */
     .floating-nav,
     #floating-nav {
         display: block !important;

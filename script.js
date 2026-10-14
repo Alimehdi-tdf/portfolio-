@@ -6,9 +6,7 @@
  * 2. Custom Interactive Cursor (Dot + Ring)
  * 3. Hero Mouse-Glow Tracking
  * 4. Scroll Reveal Animations (Intersection Observer)
- * 5. Sticky Nav with Scroll Detection
- * 6. Smooth Scroll with Active Nav Tracking
- * 7. Mobile Hamburger Menu
+ * 5. Floating Right-Side Navigation (Smooth Scroll + ScrollSpy)
  * 8. Magnetic Button Hover Effect
  * 9. Skill Bar Animation on Scroll
  * 10. Counter Animation (About Stats)
@@ -284,28 +282,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
 
     /* ==========================================================================
-       5. STICKY NAV SCROLL DETECTION
-       ========================================================================== */
-    const mainNav = document.getElementById('main-nav');
-    let lastScrollY = 0;
-
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.pageYOffset;
-
-        if (mainNav) {
-            if (currentScrollY > 50) {
-                mainNav.classList.add('scrolled');
-            } else {
-                mainNav.classList.remove('scrolled');
-            }
-        }
-
-        lastScrollY = currentScrollY;
-    }, { passive: true });
-
-
-    /* ==========================================================================
-       6. FLOATING RIGHT-SIDE ICON NAVIGATION (Smooth Scroll + ScrollSpy)
+       5. FLOATING RIGHT-SIDE ICON NAVIGATION (Smooth Scroll + ScrollSpy)
        ========================================================================== */
     const floatNavBtns = document.querySelectorAll('.float-nav__btn');
     const sections = document.querySelectorAll('section[id], header[id]');
@@ -386,29 +363,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
 
-
-    /* ==========================================================================
-       7. MOBILE HAMBURGER MENU
-       ========================================================================== */
-    const hamburgerBtn = document.querySelector('.nav__hamburger') || document.getElementById('hamburger-btn');
-    const navLinksContainer = document.querySelector('.nav__links') || document.querySelector('.nav-links');
-
-    if (hamburgerBtn && navLinksContainer) {
-        hamburgerBtn.addEventListener('click', () => {
-            const isOpen = navLinksContainer.classList.toggle('active');
-            hamburgerBtn.classList.toggle('active');
-            hamburgerBtn.setAttribute('aria-expanded', isOpen);
-        });
-
-        // Close on outside click
-        document.addEventListener('click', (e) => {
-            if (!navLinksContainer.contains(e.target) && !hamburgerBtn.contains(e.target)) {
-                navLinksContainer.classList.remove('active');
-                hamburgerBtn.classList.remove('active');
-                hamburgerBtn.setAttribute('aria-expanded', 'false');
-            }
-        });
-    }
 
 
     /* ==========================================================================
