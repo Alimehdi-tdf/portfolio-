@@ -4741,3 +4741,124 @@ body { animation: fadeIn 0.5s ease; }
         gap: 8px;
     }
 }
+
+
+/* ==========================================================================
+   21. LUXURY SUCCESS TOAST NOTIFICATION SYSTEM
+   - Sharp square geometry (border-radius: 0)
+   - Dark bronze & gold accent styling with glassmorphism
+   - Smooth slide-down & progress bar dismiss animation
+   ========================================================================== */
+.toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 420px;
+    width: calc(100% - 32px);
+    pointer-events: none;
+}
+
+.toast {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 18px;
+    background: rgba(20, 13, 8, 0.94);
+    border: 1px solid rgba(197, 168, 128, 0.45);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(197, 168, 128, 0.18);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    color: #FFFFFF;
+    font-family: var(--font-body, -apple-system, BlinkMacSystemFont, sans-serif);
+    pointer-events: auto;
+    overflow: hidden;
+    transform: translateY(-20px) scale(0.96);
+    opacity: 0;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast.is-visible {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.toast.is-hiding {
+    transform: translateY(-16px) scale(0.94);
+    opacity: 0;
+}
+
+.toast__icon-wrap {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(197, 168, 128, 0.15);
+    border: 1px solid var(--clr-accent, #C5A880);
+    color: var(--clr-accent-light, #DFB78C);
+}
+
+.toast__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.toast__title {
+    font-family: var(--font-heading, inherit);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.02em;
+    margin-bottom: 3px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.toast__message {
+    font-size: 0.84rem;
+    color: var(--clr-text-dim, #A39E99);
+    line-height: 1.45;
+}
+
+.toast__close {
+    flex-shrink: 0;
+    background: transparent;
+    border: none;
+    color: var(--clr-text-dim, #A39E99);
+    cursor: pointer;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.toast__close:hover {
+    color: #FFFFFF;
+}
+
+.toast__progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--clr-accent, #C5A880), var(--clr-accent-light, #DFB78C));
+    width: 100%;
+    transform-origin: left;
+}
+
+@media (max-width: 480px) {
+    .toast-container {
+        top: 16px;
+        left: 16px;
+        right: 16px;
+        width: auto;
+    }
+}

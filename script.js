@@ -965,6 +965,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 alertDiv.style.border = '1px solid rgba(197, 168, 128, 0.4)';
                 alertDiv.innerHTML = `✓ Thank you, ${formData.name || 'there'}! Your message has been sent successfully. I will get back to you shortly.`;
                 contactForm.reset();
+                showSuccessToast('Message Sent Successfully!', `Thank you, ${formData.name || 'friend'}! Syed Ali Mehdi will get back to you shortly.`);
             } catch (error) {
                 alertDiv.style.background = 'rgba(197, 168, 128, 0.15)';
                 alertDiv.style.color = '#D8C09D';
@@ -2417,5 +2418,106 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         lizardRafId = requestAnimationFrame(animateLizard);
     })();
+
+
+    /* ==========================================================================
+       LUXURY SUCCESS TOAST NOTIFICATION ENGINE
+       ========================================================================== */
+    function showSuccessToast(title, message, duration = 4500) {
+        let container = document.getElementById('global-toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'global-toast-container';
+            container.className = 'toast-container';
+            document.body.appendChild(container);
+        }
+
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.setAttribute('role', 'alert');
+        toast.setAttribute('aria-live', 'polite');
+
+        toast.innerHTML = `
+            <div class="toast__icon-wrap" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+            </div>
+            <div class="toast__content">
+                <div class="toast__title">${title}</div>
+                <div class="toast__message">${message}</div>
+            </div>
+            <button type="button" class="toast__close" aria-label="Close notification">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="toast__progress"></div>
+        `;
+
+        container.appendChild(toast);
+
+        // Animate appearance
+        requestAnimationFrame(() => {
+            toast.classList.add('is-visible');
+            const progress = toast.querySelector('.toast__progress');
+            if (progress) {
+                progress.style.transition = `transform ${duration}ms linear`;
+                progress.style.transform = 'scaleX(0)';
+            }
+        });
+
+        function dismiss() {
+            if (toast.classList.contains('is-hiding')) return;
+            toast.classList.remove('is-visible');
+            toast.classList.add('is-hiding');
+            setTimeout(() => {
+                if (toast.parentNode) toast.parentNode.removeChild(toast);
+            }, 360);
+        }
+
+        const closeBtn = toast.querySelector('.toast__close');
+        if (closeBtn) closeBtn.addEventListener('click', dismiss);
+
+        const timer = setTimeout(dismiss, duration);
+        toast.addEventListener('mouseenter', () => clearTimeout(timer));
+    }
+    window.showSuccessToast = showSuccessToast;
+
+    // Contact Action Success Listeners
+    const emailBtn = document.getElementById('contact-email-btn');
+    if (emailBtn) {
+        emailBtn.addEventListener('click', () => {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText('alimehdi3417@gmail.com').catch(() => {});
+            }
+            showSuccessToast('Email Copied', 'alimehdi3417@gmail.com copied to clipboard!');
+        });
+    }
+
+    const phoneBtn = document.getElementById('contact-phone-btn');
+    if (phoneBtn) {
+        phoneBtn.addEventListener('click', () => {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText('+923709494308').catch(() => {});
+            }
+            showSuccessToast('Phone Copied', '+92 370 9494308 copied to clipboard!');
+        });
+    }
+
+    const whatsappBtn = document.getElementById('contact-whatsapp-btn');
+    if (whatsappBtn) {
+        whatsappBtn.addEventListener('click', () => {
+            showSuccessToast('Opening WhatsApp', 'Redirecting you to direct chat with Syed Ali Mehdi...');
+        });
+    }
+
+    const certDownloadBtn = document.getElementById('modal-cert-download');
+    if (certDownloadBtn) {
+        certDownloadBtn.addEventListener('click', () => {
+            showSuccessToast('Credential Downloaded', 'Official accredited certificate credential saved.');
+        });
+    }
 
 });
