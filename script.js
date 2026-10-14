@@ -2467,6 +2467,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const floatingWaBtn = document.getElementById('whatsapp-floating-btn');
+    if (floatingWaBtn) {
+        floatingWaBtn.addEventListener('click', () => {
+            showSuccessToast('Opening WhatsApp', 'Redirecting you to direct chat with Syed Ali Mehdi...');
+        });
+    }
+
     const certDownloadBtn = document.getElementById('modal-cert-download');
     if (certDownloadBtn) {
         certDownloadBtn.addEventListener('click', () => {
