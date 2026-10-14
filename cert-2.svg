@@ -46,7 +46,7 @@
   <line x1="240" y1="285" x2="560" y2="285" stroke="url(#accent)" stroke-width="2"/>
 
   <text x="400" y="320" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#9db1b4" text-anchor="middle">FOR DEMONSTRATED EXPERTISE IN CLOUD INFRASTRUCTURE &amp; DEVOPS</text>
-  <text x="400" y="348" font-family="'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#a8bc5a" text-anchor="middle">2nd Certificate — Cloud Architecture &amp; DevOps</text>
+  <text x="400" y="348" font-family="'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#a8bc5a" text-anchor="middle">AWS Certified — Cloud Architecture &amp; DevOps</text>
 
   <g transform="translate(100, 420)">
     <text x="0" y="0" font-family="'Segoe UI', monospace" font-size="10" fill="#698083">CREDENTIAL ID</text>

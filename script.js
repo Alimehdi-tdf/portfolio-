@@ -803,7 +803,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modalCertSub) modalCertSub.textContent = `${issuer} • ${date}`;
         if (modalCertDownload) {
             modalCertDownload.href = imgSrc;
-            modalCertDownload.setAttribute('download', `${tag.toLowerCase().replace(/\s+/g, '-')}.svg`);
+            modalCertDownload.setAttribute('download', `${title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}.svg`);
         }
 
         certModal.classList.add('active');

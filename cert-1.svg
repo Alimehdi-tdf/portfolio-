@@ -56,7 +56,7 @@
 
   <!-- Certificate Details -->
   <text x="400" y="320" font-family="'Segoe UI', Roboto, sans-serif" font-size="12" fill="#9fae8e" text-anchor="middle">FOR SUCCESSFULLY DEMONSTRATING PROFESSIONAL EXCELLENCE IN</text>
-  <text x="400" y="348" font-family="'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#a8bc5a" text-anchor="middle">1st Certificate — Web Development Professional</text>
+  <text x="400" y="348" font-family="'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#a8bc5a" text-anchor="middle">Meta Certified — Web Development Professional</text>
 
   <!-- Footer Elements -->
   <!-- Left: Credential ID -->
