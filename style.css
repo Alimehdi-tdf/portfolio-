@@ -547,9 +547,9 @@ body.is-scrolling .float-nav__btn {
     position: relative;
     z-index: 2;
     padding: 1.15rem 0 1.5rem;
-    background: #E8E2D8;
-    border-top: 1px solid rgba(225, 6, 0, 0.14);
-    border-bottom: 1px solid rgba(225, 6, 0, 0.14);
+    background: #222222;
+    border-top: 1px solid rgba(192, 192, 192, 0.15);
+    border-bottom: 1px solid rgba(225, 6, 0, 0.25);
     overflow: hidden;
 }
 
@@ -627,10 +627,10 @@ body.is-scrolling .float-nav__btn {
     align-items: center;
     gap: 8px;
     padding: 6px 14px;
-    background: #FFFFFF;
-    border: 1px solid rgba(225, 6, 0, 0.15);
+    background: #2A2A2A;
+    border: 1px solid rgba(192, 192, 192, 0.25);
     border-radius: 20px;
-    color: #2D241E;
+    color: #F0F0F0;
     text-decoration: none;
     font-family: var(--font-heading);
     font-size: 0.82rem;
@@ -638,7 +638,7 @@ body.is-scrolling .float-nav__btn {
     white-space: nowrap;
     transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(60, 40, 25, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
 }
 
 .social-pill:hover {
@@ -853,8 +853,8 @@ body.is-scrolling .float-nav__btn {
     overflow-x: clip;
     overflow-y: visible;
     z-index: 3;
-    /* Studio lighting: Rich warm brown glow centered on user portrait blending into dark slate grey */
-    background: radial-gradient(circle at 74% 42%, #3E291C 0%, #241A13 45%, #1A1A1A 100%);
+    /* Charcoal Grey Base with subtle Signal Red atmospheric glow */
+    background: radial-gradient(circle at 74% 42%, rgba(225, 6, 0, 0.16) 0%, #2A2A2A 48%, #1A1A1A 100%);
 }
 
 .hero::after {
@@ -930,7 +930,7 @@ body.is-scrolling .float-nav__btn {
 
 .hero__name-first {
     display: inline;
-    background: linear-gradient(135deg, #FFFFFF 40%, #E8E2D8 100%);
+    background: linear-gradient(135deg, #FFFFFF 40%, #C0C0C0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -938,11 +938,11 @@ body.is-scrolling .float-nav__btn {
 
 .hero__name-last {
     display: inline;
-    background: linear-gradient(135deg, #F2D2A6 0%, #D8A56A 50%, #B88246 100%);
+    background: linear-gradient(135deg, #FFFFFF 0%, #C0C0C0 35%, #E10600 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    filter: drop-shadow(0 0 24px rgba(216, 165, 106, 0.45));
+    filter: drop-shadow(0 0 24px rgba(225, 6, 0, 0.45));
 }
 
 .hero__typewriter-text {
@@ -950,7 +950,7 @@ body.is-scrolling .float-nav__btn {
 }
 
 .hero__typewriter-cursor {
-    color: #F0CE9E;
+    color: #E10600;
     animation: cursor-blink 0.8s step-end infinite;
     font-weight: 300;
     margin-left: 4px;
@@ -1210,13 +1210,13 @@ body.is-scrolling .float-nav__btn {
 .btn--ghost {
     background: rgba(192, 192, 192, 0.10);
     color: #FFFFFF;
-    border: 1.5px solid rgba(216, 178, 134, 0.4);
+    border: 1.5px solid rgba(192, 192, 192, 0.35);
 }
 
 .btn--ghost:hover {
     border-color: var(--clr-accent);
     background: var(--clr-accent);
-    color: #1A120C;
+    color: #FFFFFF;
     transform: none;
 }
 
@@ -1270,8 +1270,8 @@ body.is-scrolling .float-nav__btn {
 .about {
     position: relative;
     z-index: 2;
-    background: radial-gradient(circle at 82% 25%, rgba(225, 6, 0, 0.18) 0%, transparent 60%),
-                radial-gradient(circle at 18% 75%, rgba(100, 68, 40, 0.2) 0%, transparent 60%),
+    background: radial-gradient(circle at 82% 25%, rgba(225, 6, 0, 0.14) 0%, transparent 60%),
+                radial-gradient(circle at 18% 75%, rgba(192, 192, 192, 0.08) 0%, transparent 60%),
                 linear-gradient(180deg, #1A1A1A 0%, #18191E 50%, #141519 100%);
     border-top: 1px solid rgba(192, 192, 192, 0.20);
     border-bottom: 1px solid rgba(225, 6, 0, 0.12);
@@ -1605,10 +1605,10 @@ body.is-scrolling .float-nav__btn {
 .skills {
     position: relative;
     z-index: 2;
-    background: radial-gradient(circle at 75% 40%, rgba(95, 62, 38, 0.4) 0%, transparent 60%),
-                linear-gradient(180deg, #1A120C 0%, #1A1A1A 50%, #1A120C 100%);
-    border-top: 1px solid rgba(216, 178, 134, 0.2);
-    border-bottom: 1px solid rgba(216, 178, 134, 0.16);
+    background: radial-gradient(circle at 75% 40%, rgba(225, 6, 0, 0.12) 0%, transparent 60%),
+                linear-gradient(180deg, #222222 0%, #1A1A1A 50%, #222222 100%);
+    border-top: 1px solid rgba(192, 192, 192, 0.2);
+    border-bottom: 1px solid rgba(192, 192, 192, 0.15);
 }
 
 .skills__slider-wrapper {
@@ -1654,18 +1654,18 @@ body.is-scrolling .float-nav__btn {
 .skills__tab-btn:hover {
     border-color: var(--clr-accent);
     color: #FFFFFF;
-    background: #322116;
+    background: #333333;
 }
 
 .skills__tab-btn.active {
     background: var(--clr-accent);
     border-color: var(--clr-accent);
-    color: #1A120C;
+    color: #FFFFFF;
     font-weight: 700;
-    box-shadow: 0 4px 16px rgba(192, 192, 192, 0.35);
+    box-shadow: 0 4px 16px rgba(225, 6, 0, 0.35);
 }
 .skills__tab-btn.active .skills__tab-icon {
-    color: #1A120C;
+    color: #FFFFFF;
     opacity: 1;
 }
 
@@ -1956,9 +1956,9 @@ body.is-scrolling .float-nav__btn {
     padding: 1.25rem 0 2rem;
     position: relative;
     z-index: 1;
-    background: #17100A;
-    border-top: 1px solid rgba(216, 178, 134, 0.2);
-    border-bottom: 1px solid rgba(216, 178, 134, 0.16);
+    background: #1E1E1E;
+    border-top: 1px solid rgba(192, 192, 192, 0.2);
+    border-bottom: 1px solid rgba(192, 192, 192, 0.15);
 }
 
 .certs-compact__container {
@@ -2038,8 +2038,8 @@ body.is-scrolling .float-nav__btn {
     width: 200px;
     height: 135px;
     flex-shrink: 0;
-    background: #241710;
-    border: 1.5px solid rgba(216, 178, 134, 0.28);
+    background: #2A2A2A;
+    border: 1.5px solid rgba(192, 192, 192, 0.25);
     border-radius: var(--radius-md);
     cursor: pointer;
     overflow: hidden;
@@ -2051,7 +2051,7 @@ body.is-scrolling .float-nav__btn {
 .cert-thumb:hover,
 .cert-thumb:focus-visible {
     border-color: var(--clr-accent);
-    box-shadow: 0 10px 28px rgba(60, 40, 25, 0.14);
+    box-shadow: 0 10px 28px rgba(225, 6, 0, 0.22);
     outline: none;
 }
 
@@ -2898,9 +2898,9 @@ body.is-scrolling .float-nav__btn {
 .contact {
     position: relative;
     z-index: 2;
-    background: radial-gradient(circle at 50% 25%, rgba(95, 62, 38, 0.45) 0%, transparent 65%),
-                linear-gradient(180deg, #1A120C 0%, #261910 60%, #150E08 100%);
-    border-top: 1px solid rgba(216, 178, 134, 0.2);
+    background: radial-gradient(circle at 50% 25%, rgba(225, 6, 0, 0.12) 0%, transparent 65%),
+                linear-gradient(180deg, #1E1E1E 0%, #2A2A2A 60%, #1A1A1A 100%);
+    border-top: 1px solid rgba(192, 192, 192, 0.2);
 }
 
 .contact__grid {
@@ -3090,7 +3090,7 @@ body.is-scrolling .float-nav__btn {
     position: relative;
     z-index: 1;
     background: #1A1A1A;
-    border-top: 1px solid rgba(216, 178, 134, 0.2);
+    border-top: 1px solid rgba(192, 192, 192, 0.2);
     padding: var(--space-md) var(--space-lg);
 }
 
@@ -3424,10 +3424,10 @@ body { animation: fadeIn 0.5s ease; }
     width: 114px;
     height: 114px;
     border-radius: 50% !important;
-    background: radial-gradient(circle at 35% 35%, #2D1D12 0%, #150D08 70%, #0A0704 100%);
-    border: none !important;
+    background: radial-gradient(circle at 35% 35%, #2A2A2A 0%, #1E1E1E 70%, #141414 100%);
+    border: 1px solid rgba(192, 192, 192, 0.3) !important;
     outline: none !important;
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.9), 0 0 35px rgba(212, 163, 89, 0.22), inset 0 2px 4px rgba(255, 255, 255, 0.12);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.9), 0 0 35px rgba(225, 6, 0, 0.35), inset 0 2px 4px rgba(255, 255, 255, 0.12);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -4015,7 +4015,7 @@ body { animation: fadeIn 0.5s ease; }
     .hero {
         min-height: auto;
         padding: calc(var(--nav-height) + 1.5rem) 1.5rem 3rem;
-        background: radial-gradient(circle at 50% 30%, #352317 0%, #1E1510 50%, #1A1A1A 100%);
+        background: radial-gradient(circle at 50% 30%, rgba(225, 6, 0, 0.15) 0%, #2A2A2A 50%, #1A1A1A 100%);
     }
 
     .hero__container {
