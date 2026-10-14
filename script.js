@@ -914,16 +914,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('portfolio_inquiries', JSON.stringify(localInquiries));
                 } catch (e) {}
 
-                alertDiv.style.background = 'rgba(197, 168, 128, 0.18)';
-                alertDiv.style.color = '#DFB78C';
-                alertDiv.style.border = '1px solid rgba(197, 168, 128, 0.4)';
+                alertDiv.style.background = 'rgba(225, 6, 0, 0.12)';
+                alertDiv.style.color = '#C0C0C0';
+                alertDiv.style.border = '1px solid rgba(192, 192, 192, 0.35)';
                 alertDiv.innerHTML = `✓ Thank you, ${formData.name || 'there'}! Your message has been sent successfully. I will get back to you shortly.`;
                 contactForm.reset();
                 showSuccessToast('Message Sent Successfully!', `Thank you, ${formData.name || 'friend'}! Syed Ali Mehdi will get back to you shortly.`);
             } catch (error) {
-                alertDiv.style.background = 'rgba(197, 168, 128, 0.15)';
-                alertDiv.style.color = '#D8C09D';
-                alertDiv.innerHTML = '✓ Thank you! You can reach Syed Ali Mehdi directly at <a href="mailto:alimehdi3417@gmail.com" style="color: #DFB78C; text-decoration: underline;">alimehdi3417@gmail.com</a>.';
+                alertDiv.style.background = 'rgba(192, 192, 192, 0.12)';
+                alertDiv.style.color = '#C0C0C0';
+                alertDiv.innerHTML = '✓ Thank you! You can reach Syed Ali Mehdi directly at <a href="mailto:alimehdi3417@gmail.com" style="color: #C0C0C0; text-decoration: underline;">alimehdi3417@gmail.com</a>.';
                 contactForm.reset();
             } finally {
                 contactForm.prepend(alertDiv);
@@ -1257,7 +1257,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (this.size > 2.6) {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size * 0.45, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(180, 120, 65, ${(this.alpha * 0.35).toFixed(3)})`;
+                    ctx.fillStyle = `rgba(225, 6, 0, ${(this.alpha * 0.35).toFixed(3)})`;
                     ctx.shadowBlur = 2;
                     ctx.fill();
                 }
