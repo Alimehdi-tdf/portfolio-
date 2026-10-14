@@ -931,42 +931,40 @@ document.addEventListener('DOMContentLoaded', () => {
             alertDiv.style.fontWeight = '500';
 
             try {
-                const endpoints = ['http://127.0.0.1:8000/api/contact', '/api/contact'];
+                // Submit to Formspree endpoint or local python endpoint
+                const endpoints = ['https://formspree.io/f/mdeowaeg', '/api/contact', 'http://127.0.0.1:8000/api/contact'];
                 let res = null;
                 for (const url of endpoints) {
                     try {
                         res = await fetch(url, {
                             method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json'
+                            },
                             body: JSON.stringify(formData)
                         });
                         if (res.ok) break;
                     } catch (err) {
-                        // backend offline or static file:// mode
+                        // try next endpoint or fallback to local storage
                     }
                 }
 
-                if (res && res.ok) {
-                    alertDiv.style.background = 'rgba(197, 168, 128, 0.15)';
-                    alertDiv.style.color = '#D8C09D';
-                    alertDiv.innerHTML = '✓ Message sent successfully! Thank you.';
-                    contactForm.reset();
-                } else {
-                    // Graceful static mode & offline fallback: store in localStorage
-                    try {
-                        const localInquiries = JSON.parse(localStorage.getItem('portfolio_inquiries') || '[]');
-                        localInquiries.unshift({
-                            ...formData,
-                            date: new Date().toLocaleString()
-                        });
-                        localStorage.setItem('portfolio_inquiries', JSON.stringify(localInquiries));
-                    } catch (e) {}
+                // Also save to localStorage for admin panel inbox
+                try {
+                    const localInquiries = JSON.parse(localStorage.getItem('portfolio_inquiries') || '[]');
+                    localInquiries.unshift({
+                        ...formData,
+                        date: new Date().toLocaleString()
+                    });
+                    localStorage.setItem('portfolio_inquiries', JSON.stringify(localInquiries));
+                } catch (e) {}
 
-                    alertDiv.style.background = 'rgba(197, 168, 128, 0.15)';
-                    alertDiv.style.color = '#D8C09D';
-                    alertDiv.innerHTML = `✓ Thank you, ${formData.name || 'there'}! Your message has been received. You can also reach Syed Ali Mehdi directly at <a href="mailto:alimehdi3417@gmail.com" style="color: #DFB78C; text-decoration: underline; font-weight: 600;">alimehdi3417@gmail.com</a>.`;
-                    contactForm.reset();
-                }
+                alertDiv.style.background = 'rgba(197, 168, 128, 0.18)';
+                alertDiv.style.color = '#DFB78C';
+                alertDiv.style.border = '1px solid rgba(197, 168, 128, 0.4)';
+                alertDiv.innerHTML = `✓ Thank you, ${formData.name || 'there'}! Your message has been sent successfully. I will get back to you shortly.`;
+                contactForm.reset();
             } catch (error) {
                 alertDiv.style.background = 'rgba(197, 168, 128, 0.15)';
                 alertDiv.style.color = '#D8C09D';
@@ -1070,9 +1068,22 @@ document.addEventListener('DOMContentLoaded', () => {
             orbitRafId = requestAnimationFrame(runOrbitLoop);
         }
 
+        let totalAngularDrag = 0;
+
+        // Prevent accidental link opening while spinning the wheel
+        socialNodes.forEach(node => {
+            node.addEventListener('click', (e) => {
+                if (totalAngularDrag > 8) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            });
+        });
+
         // Pointer down: grab the wheel immediately and illuminate logos
         function onPointerDown(e) {
             isDragging = true;
+            totalAngularDrag = 0;
             socialWrapper.classList.add('is-dragging');
             lastAngle = getAngleFromCenter(e);
             lastMoveTime = performance.now();
@@ -1095,6 +1106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (diff > 180) diff -= 360;
             if (diff < -180) diff += 360;
 
+            totalAngularDrag += Math.abs(diff);
             rotationAngle += diff;
             lastAngle = currentAngle;
 
@@ -1541,12 +1553,21 @@ document.addEventListener('DOMContentLoaded', () => {
         let indicatorStartY = 0;
         let initialScroll = 0;
 
-        indicator.addEventListener('click', (e) => {
+        function triggerIndicatorScroll(e) {
             if (isDraggingIndicator) return;
+            if (e) e.preventDefault();
             const target = document.querySelector(targetSectionId);
             if (target) {
-                const targetY = target.offsetTop - 30;
-                window.scrollTo({ top: targetY, behavior: 'smooth' });
+                const navHeight = 72;
+                const targetY = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                window.scrollTo({ top: Math.max(0, targetY), behavior: 'smooth' });
+            }
+        }
+
+        indicator.addEventListener('click', triggerIndicatorScroll);
+        indicator.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                triggerIndicatorScroll(e);
             }
         });
 
