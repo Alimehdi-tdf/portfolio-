@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="logo.png">
     <title>Syed Ali Mehdi — Curriculum Vitae (CV)</title>
@@ -680,26 +680,38 @@
         /* Mobile Adjustments */
         @media (max-width: 768px) {
             body {
-                padding: 1rem 0.6rem;
+                padding: 0.75rem 0.4rem;
+            }
+
+            .cv-top-bar {
+                padding: 0.75rem 1rem;
+                flex-wrap: wrap;
+                gap: 12px;
+                border-radius: 0;
+            }
+
+            .bar-left {
+                gap: 10px;
             }
 
             .cv-container {
-                padding: 2.2rem 1.6rem;
+                padding: 1.75rem 1.15rem;
+                border-radius: 0;
             }
 
             .header-title-block h1 {
-                font-size: 2rem;
+                font-size: clamp(1.65rem, 6.5vw, 2.2rem);
             }
 
             .header-main-info {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 1.2rem;
+                gap: 1.1rem;
             }
 
             .cv-header {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 1.25rem;
                 align-items: flex-start;
             }
 
@@ -718,6 +730,11 @@
 
             .skills-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .cv-footer-nav {
+                flex-wrap: wrap;
+                gap: 10px;
             }
         }
     
@@ -829,6 +846,23 @@
                 left: 16px;
                 right: 16px;
                 width: auto;
+            }
+
+            .cv-container {
+                padding: 1.35rem 0.95rem;
+            }
+
+            .cv-top-bar {
+                padding: 0.6rem 0.85rem;
+            }
+
+            .btn-print {
+                padding: 0.5rem 0.85rem;
+                font-size: 0.8rem;
+            }
+
+            .back-link span {
+                font-size: 0.82rem;
             }
         }
 
