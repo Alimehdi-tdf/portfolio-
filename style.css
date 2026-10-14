@@ -4823,54 +4823,37 @@ body { animation: fadeIn 0.5s ease; }
 }
 
 /* ==========================================================================
-   FLOATING WHATSAPP BUTTON (CHARCOAL GREY & MOONLIGHT SILVER GLASSMORPHISM)
+   FLOATING WHATSAPP BUTTON (SQUARE LOGO, RIGHT SIDE)
    ========================================================================== */
 .whatsapp-floating-btn {
     position: fixed;
-    bottom: 26px;
-    left: 26px;
+    bottom: 24px;
+    right: 24px;
+    left: auto;
+    width: 48px;
+    height: 48px;
     z-index: 998;
     display: inline-flex;
     align-items: center;
-    gap: 11px;
-    padding: 8px 18px 8px 10px;
-    background: rgba(26, 26, 26, 0.88);
+    justify-content: center;
+    padding: 0;
+    background: rgba(26, 26, 26, 0.92);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    border: 1px solid rgba(192, 192, 192, 0.25);
-    border-radius: 9999px;
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5), 0 0 1px rgba(192, 192, 192, 0.35);
-    color: #E5E7EB;
+    border: 1px solid rgba(192, 192, 192, 0.28);
+    border-radius: 12px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6), 0 0 1px rgba(192, 192, 192, 0.35);
+    color: #25D366;
     text-decoration: none;
     cursor: pointer;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .whatsapp-floating-btn:hover {
-    transform: translateY(-3px) scale(1.02);
-    border-color: rgba(192, 192, 192, 0.6);
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.65), 0 0 20px rgba(37, 211, 102, 0.3);
-    color: #FFFFFF;
-}
-
-.whatsapp-floating-icon {
-    position: relative;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(37, 211, 102, 0.16);
-    border: 1px solid rgba(37, 211, 102, 0.4);
+    transform: translateY(-3px) scale(1.06);
+    border-color: rgba(192, 192, 192, 0.7);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.75), 0 0 20px rgba(37, 211, 102, 0.4);
     color: #25D366;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: transform 0.25s ease, background 0.25s ease;
-}
-
-.whatsapp-floating-btn:hover .whatsapp-floating-icon {
-    transform: scale(1.08) rotate(4deg);
-    background: rgba(37, 211, 102, 0.24);
 }
 
 .whatsapp-floating-pulse {
@@ -4879,7 +4862,7 @@ body { animation: fadeIn 0.5s ease; }
     left: 0;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    border-radius: 12px;
     box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
     animation: waPulseGlow 2.4s infinite;
     pointer-events: none;
@@ -4890,24 +4873,11 @@ body { animation: fadeIn 0.5s ease; }
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
     }
     70% {
-        box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+        box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
     }
     100% {
         box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
     }
-}
-
-.whatsapp-floating-label {
-    font-family: var(--font-primary, 'Space Grotesk', sans-serif);
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #E2E8F0;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-}
-
-.whatsapp-floating-btn:hover .whatsapp-floating-label {
-    color: #FFFFFF;
 }
 
 /* Float nav dock WhatsApp item */
@@ -4929,17 +4899,11 @@ body { animation: fadeIn 0.5s ease; }
 @media (max-width: 640px) {
     .whatsapp-floating-btn {
         bottom: 18px;
-        left: 16px;
-        padding: 5px;
-        gap: 0;
-        border-radius: 50%;
-    }
-    .whatsapp-floating-label {
-        display: none;
-    }
-    .whatsapp-floating-icon {
-        width: 42px;
-        height: 42px;
+        right: 16px;
+        left: auto;
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
     }
 }
 
