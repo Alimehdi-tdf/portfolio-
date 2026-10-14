@@ -504,6 +504,32 @@
             display: inline-block;
         }
 
+        .cv-footer-links {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cv-footer-nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .cv-footer-nav-link:hover {
+            color: var(--accent-primary);
+        }
+
+        .cv-footer-dot {
+            color: var(--border-subtle);
+        }
+
+        @media print {
+            .cv-footer-links {
+                display: none !important;
+            }
+        }
+
         /* ==========================================================================
            PRINT STYLESHEET (@media print)
            - Pure crisp paper layout: white background, crisp dark text, olive accents
@@ -914,7 +940,13 @@
 
         <!-- Footer Stamp -->
         <footer class="cv-footer">
-            <div>Verified Portfolio & Official CV</div>
+            <div class="cv-footer-links">
+                <a href="index.html" class="cv-footer-nav-link">← Portfolio</a>
+                <span class="cv-footer-dot">•</span>
+                <a href="resume.html" class="cv-footer-nav-link">Resume</a>
+                <span class="cv-footer-dot">•</span>
+                <a href="https://github.com/Alimehdi-tdf" target="_blank" rel="noopener noreferrer" class="cv-footer-nav-link">GitHub</a>
+            </div>
             <div class="footer-brand">
                 <img src="logo.png" alt="Ali Mehdi Logo" class="cv-footer-logo">
                 <span>&lt;I M MEHDI /&gt;</span>

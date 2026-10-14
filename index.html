@@ -1265,12 +1265,43 @@
     <!-- ========== FOOTER ========== -->
     <footer class="footer">
         <div class="footer__container">
-            <p class="footer__text">&copy; 2026 Syed Ali Mehdi. All rights reserved.</p>
-            <div class="footer__links">
+            <div class="footer__brand-col">
+                <a href="#hero" class="footer__logo" aria-label="Syed Ali Mehdi Logo" title="Back to top">
+                    <img src="logo.png" alt="Syed Ali Mehdi Logo" class="footer__logo-img">
+                </a>
+                <p class="footer__text">&copy; 2026 Syed Ali Mehdi. All rights reserved.</p>
+            </div>
+
+            <nav class="footer__links" aria-label="Footer Navigation">
                 <a href="#hero">Home</a>
                 <a href="#about">About</a>
+                <a href="#social">Social</a>
                 <a href="#skills">Skills</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#experience">Experience</a>
                 <a href="#contact">Contact</a>
+                <span class="footer__divider" aria-hidden="true">•</span>
+                <a href="cv.html" class="footer__badge-link">CV</a>
+                <a href="resume.html" class="footer__badge-link">Resume</a>
+                <a href="admin.html" class="footer__badge-link" aria-label="Admin Portal">Admin</a>
+            </nav>
+
+            <div class="footer__social-links" aria-label="Footer Social Links">
+                <a href="https://github.com/Alimehdi-tdf" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76c.92 0 1.66-.74 1.66-1.66a1.66 1.66 0 0 0-3.32 0c0 .92.74 1.66 1.66 1.66m-1.4 9.74h2.8v-8.37h-2.8v8.37z"/></svg>
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" title="Instagram">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube" title="YouTube">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="https://tiktok.com/@syedalimehdi" target="_blank" rel="noopener noreferrer" aria-label="TikTok" title="TikTok">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.89 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.34 0 .66.06.96.17V9.32a6.33 6.33 0 0 0-.96-.07A6.34 6.34 0 0 0 3.15 15.6a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.71a8.21 8.21 0 0 0 4.76 1.49v-3.51h-1z"/></svg>
+                </a>
             </div>
         </div>
     </footer>
