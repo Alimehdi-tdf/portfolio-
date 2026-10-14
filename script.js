@@ -914,8 +914,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('portfolio_inquiries', JSON.stringify(localInquiries));
                 } catch (e) {}
 
-                alertDiv.style.background = 'rgba(225, 6, 0, 0.12)';
-                alertDiv.style.color = '#C0C0C0';
+                alertDiv.style.background = 'rgba(192, 192, 192, 0.12)';
+                alertDiv.style.color = '#FFFFFF';
                 alertDiv.style.border = '1px solid rgba(192, 192, 192, 0.35)';
                 alertDiv.innerHTML = `✓ Thank you, ${formData.name || 'there'}! Your message has been sent successfully. I will get back to you shortly.`;
                 contactForm.reset();
@@ -1257,7 +1257,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (this.size > 2.6) {
                     ctx.beginPath();
                     ctx.arc(this.x, this.y, this.size * 0.45, 0, Math.PI * 2);
-                    ctx.fillStyle = `rgba(225, 6, 0, ${(this.alpha * 0.35).toFixed(3)})`;
+                    ctx.fillStyle = `rgba(192, 192, 192, ${(this.alpha * 0.40).toFixed(3)})`;
                     ctx.shadowBlur = 2;
                     ctx.fill();
                 }
