@@ -1287,8 +1287,7 @@ body.is-scrolling .float-nav__btn {
     background: radial-gradient(circle at 82% 25%, rgba(192, 192, 192, 0.14) 0%, transparent 60%),
                 radial-gradient(circle at 18% 75%, rgba(192, 192, 192, 0.08) 0%, transparent 60%),
                 linear-gradient(180deg, #1A1A1A 0%, #18191E 50%, #141519 100%);
-    border-top: 1px solid rgba(192, 192, 192, 0.20);
-    border-bottom: 1px solid rgba(192, 192, 192, 0.12);
+    border: none;
 }
 
 .about__grid {
@@ -1621,8 +1620,7 @@ body.is-scrolling .float-nav__btn {
     z-index: 2;
     background: radial-gradient(circle at 75% 40%, rgba(192, 192, 192, 0.12) 0%, transparent 60%),
                 linear-gradient(180deg, #222222 0%, #1A1A1A 50%, #222222 100%);
-    border-top: 1px solid rgba(192, 192, 192, 0.2);
-    border-bottom: 1px solid rgba(192, 192, 192, 0.15);
+    border: none;
 }
 
 .skills__slider-wrapper {
@@ -1971,8 +1969,7 @@ body.is-scrolling .float-nav__btn {
     position: relative;
     z-index: 1;
     background: #1E1E1E;
-    border-top: 1px solid rgba(192, 192, 192, 0.2);
-    border-bottom: 1px solid rgba(192, 192, 192, 0.15);
+    border: none;
 }
 
 .certs-compact__container {
@@ -2327,8 +2324,7 @@ body.is-scrolling .float-nav__btn {
     background: radial-gradient(circle at 18% 25%, rgba(192, 192, 192, 0.06) 0%, transparent 55%),
                 radial-gradient(circle at 82% 75%, rgba(192, 192, 192, 0.05) 0%, transparent 60%),
                 linear-gradient(180deg, #1A1A1A 0%, #17181F 50%, #1A1A1A 100%);
-    border-top: 1px solid rgba(192, 192, 192, 0.18);
-    border-bottom: 1px solid rgba(192, 192, 192, 0.18);
+    border: none;
     padding: var(--space-3xl) 0;
 }
 
@@ -2914,7 +2910,7 @@ body.is-scrolling .float-nav__btn {
     z-index: 2;
     background: radial-gradient(circle at 50% 25%, rgba(192, 192, 192, 0.12) 0%, transparent 65%),
                 linear-gradient(180deg, #1E1E1E 0%, #2A2A2A 60%, #1A1A1A 100%);
-    border-top: 1px solid rgba(192, 192, 192, 0.2);
+    border: none;
 }
 
 .contact__grid {
@@ -3104,7 +3100,7 @@ body.is-scrolling .float-nav__btn {
     position: relative;
     z-index: 1;
     background: #1A1A1A;
-    border-top: 1px solid rgba(192, 192, 192, 0.2);
+    border: none;
     padding: var(--space-md) var(--space-lg);
 }
 
@@ -4190,11 +4186,11 @@ body { animation: fadeIn 0.5s ease; }
         align-items: center !important;
         justify-content: space-around !important;
         padding: 6px 4px !important;
-        background: rgba(18, 19, 22, 0.95) !important;
-        backdrop-filter: blur(24px) !important;
-        -webkit-backdrop-filter: blur(24px) !important;
-        border: 1px solid rgba(192, 192, 192, 0.30) !important;
-        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(192, 192, 192, 0.12) !important;
+        background: transparent !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: none !important;
+        box-shadow: none !important;
         border-radius: 0 !important;
         gap: 2px !important;
     }
@@ -4210,38 +4206,41 @@ body { animation: fadeIn 0.5s ease; }
         align-items: center !important;
         justify-content: center !important;
         border-radius: 0 !important;
-        color: rgba(209, 213, 219, 0.75) !important;
+        color: rgba(209, 213, 219, 0.85) !important;
         background: transparent !important;
         border: none !important;
         box-shadow: none !important;
         touch-action: manipulation !important;
         -webkit-tap-highlight-color: transparent !important;
-        transition: color 0.18s ease, background 0.18s ease !important;
+        transition: color 0.18s ease, transform 0.18s ease !important;
     }
 
     .float-nav__btn svg {
-        width: 18px !important;
-        height: 18px !important;
+        width: 20px !important;
+        height: 20px !important;
         transform: none !important;
-        filter: none !important;
+        filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.9)) !important;
     }
 
     .float-nav__btn:hover,
     .float-nav__btn:focus,
     .float-nav__btn:active {
         color: var(--clr-accent-light) !important;
-        background: rgba(192, 192, 192, 0.12) !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
     }
 
     .float-nav__btn.active {
         color: var(--clr-accent-light) !important;
-        background: rgba(192, 192, 192, 0.20) !important;
-        box-shadow: inset 0 -2px 0 var(--clr-accent) !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
     }
 
     .float-nav__btn.active svg {
         color: var(--clr-accent-light) !important;
-        filter: drop-shadow(0 0 8px rgba(192, 192, 192, 0.50)) !important;
+        filter: drop-shadow(0 0 10px rgba(192, 192, 192, 0.95)) !important;
     }
 
     .float-nav__btn .float-nav__tooltip {
@@ -4309,7 +4308,27 @@ body { animation: fadeIn 0.5s ease; }
         height: 19px;
     }
 
-    /* Section Spacing */
+    /* Section Spacing & Complete Borderless Background Removal on Mobile */
+    .section,
+    .hero,
+    .about,
+    .social-hub,
+    #social,
+    .skills,
+    .certs-compact,
+    .experience,
+    #experience,
+    .contact,
+    #contact,
+    .footer {
+        border: none !important;
+        border-top: none !important;
+        border-bottom: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        background: transparent !important;
+    }
+
     .section {
         padding: 2.25rem 1.15rem;
     }
