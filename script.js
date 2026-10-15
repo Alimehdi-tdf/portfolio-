@@ -236,34 +236,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* ==========================================================================
-       4. SCROLL REVEAL ANIMATIONS (Intersection Observer)
+       4. BIDIRECTIONAL SCROLL REVEAL OBSERVER (APPEAR & DISAPPEAR ON SCROLL UP/DOWN)
+       - Runs seamlessly on both Desktop & Mobile (iOS / Android / Touch / PC)
+       - Fully bidirectional: elements smoothly appear when scrolled into view,
+         disappear when scrolled out of view, and re-animate whenever user scrolls up or down!
        ========================================================================== */
-    const revealElements = document.querySelectorAll('.reveal');
+    const revealElements = document.querySelectorAll('.reveal, .section__header');
 
     if ('IntersectionObserver' in window) {
-        const revealObserver = new IntersectionObserver((entries, observer) => {
+        const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active', 'is-visible');
-                    observer.unobserve(entry.target);
+                } else {
+                    // Element moved out of viewport (scrolled past up or down):
+                    // remove active classes so it disappears and smoothly re-animates when user scrolls back!
+                    entry.target.classList.remove('active', 'is-visible');
                 }
             });
         }, {
             root: null,
-            threshold: 0.05,
-            rootMargin: '0px 0px 50px 0px'
+            threshold: 0.08,
+            rootMargin: '0px 0px -25px 0px'
         });
 
         revealElements.forEach(el => revealObserver.observe(el));
     } else {
-        // Fallback
+        // Fallback for older browsers
         revealElements.forEach(el => el.classList.add('active', 'is-visible'));
     }
-
-    // Immediately reveal hero elements so home section is never hidden or blank
-    document.querySelectorAll('#hero .reveal').forEach(el => {
-        el.classList.add('active', 'is-visible');
-    });
 
     /* ==========================================================================
        ACTIVE SCROLL GPU ACCELERATOR
@@ -1587,23 +1588,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setupSectionScrollIndicator('about-scroll-indicator', '#social');
 
 
-    /* ==========================================================================
-       15. LIGHTWEIGHT SECTION REVEAL OBSERVER
-       - Smooth CSS-accelerated reveal without layout thrashing
-       ========================================================================== */
-    const revealSections = document.querySelectorAll('.section__header');
-    if ('IntersectionObserver' in window) {
-        const headerObserver = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active', 'is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px 50px 0px' });
-
-        revealSections.forEach(el => headerObserver.observe(el));
-    }
+    // Section headers and all reveal components are unified in Section 4 bidirectional observer
 
 
 
@@ -1642,15 +1627,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const isMobile = window.innerWidth < 992;
             if (isMobile) {
-                // Mobile layout: Keep hero portrait and about image at natural full visibility
-                heroPortrait.style.transform = 'none';
-                heroPortrait.style.opacity = '1';
-                aboutImgWrapper.style.transform = 'none';
-                aboutImgWrapper.style.opacity = '1';
+                // Mobile layout: Soft responsive parallax glide that moves smoothly with scroll
+                const mobileTravelMax = Math.max(aboutTop * 0.75, 360);
+                if (scrollY < mobileTravelMax) {
+                    const travelY = scrollY * 0.28;
+                    heroPortrait.style.transform = `translateY(${travelY.toFixed(1)}px)`;
+                    const fade = Math.min(1, scrollY / (mobileTravelMax * 0.85));
+                    heroPortrait.style.opacity = Math.max(0, 1 - fade).toFixed(2);
+
+                    const aboutFade = Math.max(0, Math.min(1, (scrollY - 120) / (mobileTravelMax - 120)));
+                    aboutImgWrapper.style.transform = `translateY(${((1 - aboutFade) * 18).toFixed(1)}px)`;
+                    aboutImgWrapper.style.opacity = (0.3 + aboutFade * 0.7).toFixed(2);
+                } else {
+                    heroPortrait.style.opacity = '0';
+                    aboutImgWrapper.style.transform = 'translateY(0px)';
+                    aboutImgWrapper.style.opacity = '1';
+                }
                 aboutImgWrapper.style.pointerEvents = 'auto';
 
                 // Soft mobile watermark below About
-                const mobileExit = aboutTop + (aboutHeight * 0.40);
+                const mobileExit = aboutTop + (aboutHeight * 0.35);
                 if (bgPortrait) {
                     if (scrollY > mobileExit) {
                         bgPortrait.classList.add('is-active-bg');

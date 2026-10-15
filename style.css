@@ -3212,11 +3212,11 @@ body.is-scrolling .float-nav__btn {
 }
 
 
-/* ========== SCROLL REVEAL ANIMATIONS ========== */
+/* ========== SCROLL REVEAL ANIMATIONS (BIDIRECTIONAL APPEAR & DISAPPEAR) ========== */
 .reveal {
     opacity: 0;
-    transform: translateY(35px);
-    transition: opacity 0.75s var(--ease-out-expo), transform 0.75s var(--ease-out-expo);
+    transform: translateY(32px);
+    transition: opacity 0.45s cubic-bezier(0.25, 1, 0.5, 1), transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
     will-change: opacity, transform;
 }
 
@@ -3224,28 +3224,31 @@ body.is-scrolling .float-nav__btn {
 .reveal.is-visible {
     opacity: 1 !important;
     transform: translateY(0) !important;
+    transition: opacity 0.75s var(--ease-out-expo), transform 0.75s var(--ease-out-expo);
 }
 
 .reveal--left {
-    transform: translateX(-40px);
+    transform: translate3d(-35px, 0, 0);
     will-change: opacity, transform;
 }
 
 .reveal--left.active,
 .reveal--left.is-visible {
     opacity: 1 !important;
-    transform: translateX(0) !important;
+    transform: translate3d(0, 0, 0) !important;
+    transition: opacity 0.75s var(--ease-out-expo), transform 0.75s var(--ease-out-expo);
 }
 
 .reveal--right {
-    transform: translateX(40px);
+    transform: translate3d(35px, 0, 0);
     will-change: opacity, transform;
 }
 
 .reveal--right.active,
 .reveal--right.is-visible {
     opacity: 1 !important;
-    transform: translateX(0) !important;
+    transform: translate3d(0, 0, 0) !important;
+    transition: opacity 0.75s var(--ease-out-expo), transform 0.75s var(--ease-out-expo);
 }
 
 .reveal--delay-1 { transition-delay: 0.1s; }
@@ -3253,6 +3256,19 @@ body.is-scrolling .float-nav__btn {
 .reveal--delay-3 { transition-delay: 0.3s; }
 .reveal--delay-4 { transition-delay: 0.4s; }
 .reveal--delay-5 { transition-delay: 0.5s; }
+
+/* Subtler offset on mobile to prevent edge clipping and horizontal wobble */
+@media (max-width: 768px) {
+    .reveal {
+        transform: translateY(22px);
+    }
+    .reveal--left {
+        transform: translate3d(-20px, 0, 0);
+    }
+    .reveal--right {
+        transform: translate3d(20px, 0, 0);
+    }
+}
 
 
 /* ========== RESPONSIVE ========== */
